@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>suphy2009的程序人生</title><link>http://suphy2009.github.io/</link><description></description><atom:link href="http://suphy2009.github.io/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 06 Feb 2014 00:00:00 +0800</lastBuildDate><item><title>(转) 一步一步打造Geek风格的技术博客</title><link>http://suphy2009.github.io/pages/2014/02/06/build_blog.html</link><description>&lt;p&gt;&lt;a href="http://www.lizherui.com/pages/2013/08/17/build_blog.html"&gt;转载&lt;/a&gt;&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>suphy的程序人生</title><link>http://suphy2009.github.io/</link><description></description><atom:link href="http://suphy2009.github.io/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 06 Feb 2014 00:00:00 +0800</lastBuildDate><item><title>(转) 一步一步打造Geek风格的技术博客</title><link>http://suphy2009.github.io/pages/2014/02/06/build_blog.html</link><description>&lt;p&gt;&lt;a href="http://www.lizherui.com/pages/2013/08/17/build_blog.html"&gt;转载&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;如梦初醒&lt;/h2&gt;
 &lt;hr /&gt;
 &lt;h3&gt;Geek是什么&lt;/h3&gt;
@@ -179,7 +179,7 @@
 &lt;p&gt;最后，如果感觉还不够味儿，可以参考Pelican官方文档和这个博客的完整源码。&lt;/p&gt;
 &lt;p&gt;Pelican : &lt;a href="http://docs.getpelican.com/en/3.2"&gt;http://docs.getpelican.com/en/3.2&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Source Code : &lt;a href="https://github.com/lizherui/lizherui.github.io"&gt;https://github.com/lizherui/lizherui.github.io&lt;/a&gt; &lt;/p&gt;
-&lt;p&gt;Have fun!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">suphy2009</dc:creator><pubDate>Thu, 06 Feb 2014 00:00:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-06:pages/2014/02/06/build_blog.html</guid><category>pelican</category><category>blog</category><category>python</category></item><item><title>Markdown Dillinger</title><link>http://suphy2009.github.io/pages/2014/02/05/test2.html</link><description>&lt;h1&gt;Dillinger&lt;/h1&gt;
+&lt;p&gt;Have fun!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Suphy</dc:creator><pubDate>Thu, 06 Feb 2014 00:00:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-06:pages/2014/02/06/build_blog.html</guid><category>pelican</category><category>blog</category><category>python</category></item><item><title>Markdown Dillinger</title><link>http://suphy2009.github.io/pages/2014/02/05/test2.html</link><description>&lt;h1&gt;Dillinger&lt;/h1&gt;
 &lt;p&gt;Dillingger is a cloud-enable HTML5 Markdown editro.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Type Some Markdown text in the left window&lt;/li&gt;
@@ -224,4 +224,4 @@ mkdir -p public/files/&lt;span class="o"&gt;{&lt;/span&gt;md,html,pdf&lt;span cl
 
 &lt;h2&gt;License&lt;/h2&gt;
 &lt;p&gt;MIT&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Free Software,Hell Yeah!&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">suphy2009</dc:creator><pubDate>Wed, 05 Feb 2014 00:00:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-05:pages/2014/02/05/test2.html</guid><category>markdown</category><category>blog</category><category>python</category></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;Free Software,Hell Yeah!&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Suphy</dc:creator><pubDate>Wed, 05 Feb 2014 00:00:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-05:pages/2014/02/05/test2.html</guid><category>markdown</category><category>blog</category><category>python</category></item></channel></rss>
