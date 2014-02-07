@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>suphy' Blog</title><link href="http://localhost:8000/" rel="alternate"></link><link href="http://localhost:8000/feeds/all-zh_cn.atom.xml" rel="self"></link><id>http://localhost:8000/</id><updated>2014-02-06T00:00:00+08:00</updated><entry><title>(转) 用 Pelican 和 GitHub Pages 搭建个人博客</title><link href="http://localhost:8000/tech/build_blog.html" rel="alternate"></link><updated>2014-02-06T00:00:00+08:00</updated><author><name>suphy</name></author><id>tag:localhost:8000,2014-02-06:tech/build_blog.html</id><summary type="html">&lt;h3&gt;Pelican 介绍&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>suphy' Blog</title><link href="http://suphy2009.github.io/" rel="alternate"></link><link href="http://suphy2009.github.io/feeds/all-zh_cn.atom.xml" rel="self"></link><id>http://suphy2009.github.io/</id><updated>2014-02-07T18:39:00+08:00</updated><entry><title>Git submodule的使用</title><link href="http://suphy2009.github.io/tech/scm-git-submodule.html" rel="alternate"></link><updated>2014-02-07T18:39:00+08:00</updated><author><name>suphy</name></author><id>tag:suphy2009.github.io,2014-02-07:tech/scm-git-submodule.html</id><summary type="html">&lt;h1&gt;关于Git Submodule的使用&lt;/h1&gt;
+&lt;h3&gt;说明:&lt;/h3&gt;
+&lt;p&gt;Git的子模块(submodule)功能使得一个仓库可以用子目录的形式去包含一个外部项目的签出版本. 子模块维护它们自己的身份标记(identity); 子模块功能仅仅储存子模块仓库的位置和提交ID, 因此其他克隆父项目("superproject")的开发者可以轻松克隆所有子模块的同一版本. 对父项目的部分签出成为可能: 你可以告诉git去克隆一部分或者所有的子模块, 也可以一个都不克隆.&lt;/p&gt;
+&lt;h4&gt;本文介绍git submodule的常用使用方法&lt;/h4&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;添加submodule&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;submodule&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//host/xxx.git ./output&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除submodule&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;cached&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
+&lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接着修改.gitmodules文件，去掉相对应的submodule部分&lt;/p&gt;
+&lt;p&gt;再修改.git/config 中submodule部分&lt;/p&gt;
+&lt;p&gt;修改完成后就删除成功了，于是commit&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gitmodules&lt;/span&gt;
+    &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;comment&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;还不放心可以同步一下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;submodule&lt;/span&gt; &lt;span class="n"&gt;sync&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;更新submodule&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;submodule&lt;/span&gt; &lt;span class="n"&gt;foreach&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;pull&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;END~&lt;/h4&gt;</summary><category term="git"></category><category term="scm"></category></entry><entry><title>(转) 用 Pelican 和 GitHub Pages 搭建个人博客</title><link href="http://suphy2009.github.io/tech/build_blog.html" rel="alternate"></link><updated>2014-02-06T00:00:00+08:00</updated><author><name>suphy</name></author><id>tag:suphy2009.github.io,2014-02-06:tech/build_blog.html</id><summary type="html">&lt;h3&gt;Pelican 介绍&lt;/h3&gt;
 &lt;p&gt;首先看看Pelican的一些主要特性：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Python实现，开放源码  &lt;/li&gt;
@@ -148,7 +192,7 @@
 &lt;p&gt;Pelican文档中文版: &lt;a href="https://pelican-docs-chs.readthedocs.org/en/latest/"&gt;https://pelican-docs-chs.readthedocs.org/en/latest/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Source Code : &lt;a href="https://github.com/lizherui/lizherui.github.io"&gt;https://github.com/lizherui/lizherui.github.io&lt;/a&gt; &lt;/p&gt;
 &lt;p&gt;Have fun!&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://www.lizherui.com/pages/2013/08/17/build_blog.html"&gt;转载&lt;/a&gt;&lt;/p&gt;</summary><category term="pelican"></category><category term="blog"></category><category term="python"></category></entry><entry><title>Markdown Dillinger</title><link href="http://localhost:8000/tech/test2.html" rel="alternate"></link><updated>2014-02-05T14:35:00+08:00</updated><author><name>suphy</name></author><id>tag:localhost:8000,2014-02-05:tech/test2.html</id><summary type="html">&lt;h1&gt;Dillinger&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://www.lizherui.com/pages/2013/08/17/build_blog.html"&gt;转载&lt;/a&gt;&lt;/p&gt;</summary><category term="pelican"></category><category term="blog"></category><category term="python"></category></entry><entry><title>Markdown Dillinger</title><link href="http://suphy2009.github.io/tech/test2.html" rel="alternate"></link><updated>2014-02-05T14:35:00+08:00</updated><author><name>suphy</name></author><id>tag:suphy2009.github.io,2014-02-05:tech/test2.html</id><summary type="html">&lt;h1&gt;Dillinger&lt;/h1&gt;
 &lt;p&gt;Dillinger is a cloud-enabled HTML5 Markdown editor.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Type some Markdown text in the left window&lt;/li&gt;
