@@ -1,54 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>suphy的程序人生</title><link>http://suphy2009.github.io/</link><description></description><atom:link href="http://suphy2009.github.io/feeds/tech.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 06 Feb 2014 00:00:00 +0800</lastBuildDate><item><title>(转) 一步一步打造Geek风格的技术博客</title><link>http://suphy2009.github.io/pages/2014/02/06/build_blog.html</link><description>&lt;p&gt;&lt;a href="http://www.lizherui.com/pages/2013/08/17/build_blog.html"&gt;转载&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;如梦初醒&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;h3&gt;Geek是什么&lt;/h3&gt;
-&lt;p&gt;Geek更多的是一种精神，一种态度，一种对技术的理解与信念。他们无法忍受丑陋的代码，拙劣的技术。他们思路开阔，技术娴熟，他们不甘平庸，追求完美。他们不会囿于常识，他们敢于突破。在常人眼中，他们不走寻常路，享受各种非主流的技术。但在他们自己眼中，这些又是那么得自然与优美。他们用自己的行为诠释着自己对于技术的理解，用那份固执传达着自己的信念。&lt;/p&gt;
-&lt;p&gt;他们掌握并热爱着技术，叛逆、执着，崇尚自由。&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>suphy' Blog</title><link>http://localhost:8000/</link><description></description><atom:link href="http://localhost:8000/feeds/tech.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 06 Feb 2014 00:00:00 +0800</lastBuildDate><item><title>(转) 用 Pelican 和 GitHub Pages 搭建个人博客</title><link>http://localhost:8000/tech/build_blog.html</link><description>&lt;h3&gt;Pelican 介绍&lt;/h3&gt;
+&lt;p&gt;首先看看Pelican的一些主要特性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python实现，开放源码  &lt;/li&gt;
+&lt;li&gt;输出静态页面，方便托管  &lt;/li&gt;
+&lt;li&gt;支持主题，采用Jajin2模板引擎  &lt;/li&gt;
+&lt;li&gt;支持代码语法高亮  &lt;/li&gt;
+&lt;li&gt;支持reStructuredText、Markdown、AsciiDoc格式  &lt;/li&gt;
+&lt;li&gt;支持Disqus评论  &lt;/li&gt;
+&lt;li&gt;支持Atom和RSS输出  &lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3&gt;为什么不选择CSDN、Wordpress、Jekyll等技术&lt;/h3&gt;
-&lt;p&gt;我在CSDN上发表博文被和谐了一次，就不会允许这种事发生第二次。&lt;/p&gt;
 &lt;p&gt;Wordpress上手容易、功能强大、插件丰富。但是在我看来，这些优点同时也是它的缺点：太笨重、太无脑、不够酷、无用功能太多、可定制的粒度不够小。我更喜欢简洁快速粗暴的博客系统。&lt;/p&gt;
 &lt;p&gt;Jekyll非常棒，可惜它基于Ruby。对于Python爱好者而言，基于Python的Pelican显然更加可口。&lt;/p&gt;
-&lt;h2&gt;卧薪尝胆&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;我在搭建这个博客的过程中学到了很多很多有意思的技术。&lt;/p&gt;
-&lt;p&gt;搭建环境为Mac OS X/Linux，Windows下可能会麻烦一些。&lt;/p&gt;
-&lt;p&gt;搭建过程中会涉及到的技术名词如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Mac OS X&lt;/li&gt;
-&lt;li&gt;Python&lt;/li&gt;
-&lt;li&gt;Pip&lt;/li&gt;
-&lt;li&gt;Pelican&lt;/li&gt;
-&lt;li&gt;Jinja2&lt;/li&gt;
-&lt;li&gt;Github &lt;/li&gt;
-&lt;li&gt;Git&lt;/li&gt;
-&lt;li&gt;Makefile&lt;/li&gt;
-&lt;li&gt;Markdown&lt;/li&gt;
-&lt;li&gt;Mou&lt;/li&gt;
-&lt;li&gt;Google Analytics&lt;/li&gt;
-&lt;li&gt;Google Custom Search&lt;/li&gt;
-&lt;li&gt;Google Webmasters&lt;/li&gt;
-&lt;li&gt;Picasa&lt;/li&gt;
-&lt;li&gt;Disqus&lt;/li&gt;
-&lt;li&gt;Rss&lt;/li&gt;
-&lt;li&gt;Sitemap&lt;/li&gt;
-&lt;li&gt;Godaddy&lt;/li&gt;
-&lt;li&gt;Dnspod&lt;/li&gt;
-&lt;li&gt;A记录&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;若对任何一个技术名词有疑问，请翻墙&lt;a href="https://www.google.com/ncr"&gt;Google&lt;/a&gt; it.&lt;/p&gt;
-&lt;h2&gt;初见端倪&lt;/h2&gt;
-&lt;hr /&gt;
-&lt;p&gt;开始动手。&lt;/p&gt;
 &lt;h3&gt;Github入门指南&lt;/h3&gt;
 &lt;p&gt;请参考&lt;a href="http://blog.csdn.net/duxinfeng2010/article/details/8654690"&gt;http://blog.csdn.net/duxinfeng2010/article/details/8654690&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;使用Github Pages创建个人博客&lt;/h3&gt;
-&lt;p&gt;Github为每一个用户分配了一个二级域名username.github.io，用户为自己的二级域名创建主页很简单，只需要在Github下创建一个名为username.github.io的版本库，并向其master分支提交网站静态页面即可。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;登陆Github，创建一个名为username.github.io的版本库（将username替换成自己的Github账户名）。&lt;/li&gt;
-&lt;li&gt;点击Setting，选择一个自己喜欢的模板，最后点击发布public按钮。&lt;/li&gt;
-&lt;li&gt;耐心等待一段时间（不超过10分钟），登陆http://username.github.io，会发现自己的个人博客已经生成。&lt;/li&gt;
-&lt;/ul&gt;
 &lt;h3&gt;安装Pelican和Markdown&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;
 &lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;markdown&lt;/span&gt;
@@ -75,33 +41,39 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;进入output把自己刚刚建好的username.github.io版本库clone下来：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
-&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;github&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;h3&gt;开始写博文&lt;/h3&gt;
 &lt;p&gt;在content目录下用Markdown语法来写一篇文章，最好选择专业的Markdown编辑器，在Mac OS X下推荐使用Mou，在Linux/Windows下请Google。&lt;/p&gt;
-&lt;p&gt;用Markdown写博文截图如下：
-&lt;img alt="1" src="https://lh5.googleusercontent.com/-edzDa6ch3Jk/Ug5oATNTjsI/AAAAAAAAAKs/WIqU7KziyOA/w958-h599-no/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7+2013-08-17+%25E4%25B8%258A%25E5%258D%25881.57.09.png" /&gt;&lt;/p&gt;
-&lt;p&gt;左半边是正在用markdown写的博文，右边是即时预览效果。&lt;/p&gt;
-&lt;p&gt;写完后，执行以下命令，即可在本机&lt;a href="http://127.0.0.1:8000"&gt;http://127.0.0.1:8000&lt;/a&gt;看到效果。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;publish&lt;/span&gt;
-&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;serve&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;My&lt;/span&gt; &lt;span class="kd"&gt;super&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;02&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;03&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;
+&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;publishing&lt;/span&gt;
+&lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="kd"&gt;super&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;
+&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Alexis&lt;/span&gt; &lt;span class="n"&gt;Metaireau&lt;/span&gt;
+&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Short&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;feeds&lt;/span&gt;
+
+&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;my&lt;/span&gt; &lt;span class="kd"&gt;super&lt;/span&gt; &lt;span class="n"&gt;blog&lt;/span&gt; &lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;若要一键上传到Github，需要修改Makefile两处地方：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;publish:&lt;/span&gt;
-&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICAN&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;INPUTDIR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;OUTPUTDIR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CONFFILE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PELICANOPTS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="nl"&gt;github:&lt;/span&gt; &lt;span class="n"&gt;publish&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;OUTPUTDIR&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;  &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;am&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;comments&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt;
+&lt;p&gt;写完后，执行以下命令 &lt;code&gt;make html&lt;/code&gt;，现在可以在output目录下查看生成的html文件了。&lt;/p&gt;
+&lt;h3&gt;创建Github Pages&lt;/h3&gt;
+&lt;p&gt;GitHub Pages分两种，一种是项目页面，可创建多个；另一种是用户页面，每个用户ID只能创建一个。两种都可以用来托管Pelican博客，这里以用户页面为例。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;登陆Github，创建一个名为&lt;strong&gt;username&lt;/strong&gt;.github.io或者&lt;strong&gt;username&lt;/strong&gt;.github.com的Repository（将username替换成自己的Github账户名）。&lt;/li&gt;
+&lt;li&gt;点击Setting，选择一个自己喜欢的模板，最后点击发布public按钮。&lt;/li&gt;
+&lt;li&gt;耐心等待一段时间（不超过10分钟），登陆http://username.github.io，会发现自己的个人博客已经生成。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;创建成功后，便可以把生成的页面push到github。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;first commit&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;remote&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/xxx/xxx.github.io.git&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;push&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;u&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;以后写完文章执行make github就可以一键部署了。&lt;/p&gt;
+&lt;p&gt;现在可以通过username.github.io或者username.github.com来访问您的博客了。&lt;/p&gt;
 &lt;h2&gt;如虎添翼&lt;/h2&gt;
 &lt;hr /&gt;
 &lt;p&gt;我们已经能成功地用markdown写出博文并部署到github了，但这远远不够。&lt;/p&gt;
@@ -134,14 +106,9 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Google Analytics极其强悍，截图说明一切：
-&lt;img alt="2" src="https://lh6.googleusercontent.com/-9vXmIT6vXDo/Ug5wTSu4wMI/AAAAAAAAALM/5-VSrnXNGUU/w958-h599-no/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7+2013-08-17+%25E4%25B8%258A%25E5%258D%25882.31.26.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="3" src="https://lh6.googleusercontent.com/-a4ZAnTD7F0I/Ug5wTX0w9nI/AAAAAAAAALI/x9J0atK3lpU/w958-h599-no/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7+2013-08-17+%25E4%25B8%258A%25E5%258D%25882.31.54.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;使用Google Webmasters&lt;/h3&gt;
 &lt;p&gt;在&lt;a href="http://www.google.com/webmasters"&gt;Google Webmasters&lt;/a&gt;上注册即可。&lt;/p&gt;
 &lt;p&gt;这个就是Google站长工具，使用它的目的是为了让博客被Google更好的收录，比如手动让Googlebot抓取、提交Robots、更新Sitemap等等，各方面完爆百度站长工具。&lt;/p&gt;
-&lt;p&gt;截图如下：
-&lt;img alt="3" src="https://lh3.googleusercontent.com/-tYrEbXyx_5o/UhGS1C_lcYI/AAAAAAAAALk/H7X7MBjNkVY/w958-h599-no/%25E5%25B1%258F%25E5%25B9%2595%25E5%25BF%25AB%25E7%2585%25A7+2013-08-19+%25E4%25B8%258A%25E5%258D%258811.36.32.png" /&gt;&lt;/p&gt;
 &lt;h3&gt;添加插件&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;clone&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/getpelican/pelican-plugins.git&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -177,32 +144,40 @@
 &lt;h2&gt;登峰造极&lt;/h2&gt;
 &lt;hr /&gt;
 &lt;p&gt;最后，如果感觉还不够味儿，可以参考Pelican官方文档和这个博客的完整源码。&lt;/p&gt;
-&lt;p&gt;Pelican : &lt;a href="http://docs.getpelican.com/en/3.2"&gt;http://docs.getpelican.com/en/3.2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pelican官方文档 : &lt;a href="http://docs.getpelican.com/en/3.2"&gt;http://docs.getpelican.com/en/3.2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Pelican文档中文版: &lt;a href="https://pelican-docs-chs.readthedocs.org/en/latest/"&gt;https://pelican-docs-chs.readthedocs.org/en/latest/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Source Code : &lt;a href="https://github.com/lizherui/lizherui.github.io"&gt;https://github.com/lizherui/lizherui.github.io&lt;/a&gt; &lt;/p&gt;
-&lt;p&gt;Have fun!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Suphy</dc:creator><pubDate>Thu, 06 Feb 2014 00:00:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-06:pages/2014/02/06/build_blog.html</guid><category>pelican</category><category>blog</category><category>python</category></item><item><title>Markdown Dillinger</title><link>http://suphy2009.github.io/pages/2014/02/05/test2.html</link><description>&lt;h1&gt;Dillinger&lt;/h1&gt;
-&lt;p&gt;Dillingger is a cloud-enable HTML5 Markdown editro.&lt;/p&gt;
+&lt;p&gt;Have fun!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.lizherui.com/pages/2013/08/17/build_blog.html"&gt;转载&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">suphy</dc:creator><pubDate>Thu, 06 Feb 2014 00:00:00 +0800</pubDate><guid>tag:localhost:8000,2014-02-06:tech/build_blog.html</guid><category>pelican</category><category>blog</category><category>python</category></item><item><title>Markdown Dillinger</title><link>http://localhost:8000/tech/test2.html</link><description>&lt;h1&gt;Dillinger&lt;/h1&gt;
+&lt;p&gt;Dillinger is a cloud-enabled HTML5 Markdown editor.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Type Some Markdown text in the left window&lt;/li&gt;
-&lt;li&gt;Seee the Html in the right&lt;/li&gt;
+&lt;li&gt;Type some Markdown text in the left window&lt;/li&gt;
+&lt;li&gt;See the HTML in the right&lt;/li&gt;
 &lt;li&gt;Magic&lt;/li&gt;
-&lt;li&gt;Markdown Text&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Markdown is lightweight markup language based on the formatting conventions that people naturally use in email. As &lt;a href="http://daringfireball.net/"&gt;john gruber&lt;/a&gt; writes on the &lt;a href="http://daringfireball.net/projects/markdown/"&gt;Markdown site&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As &lt;a href="http://daringfireball.net/"&gt;John Gruber&lt;/a&gt; writes on the &lt;a href="http://daringfireball.net/projects/markdown/"&gt;Markdown site&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The overriding design goal for Mrakdown's
-formatting syntax is to make it as readable
-as possible. The idea is that a 
-markdown-formatted document&lt;/p&gt;
+&lt;p&gt;The overriding design goal for Markdown's
+formatting syntax is to make it as readable 
+as possible. The idea is that a
+Markdown-formatted document should be
+publishable as-is, as plain text, without
+looking like it's been marked up with tags
+or formatting instructions.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;This text you use here is &lt;em&gt;actually&lt;/em&gt; written in Markdown! To get a feel for Markdown's syntax,type some text into the left window.&lt;/p&gt;
-&lt;h2&gt;version&lt;/h2&gt;
+&lt;p&gt;This text you see here is &lt;em&gt;actually&lt;/em&gt; written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.  &lt;/p&gt;
+&lt;h2&gt;Version&lt;/h2&gt;
 &lt;p&gt;2.0&lt;/p&gt;
 &lt;h2&gt;Tech&lt;/h2&gt;
-&lt;p&gt;Dillinger use a number of open source projects to work properly:&lt;/p&gt;
+&lt;p&gt;Dillinger uses a number of open source projects to work properly:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;[Ace Editor] - awesome web-based text editor&lt;/li&gt;
-&lt;li&gt;[Marked] - a super fast prot of markdown to javascript&lt;/li&gt;
-&lt;li&gt;[Twitter Bootstrap] - great UI boilerplate for modern web apps&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://ace.ajax.org"&gt;Ace Editor&lt;/a&gt; - awesome web-based text editor&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/chjj/marked"&gt;Marked&lt;/a&gt; - a super fast port of Markdown to JavaScript&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://twitter.github.com/bootstrap/"&gt;Twitter Bootstrap&lt;/a&gt; - great UI boilerplate for modern web apps&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://nodejs.org"&gt;node.js&lt;/a&gt; - evented I/O for the backend&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://expressjs.com"&gt;Express&lt;/a&gt; - fast node.js network app framework &lt;a href="http://twitter.com/tjholowaychuk"&gt;@tjholowaychuk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/madrobby/keymaster"&gt;keymaster.js&lt;/a&gt; - awesome keyboard handler lib by &lt;a href="http://twitter.com/thomasfuchs"&gt;@thomasfuchs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://jquery.com"&gt;jQuery&lt;/a&gt; - duh &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Installation&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;git clone &lt;span class="o"&gt;[&lt;/span&gt;git-repo-url&lt;span class="o"&gt;]&lt;/span&gt; dillinger
@@ -224,4 +199,4 @@ mkdir -p public/files/&lt;span class="o"&gt;{&lt;/span&gt;md,html,pdf&lt;span cl
 
 &lt;h2&gt;License&lt;/h2&gt;
 &lt;p&gt;MIT&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Free Software,Hell Yeah!&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Suphy</dc:creator><pubDate>Wed, 05 Feb 2014 00:00:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-05:pages/2014/02/05/test2.html</guid><category>markdown</category><category>blog</category><category>python</category></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;Free Software, Hell Yeah!&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">suphy</dc:creator><pubDate>Wed, 05 Feb 2014 14:35:00 +0800</pubDate><guid>tag:localhost:8000,2014-02-05:tech/test2.html</guid><category>markdown</category><category>Dillinger</category></item></channel></rss>
