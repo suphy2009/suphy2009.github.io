@@ -1,49 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>suphy' Blog</title><link>http://suphy2009.github.io/</link><description></description><atom:link href="http://suphy2009.github.io/feeds/tech.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 07 Feb 2014 18:39:00 +0800</lastBuildDate><item><title>Git submodule的使用</title><link>http://suphy2009.github.io/tech/scm-git-submodule.html</link><description>&lt;h1&gt;关于Git Submodule的使用&lt;/h1&gt;
-&lt;h3&gt;说明:&lt;/h3&gt;
-&lt;p&gt;Git的子模块(submodule)功能使得一个仓库可以用子目录的形式去包含一个外部项目的签出版本. 子模块维护它们自己的身份标记(identity); 子模块功能仅仅储存子模块仓库的位置和提交ID, 因此其他克隆父项目("superproject")的开发者可以轻松克隆所有子模块的同一版本. 对父项目的部分签出成为可能: 你可以告诉git去克隆一部分或者所有的子模块, 也可以一个都不克隆.&lt;/p&gt;
-&lt;h4&gt;本文介绍git submodule的常用使用方法&lt;/h4&gt;
-&lt;hr /&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;添加submodule&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;submodule&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//host/xxx.git ./output&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;删除submodule&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;cached&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
-&lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;接着修改.gitmodules文件，去掉相对应的submodule部分&lt;/p&gt;
-&lt;p&gt;再修改.git/config 中submodule部分&lt;/p&gt;
-&lt;p&gt;修改完成后就删除成功了，于是commit&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gitmodules&lt;/span&gt;
-    &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;comment&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;还不放心可以同步一下：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;    &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;submodule&lt;/span&gt; &lt;span class="n"&gt;sync&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;更新submodule&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;submodule&lt;/span&gt; &lt;span class="n"&gt;foreach&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;pull&lt;/span&gt; &lt;span class="n"&gt;origin&lt;/span&gt; &lt;span class="n"&gt;master&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4&gt;END~&lt;/h4&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">suphy</dc:creator><pubDate>Fri, 07 Feb 2014 18:39:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-07:tech/scm-git-submodule.html</guid><category>git</category><category>scm</category></item><item><title>(转) 用 Pelican 和 GitHub Pages 搭建个人博客</title><link>http://suphy2009.github.io/tech/build_blog.html</link><description>&lt;h3&gt;Pelican 介绍&lt;/h3&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>suphy' Blog</title><link>http://suphy2009.github.io/</link><description></description><atom:link href="http://suphy2009.github.io/feeds/tech.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 06 Feb 2014 00:00:00 +0800</lastBuildDate><item><title>(转) 用 Pelican 和 GitHub Pages 搭建个人博客</title><link>http://suphy2009.github.io/tech/build_blog.html</link><description>&lt;h3&gt;Pelican 介绍&lt;/h3&gt;
 &lt;p&gt;首先看看Pelican的一些主要特性：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Python实现，开放源码  &lt;/li&gt;
@@ -192,7 +148,7 @@
 &lt;p&gt;Pelican文档中文版: &lt;a href="https://pelican-docs-chs.readthedocs.org/en/latest/"&gt;https://pelican-docs-chs.readthedocs.org/en/latest/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Source Code : &lt;a href="https://github.com/lizherui/lizherui.github.io"&gt;https://github.com/lizherui/lizherui.github.io&lt;/a&gt; &lt;/p&gt;
 &lt;p&gt;Have fun!&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://www.lizherui.com/pages/2013/08/17/build_blog.html"&gt;转载&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">suphy</dc:creator><pubDate>Thu, 06 Feb 2014 00:00:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-06:tech/build_blog.html</guid><category>pelican</category><category>blog</category><category>python</category></item><item><title>Markdown Dillinger</title><link>http://suphy2009.github.io/tech/test2.html</link><description>&lt;h1&gt;Dillinger&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://www.lizherui.com/pages/2013/08/17/build_blog.html"&gt;转载&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">suphy</dc:creator><pubDate>Thu, 06 Feb 2014 00:00:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-06:tech/build_blog.html</guid><category>pelican</category></item><item><title>Markdown Dillinger</title><link>http://suphy2009.github.io/tech/test2.html</link><description>&lt;h1&gt;Dillinger&lt;/h1&gt;
 &lt;p&gt;Dillinger is a cloud-enabled HTML5 Markdown editor.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Type some Markdown text in the left window&lt;/li&gt;
@@ -243,4 +199,5 @@ mkdir -p public/files/&lt;span class="o"&gt;{&lt;/span&gt;md,html,pdf&lt;span cl
 
 &lt;h2&gt;License&lt;/h2&gt;
 &lt;p&gt;MIT&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Free Software, Hell Yeah!&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">suphy</dc:creator><pubDate>Wed, 05 Feb 2014 14:35:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-05:tech/test2.html</guid><category>markdown</category><category>Dillinger</category></item></channel></rss>
+&lt;p&gt;&lt;img alt="image" src="../static/images/55.gif" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Free Software, Hell Yeah!&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">suphy</dc:creator><pubDate>Wed, 05 Feb 2014 14:35:00 +0800</pubDate><guid>tag:suphy2009.github.io,2014-02-05:tech/test2.html</guid><category>Markdown</category></item></channel></rss>
