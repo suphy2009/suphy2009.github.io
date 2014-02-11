@@ -1,5 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>suphy' Blog</title><link href="http://suphy2009.github.io/" rel="alternate"></link><link href="http://suphy2009.github.io/feeds/all-zh_cn.atom.xml" rel="self"></link><id>http://suphy2009.github.io/</id><updated>2014-02-07T18:39:00+08:00</updated><entry><title>Git submodule的使用</title><link href="http://suphy2009.github.io/scm/scm-git-submodule.html" rel="alternate"></link><updated>2014-02-07T18:39:00+08:00</updated><author><name>suphy</name></author><id>tag:suphy2009.github.io,2014-02-07:scm/scm-git-submodule.html</id><summary type="html">&lt;h1&gt;关于Git Submodule的使用&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>suphy' Blog</title><link href="http://suphy2009.github.io/" rel="alternate"></link><link href="http://suphy2009.github.io/feeds/all-zh_cn.atom.xml" rel="self"></link><id>http://suphy2009.github.io/</id><updated>2014-02-11T23:39:00+08:00</updated><entry><title>Android Graphics 之 Paint类方法详解</title><link href="http://suphy2009.github.io/android/graphics-paint-method.html" rel="alternate"></link><updated>2014-02-11T23:39:00+08:00</updated><author><name>suphy</name></author><id>tag:suphy2009.github.io,2014-02-11:android/graphics-paint-method.html</id><summary type="html">&lt;h2&gt;Android Graphics 之 Paint类方法详解&lt;/h2&gt;
+&lt;h3&gt;资源文件string标签属性translatable&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;string&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;app_filter_class&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;translatable=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;false&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;xxx&lt;span class="nt"&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;属性translatable="false" 表示不希望该字符串随着语言环境的变化而变化。
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+&lt;h3&gt;设置画笔Paint的setMaskFilter&lt;/h3&gt;
+&lt;p&gt;MaskFilter类可以为paint分配边缘效果。对MaskFilter的扩展可以对一个Paint边缘alpha通道应用转换。&lt;/p&gt;
+&lt;p&gt;BlurMaskFilter 指定一个模糊的样式和半径来处理Paint的边缘。
+EmBossMaskFilter 指定了光源的方向和环境光强度来添加浮雕效果。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sBlurPaint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setMaskFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;BlurMaskFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;density&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BlurMaskFilter&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;Blur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;NORMAL&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;注：MaskFilter是对Paint的alpha通道的转换，而ColorFilter是对每个GRB通道应用转换，所有由ColorFilter所派生的类在执行它们的转换时，都会忽略alpha通道。
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;设置Paint的setColorFilter()&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ColorMatrix&lt;/span&gt; &lt;span class="n"&gt;cm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrix&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="c1"&gt;//改变饱和度，传入一个大于 1 的数字将增加饱和度,而传入一个 0~1 之间的数字会减少饱和度。0 值将产生一幅灰度图像&lt;/span&gt;
+&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setSaturation&lt;/span&gt;&lt;span class="o"&gt;(.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrixColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;设置Paint的setPathEffect()&lt;/h3&gt;
+&lt;p&gt;PathEffect是用来控制绘制轮廓的方式。PathEffect对于绘制Path基本图形特别有用，但是它们也可以应用到任何Paint中从而影响线条绘制的方式。使用PathEffect，可以改变一个形状的边角的外观并且控制轮廓的外表。Android包含了多个PathEffect，包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CornerPathEffect  可以使用圆角来代替尖锐的角从而对基本图形的形状尖锐的边角进行平滑。&lt;/li&gt;
+&lt;li&gt;DashPathEffect  可以使用DashPathEffect来创建一个虚线的轮廓(短横线/小圆点)，而不是使用实线。你还可以指定任意的虚/实线段的重复模式&lt;/li&gt;
+&lt;li&gt;DiscretePathEffect  与DashPathEffect相似，但是添加了随机性。当绘制它的时候，需要指定每一段的长度和与原始路径的偏离度&lt;/li&gt;
+&lt;li&gt;PathDashPathEffect  这种效果可以定义一个新的形状(路径)并将其用作原始路径的轮廓标记。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面两张效果可以在一个Paint中组合使用多个PathEffect:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;SumPathEffect  顺序地在一条路径中添加两种效果，这样每一种效果都可以应用到原始路径中，而且两种结果可以结合起来。&lt;/li&gt;
+&lt;li&gt;ComposePathEffect  将两种效果组合起来应用，先使用第一种效果，然后在这种效果的基础上应用第二种效果&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;设置Paint的setXfermode() 用于图像的合成&lt;/h3&gt;
+&lt;p&gt;合成是将两幅图像放在一起的动作,它使得我们能够同时看到两幅图像的特征。&lt;/p&gt;
+&lt;p&gt;在 Android SDK 中,可以通过首先在 Canvas 对象绘制一个位图对象,然后在相同的 Canvas 对象上绘制第二个位图对象的方式来实现合成。唯一的区别是在绘制第二幅图像 时,需要在 Paint 对象上指定一个过渡模式(Xfermode)。&lt;/p&gt;
+&lt;p&gt;设置图像叠加时的处理方式，如合并，取交集，经常用来制作皮擦得擦除效果。&lt;/p&gt;
+&lt;p&gt;橡皮擦，这是个好方法啊，看看。&lt;/p&gt;
+&lt;p&gt;可以通过修改Paint的Xfermode来影响在Canvas已有的图像上面绘制新的图像的方式。可用作过渡模式的类集合都继承自 Xfermode 基类,而且其中包括一个称为 PorterDuff- Xfermode 的类。&lt;/p&gt;
+&lt;p&gt;在正常的情况下，在已有的图像上绘图将会在其上面添加一层新的形状。如果新的Paint是完全不透明的，那么它将完全遮挡住下面的Paint；如果它是部分透明的，那么它将会被染上下面的颜色。下面的Xfermode子类可以改变这种行为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;AvoidXfermode  指定了一个颜色和容差，强制Paint避免在它上面绘图(或者只在它上面绘图)&lt;/li&gt;
+&lt;li&gt;PixelXorXfermode  当覆盖已有的颜色时，应用一个简单的像素XOR操作&lt;/li&gt;
+&lt;li&gt;PorterDuffXfermode  这是一个非常强大的转换模式，使用它，可以使用图像合成的16条Porter-Duff规则的任意一条来控制Paint如何与已有的Canvas图像进行交互&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;要应用转换模式，可以使用setXferMode方法，如下所示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;AvoidXfermode&lt;/span&gt; &lt;span class="n"&gt;avoid&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;AvoidXfermode&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Color&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;BLUE&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;AvoidXfermode&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;Mode&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;AVOID&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt; 
+ &lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setXfermode&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;avoid&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这里可以实现完美的橡皮擦功能！代码异常简单：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Xfermode&lt;/span&gt; &lt;span class="n"&gt;xFermode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;PorterDuffXfermode&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PorterDuff&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;Mode&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;CLEAR&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setXfermode&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;xFermode&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在 Android 的 PorterDuff.Mode 类中列举了图像的重叠绘制模式&lt;/p&gt;
+&lt;p&gt;&lt;img alt="PorterDuff Mode" src="../static/images/porterduff_mode.png" /&gt;&lt;/p&gt;
+&lt;p&gt;这些规则包括如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PorterDuff.Mode.SRC : 此规则意味着只绘制源图像,在当前情况
+下,它是正在应用此规则的 Paint 对象;&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.DST:此规则意味着只显示目标图像,即已在画
+布上的初始图像;&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.DST_OVER:将在源图像的顶部绘制目标图像;&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.DST_IN:将仅仅在源图像和目标图像相交的地方
+绘制目标图像。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.DST_OUT:将仅仅在源图像和目标图像不相交的
+地方绘制目标图像。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.DST_ATOP:将在目标图像与源图像相交的地方
+    绘制目标图像;在其他地方绘制源图像。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.SRC_OVER:将在目标图像的顶部绘制源图像。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.SRC_IN:将仅仅在目标图像和源图像相交的地方
+绘制源图像。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.SRC_OUT:将仅仅在目标图像和源图像不相交的
+地方绘制源图像。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.SRC_ATOP:将在源图像与目标图像相交的地方 绘制源图像;在其他地方绘制目标图像&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.XOR:将在源图像和目标图像重叠之外的任何地 方绘制它们,而在它们重叠的地方不绘制任何内容。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.LIGHTEN:获得每个位置上两幅图像中最亮的像
+素并显示。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.DARKEN:获得每个位置上两幅图像中最暗的像
+素并显示。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.MULTIPLY:将每个位置的两个像素相乘,除以
+255,然后使用该值创建一个新的像素进行显示。结果颜色=顶部颜色×底部颜色
+/255。&lt;/li&gt;
+&lt;li&gt;PorterDuff.Mode.SCREEN:反转每个颜色,执行相同的操作(将它
+们相乘并除以 255),然后再次反转。结果颜色=255−(((255−顶部颜色)×(255−底部
+颜色))/255)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Matrix类&lt;/h2&gt;
+&lt;p&gt;当在现有位图对象上进行绘制或从一个位图对象创建另外一个位图对象时，可以使用Matrix类。这个类使得我们能够在一副图像上应用空间转换。这中类型的转换可以是旋转、剪切、缩放或更改图像的坐标空间。&lt;/p&gt;
+&lt;p&gt;Matrix类以9个数字的数组表示。Matrix类中每个数字都将应用于图像上每个点的3个坐标（x,y,z）之一。&lt;/p&gt;
+&lt;p&gt;例如，下面是一个包含9个浮点数的矩阵：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;第一行&lt;code&gt;(1 0 0)&lt;/code&gt; 指定图像的x坐标: &lt;code&gt;x = 1x + 0y + 0z&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;第二行&lt;code&gt;(0 1 0)&lt;/code&gt; 指定图像的y坐标: &lt;code&gt;y = 0x + 1y + 0z&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;第三环&lt;code&gt;(0 0 1)&lt;/code&gt; 指定图像的z坐标: &lt;code&gt;z = 0x + 0y + 1z&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;即转换后的图像坐标为:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这样变换处理后矩阵不会做任何转换，所有内容都会按照它在源图像中的位置一样。&lt;/p&gt;
+&lt;p&gt;用代码表示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Matrix&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Matrix&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setValues&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;[]{&lt;/span&gt;
+    &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+    &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+    &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="o"&gt;});&lt;/span&gt;
+&lt;span class="n"&gt;canvas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;drawBitmap&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bmp&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;matrix&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Matrix类方法&lt;/h2&gt;
+&lt;p&gt;Matrix类帮助我们完成了大部分想要完成的工作，在实际开发中我们大多数时间会使用Matrix的方法。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;旋转 Matrix.setRotate(float)&lt;/p&gt;
+&lt;p&gt;它接收一个浮点数表示旋转的角度，默认围绕点(0,0),正数将顺时针旋转图像，而负数将逆时针旋转，默认旋转点是图像的左上角。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Matrix matrix = new Matrix();
+matrix.setRotate(15);
+canvas.drawBitmap(bmp, matrix, paint);&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;另外，也可以使用旋转角度及围绕的旋转点作为参数调用setRotate().如：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;matrix.setRotate(15,bmp.getWidth()/2,bmp.getHeight()/2);&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;缩放 Matrix.setScale(float,float)&lt;/p&gt;
+&lt;p&gt;接收两个浮点数参数，分别表示在x,y轴上所产生的缩放量；&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;matrix.setScale(1.5f,1);&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;平移 Matrix.setTranslate(float,float)&lt;/p&gt;
+&lt;p&gt;两个float参数表示分别在x,y轴上移动的数量。&lt;/p&gt;
+&lt;p&gt;在 x 轴上使用正数进行平移将向右移动图像,而使用负数将向左移动图像。在 y 轴上使用正数 进行平移将向下移动图像,而使用负数将向上移动图像。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;setTranslate(1.5f,-10);&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;preXXX 和 postXXX&lt;/p&gt;
+&lt;p&gt;以上几个方法也都有之前和之后的版本，这使得我们能够每次按顺序完成一个以上的转换。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;镜像&lt;/p&gt;
+&lt;p&gt;一个特别有用的方法对是 setScale 和 postTranslate,它们允许跨单个轴(或者两个轴)翻 转图像。如果以一个负数缩放,那么会将该图像绘制到坐标系统的负值空间。由于(0,0)点 位于左上角,使用 x 轴上的负数会导致向左绘制图像。因此我们需要使用 postTranslate 方 法,将图像向右移动&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;matrix.setScale(-1, 1);
+matrix.postTranslate(bmp.getWidth(),0);&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;翻转&lt;/p&gt;
+&lt;p&gt;可以在 y 轴上做同样的事情,翻转图像以使其倒置。通过将图像围绕两个轴上的中心
+点旋转 180°,可以实现相同的效果.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;matrix.setScale(1, -1);
+matrix.postTranslate(0, bmp.getHeight());&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;绘制替代图像&lt;/p&gt;
+&lt;p&gt;在之前使用的方法存在一缺点是图像会被截断，因为没有计算转换后的结果大小。&lt;/p&gt;
+&lt;p&gt;解决方法：当初次创建位图对象时，应用Matrix对象而不是绘制到一个空的位图对象中。通过这种方式将无须获得Canvas和Paint对象。缺点是不能继续更改位图对象，因为如果想要对其进行任何转换，那么需要重新创建它。&lt;/p&gt;
+&lt;p&gt;可以使用&lt;code&gt;Bitmap.createBitmap(Bitmap source, int x, int y, int width, int height, Matrix matrix, boolean filter)&lt;/code&gt; 方法.&lt;/p&gt;
+&lt;p&gt;参数说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bitmap source : 源位图对象&lt;/li&gt;
+&lt;li&gt;int x, int y, int width, int height : 分别是源图像的初始x,y,宽度,高度&lt;/li&gt;
+&lt;li&gt;Matrix matrix &lt;/li&gt;
+&lt;li&gt;boolean filter : 表示是否在图像上应用某种过滤器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;图像处理&lt;/h3&gt;
+&lt;p&gt;另外一种图像编辑或处理的形式是必须处理像素自身颜色值的变化。这将使得我们能够改变对比度，亮度，整体色调等。&lt;/p&gt;
+&lt;h4&gt;ColorMatrix&lt;/h4&gt;
+&lt;p&gt;类似于在Canvas对象上绘制时使用Matrix对象的方法，也可以使用一个ColorMatrix对象来改变用于在Canvas对象上绘制的Paint对象。&lt;/p&gt;
+&lt;p&gt;ColorMatrix是一个数字数组，可以对图像的像素进行操作。然而不同于操作x,y,z坐标，他操作颜色值--每个像素的R(红)、R(绿)、B(蓝)和Alpha值。&lt;/p&gt;
+&lt;p&gt;如下使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ColorMatrix&lt;/span&gt; &lt;span class="n"&gt;cm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrix&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="c1"&gt;//改变饱和度，传入一个大于 1 的数字将增加饱和度,而传入一个 0~1 之间的数字会减少饱和度。0 值将产生一幅灰度图像&lt;/span&gt;
+&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setSaturation&lt;/span&gt;&lt;span class="o"&gt;(.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrixColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;默认的 ColorMatrix 对象就是所谓的标识,就像默认的 Matrix 对象一样,当应用它时 不会改变图像。查看以下这个数组所包含的内容将帮助我们理解它如何工作。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;第一行包含了在单个像素的红色部分上发生的操作
+第二行影响绿色部分，第三行操作蓝色部分，最后一行操作像素的Alpha值。&lt;/p&gt;
+&lt;p&gt;而在每一行中，一个数字是与像素的红色值相关联的乘数,第二个数字是与绿色值相 关联的乘数,第三个数字与蓝色相关,第四个数字与 Alpha 值相关,而最后一个数字不会 与任何值相乘。将这些值都加起来以改变它们正在操作的像素。&lt;/p&gt;
+&lt;p&gt;假设现在有一个中等灰度像素，其红色值：128，绿色值：128，蓝色值：128，Alpha值：0（不透明）
+通过颜色矩阵操作这个像素，那么数学公式如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;R&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="n"&gt;G&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;所以的值都将保持不变，设置为128。对于用于像素的任何颜色变量,情况都将如此, 因为每一行在操作代表它的颜色的位置都有一个 1,而在其他位置均为 0。&lt;/p&gt;
+&lt;p&gt;如果想让一幅图看起来比之前红两倍，那么可以操作所有的像素的红色值的数字增加为2. 如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;用代码实现如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ColorMatrix&lt;/span&gt; &lt;span class="n"&gt;cm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrix&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;set&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;});&lt;/span&gt;
+&lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrixColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;操作ColorMatrix改变对比度和亮度&lt;/h4&gt;
+&lt;p&gt;可以通过增加或减少颜色值来调整图像的亮度和对比度。
+以下代码将对每个颜色通道的强度加倍,其将影响到图像的亮度和对比度&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ColorMatrix&lt;/span&gt; &lt;span class="n"&gt;cm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrix&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="kt"&gt;float&lt;/span&gt; &lt;span class="n"&gt;contrast&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;set&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;contrast&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;contrast&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;contrast&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;});&lt;/span&gt;
+&lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrixColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在这个示例中,两个效果是相链接的。如果只想增加对比度而不增加亮度,那么实际
+上必须降低亮度来补偿在颜色强度方面的增加。&lt;/p&gt;
+&lt;p&gt;通常,当调整亮度时,对每种颜色只使用矩阵的最后一列会更加简单。这仅仅是添加
+到颜色值的量,而无须乘以已有的颜色值。&lt;/p&gt;
+&lt;p&gt;因此,为了降低亮度,可以使用矩阵代码如下。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ColorMatrix&lt;/span&gt; &lt;span class="n"&gt;cm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrix&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="kt"&gt;float&lt;/span&gt; &lt;span class="n"&gt;brightness&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;set&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;brightness&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;brightness&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;brightness&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;});&lt;/span&gt;
+&lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrixColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;将这两种转换合在一起将产生如下代码。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ColorMatrix&lt;/span&gt; &lt;span class="n"&gt;cm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrix&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt;
+&lt;span class="kt"&gt;float&lt;/span&gt; &lt;span class="n"&gt;contrast&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="kt"&gt;float&lt;/span&gt; &lt;span class="n"&gt;brightness&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;set&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;contrast&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;brightness&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;contrast&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;brightness&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;contrast&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;brightness&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;
+        &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;contrast&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;});&lt;/span&gt;
+&lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrixColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;改变饱和度&lt;/h4&gt;
+&lt;p&gt;幸运的是,无须知道每个想要完成的操作所对应的公式。例如,ColorMatrix 类有一个 内置的方法可用于改变饱和度。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ColorMatrix&lt;/span&gt; &lt;span class="n"&gt;cm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrix&lt;/span&gt;&lt;span class="o"&gt;();&lt;/span&gt; 
+&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setSaturation&lt;/span&gt;&lt;span class="o"&gt;(.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;paint&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;setColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;ColorMatrixColorFilter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cm&lt;/span&gt;&lt;span class="o"&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;传入一个大于 1 的数字将增加饱和度,而传入一个 0~1 之间的数字会减少饱和度。0 值将产生一幅灰度图像。&lt;/p&gt;
+&lt;h3&gt;总结：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;paint.setMaskFilter() 操作paint边缘效果,MaskFilter是对Paint的alpha通道的转换&lt;/li&gt;
+&lt;li&gt;paint.setColorFilter() ColorFilter是对每个GRB通道应用转换&lt;/li&gt;
+&lt;li&gt;Paint.setPathEffect() 可以改变一个形状的边角的外观并且控制轮廓的外表&lt;/li&gt;
+&lt;li&gt;Paint.setXfermode() 用于图像合成，可以通过修改Paint的Xfermode来影响在Canvas已有的图像上面绘制新的图像的方式&lt;/li&gt;
+&lt;li&gt;Paint.setAntiAlias(boolean aa)设置是否使用抗锯齿功能，会消耗较大资源，绘制图形速度会变慢。&lt;/li&gt;
+&lt;li&gt;paint.setDither(boolean dither) 设定是否使用图像抖动处理，会使绘制出来的图片颜色更加平滑和饱满，图像更加清晰&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="graphics"></category><category term="paint"></category></entry><entry><title>Git submodule的使用</title><link href="http://suphy2009.github.io/scm/scm-git-submodule.html" rel="alternate"></link><updated>2014-02-07T18:39:00+08:00</updated><author><name>suphy</name></author><id>tag:suphy2009.github.io,2014-02-07:scm/scm-git-submodule.html</id><summary type="html">&lt;h1&gt;关于Git Submodule的使用&lt;/h1&gt;
 &lt;h3&gt;说明:&lt;/h3&gt;
 &lt;p&gt;Git的子模块(submodule)功能使得一个仓库可以用子目录的形式去包含一个外部项目的签出版本. 子模块维护它们自己的身份标记(identity); 子模块功能仅仅储存子模块仓库的位置和提交ID, 因此其他克隆父项目("superproject")的开发者可以轻松克隆所有子模块的同一版本. 对父项目的部分签出成为可能: 你可以告诉git去克隆一部分或者所有的子模块, 也可以一个都不克隆.&lt;/p&gt;
 &lt;h4&gt;本文介绍git submodule的常用使用方法&lt;/h4&gt;
