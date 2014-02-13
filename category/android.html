@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="../android/graphics-paint-method.html"><h1>Android Graphics 之 Paint类方法详解</h1></a>
-2014-02-11 23:39:00
+            <a href="../android/android-memory.html"><h1>Android内存分析和调优</h1></a>
+2014-02-13 20:03:00
 
 by <a class="url fn" href="../author/suphy.html">suphy</a>
  
@@ -74,308 +74,127 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
  
         </div>
         
-        <div><h2>Android Graphics 之 Paint类方法详解</h2>
-<h3>资源文件string标签属性translatable</h3>
-<div class="highlight"><pre><span class="nt">&lt;string</span> <span class="na">name=</span><span class="s">&quot;app_filter_class&quot;</span> <span class="na">translatable=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>xxx<span class="nt">&lt;/string&gt;</span>
-</pre></div>
-
-
-<blockquote>
-<p>属性translatable="false" 表示不希望该字符串随着语言环境的变化而变化。
-</p>
-</blockquote>
-<hr />
-<h3>设置画笔Paint的setMaskFilter</h3>
-<p>MaskFilter类可以为paint分配边缘效果。对MaskFilter的扩展可以对一个Paint边缘alpha通道应用转换。</p>
-<p>BlurMaskFilter 指定一个模糊的样式和半径来处理Paint的边缘。
-EmBossMaskFilter 指定了光源的方向和环境光强度来添加浮雕效果。</p>
-<div class="highlight"><pre><span class="n">sBlurPaint</span><span class="o">.</span><span class="na">setMaskFilter</span><span class="o">(</span><span class="k">new</span> <span class="n">BlurMaskFilter</span><span class="o">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">density</span><span class="o">,</span> <span class="n">BlurMaskFilter</span><span class="o">.</span><span class="na">Blur</span><span class="o">.</span><span class="na">NORMAL</span><span class="o">));</span>
-</pre></div>
-
-
-<blockquote>
-<p>注：MaskFilter是对Paint的alpha通道的转换，而ColorFilter是对每个GRB通道应用转换，所有由ColorFilter所派生的类在执行它们的转换时，都会忽略alpha通道。
-</p>
-</blockquote>
-<h3>设置Paint的setColorFilter()</h3>
-<div class="highlight"><pre><span class="n">ColorMatrix</span> <span class="n">cm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorMatrix</span><span class="o">();</span>
-<span class="c1">//改变饱和度，传入一个大于 1 的数字将增加饱和度,而传入一个 0~1 之间的数字会减少饱和度。0 值将产生一幅灰度图像</span>
-<span class="n">cm</span><span class="o">.</span><span class="na">setSaturation</span><span class="o">(.</span><span class="mi">5</span><span class="n">f</span><span class="o">);</span>
-<span class="n">paint</span><span class="o">.</span><span class="na">setColorFilter</span><span class="o">(</span><span class="k">new</span> <span class="n">ColorMatrixColorFilter</span><span class="o">(</span><span class="n">cm</span><span class="o">));</span>
-</pre></div>
-
-
-<h3>设置Paint的setPathEffect()</h3>
-<p>PathEffect是用来控制绘制轮廓的方式。PathEffect对于绘制Path基本图形特别有用，但是它们也可以应用到任何Paint中从而影响线条绘制的方式。使用PathEffect，可以改变一个形状的边角的外观并且控制轮廓的外表。Android包含了多个PathEffect，包括：</p>
-<ol>
-<li>CornerPathEffect  可以使用圆角来代替尖锐的角从而对基本图形的形状尖锐的边角进行平滑。</li>
-<li>DashPathEffect  可以使用DashPathEffect来创建一个虚线的轮廓(短横线/小圆点)，而不是使用实线。你还可以指定任意的虚/实线段的重复模式</li>
-<li>DiscretePathEffect  与DashPathEffect相似，但是添加了随机性。当绘制它的时候，需要指定每一段的长度和与原始路径的偏离度</li>
-<li>PathDashPathEffect  这种效果可以定义一个新的形状(路径)并将其用作原始路径的轮廓标记。</li>
-</ol>
-<p>下面两张效果可以在一个Paint中组合使用多个PathEffect:</p>
-<ol>
-<li>SumPathEffect  顺序地在一条路径中添加两种效果，这样每一种效果都可以应用到原始路径中，而且两种结果可以结合起来。</li>
-<li>ComposePathEffect  将两种效果组合起来应用，先使用第一种效果，然后在这种效果的基础上应用第二种效果</li>
-</ol>
-<h3>设置Paint的setXfermode() 用于图像的合成</h3>
-<p>合成是将两幅图像放在一起的动作,它使得我们能够同时看到两幅图像的特征。</p>
-<p>在 Android SDK 中,可以通过首先在 Canvas 对象绘制一个位图对象,然后在相同的 Canvas 对象上绘制第二个位图对象的方式来实现合成。唯一的区别是在绘制第二幅图像 时,需要在 Paint 对象上指定一个过渡模式(Xfermode)。</p>
-<p>设置图像叠加时的处理方式，如合并，取交集，经常用来制作皮擦得擦除效果。</p>
-<p>橡皮擦，这是个好方法啊，看看。</p>
-<p>可以通过修改Paint的Xfermode来影响在Canvas已有的图像上面绘制新的图像的方式。可用作过渡模式的类集合都继承自 Xfermode 基类,而且其中包括一个称为 PorterDuff- Xfermode 的类。</p>
-<p>在正常的情况下，在已有的图像上绘图将会在其上面添加一层新的形状。如果新的Paint是完全不透明的，那么它将完全遮挡住下面的Paint；如果它是部分透明的，那么它将会被染上下面的颜色。下面的Xfermode子类可以改变这种行为：</p>
-<ol>
-<li>AvoidXfermode  指定了一个颜色和容差，强制Paint避免在它上面绘图(或者只在它上面绘图)</li>
-<li>PixelXorXfermode  当覆盖已有的颜色时，应用一个简单的像素XOR操作</li>
-<li>PorterDuffXfermode  这是一个非常强大的转换模式，使用它，可以使用图像合成的16条Porter-Duff规则的任意一条来控制Paint如何与已有的Canvas图像进行交互</li>
-</ol>
-<p>要应用转换模式，可以使用setXferMode方法，如下所示：</p>
-<div class="highlight"><pre> <span class="n">AvoidXfermode</span> <span class="n">avoid</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AvoidXfermode</span><span class="o">(</span><span class="n">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="n">AvoidXfermode</span><span class="o">.</span><span class="na">Mode</span><span class="o">.</span> <span class="n">AVOID</span><span class="o">);</span> 
- <span class="n">paint</span><span class="o">.</span><span class="na">setXfermode</span><span class="o">(</span><span class="n">avoid</span><span class="o">);</span>
-</pre></div>
-
-
-<p>这里可以实现完美的橡皮擦功能！代码异常简单：</p>
-<div class="highlight"><pre><span class="n">Xfermode</span> <span class="n">xFermode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PorterDuffXfermode</span><span class="o">(</span><span class="n">PorterDuff</span><span class="o">.</span><span class="na">Mode</span><span class="o">.</span><span class="na">CLEAR</span><span class="o">);</span>
-<span class="n">paint</span><span class="o">.</span><span class="na">setXfermode</span><span class="o">(</span><span class="n">xFermode</span><span class="o">);</span>
-</pre></div>
-
-
-<p>在 Android 的 PorterDuff.Mode 类中列举了图像的重叠绘制模式</p>
-<p><img alt="PorterDuff Mode" src="../static/images/porterduff_mode.png" /></p>
-<p>这些规则包括如下：</p>
+        <div><h1>Android内存分析和调优</h1>
+<h3>内存相关名词解释：VSS/RSS/PSS/USS</h3>
 <ul>
-<li>PorterDuff.Mode.SRC : 此规则意味着只绘制源图像,在当前情况
-下,它是正在应用此规则的 Paint 对象;</li>
-<li>PorterDuff.Mode.DST:此规则意味着只显示目标图像,即已在画
-布上的初始图像;</li>
-<li>PorterDuff.Mode.DST_OVER:将在源图像的顶部绘制目标图像;</li>
-<li>PorterDuff.Mode.DST_IN:将仅仅在源图像和目标图像相交的地方
-绘制目标图像。</li>
-<li>PorterDuff.Mode.DST_OUT:将仅仅在源图像和目标图像不相交的
-地方绘制目标图像。</li>
-<li>PorterDuff.Mode.DST_ATOP:将在目标图像与源图像相交的地方
-    绘制目标图像;在其他地方绘制源图像。</li>
-<li>PorterDuff.Mode.SRC_OVER:将在目标图像的顶部绘制源图像。</li>
-<li>PorterDuff.Mode.SRC_IN:将仅仅在目标图像和源图像相交的地方
-绘制源图像。</li>
-<li>PorterDuff.Mode.SRC_OUT:将仅仅在目标图像和源图像不相交的
-地方绘制源图像。</li>
-<li>PorterDuff.Mode.SRC_ATOP:将在源图像与目标图像相交的地方 绘制源图像;在其他地方绘制目标图像</li>
-<li>PorterDuff.Mode.XOR:将在源图像和目标图像重叠之外的任何地 方绘制它们,而在它们重叠的地方不绘制任何内容。</li>
-<li>PorterDuff.Mode.LIGHTEN:获得每个位置上两幅图像中最亮的像
-素并显示。</li>
-<li>PorterDuff.Mode.DARKEN:获得每个位置上两幅图像中最暗的像
-素并显示。</li>
-<li>PorterDuff.Mode.MULTIPLY:将每个位置的两个像素相乘,除以
-255,然后使用该值创建一个新的像素进行显示。结果颜色=顶部颜色×底部颜色
-/255。</li>
-<li>PorterDuff.Mode.SCREEN:反转每个颜色,执行相同的操作(将它
-们相乘并除以 255),然后再次反转。结果颜色=255−(((255−顶部颜色)×(255−底部
-颜色))/255)</li>
+<li>VSS Virtual Set Size 虚拟耗用内存（包含共享库占用的内存）</li>
+<li>RSS Resident Set Size 实际使用物理内存（包含共享库占用的内存）</li>
+<li>PSS Proportional Set Size 实际使用的物理内存（比例分配共享库占用的内存）</li>
+<li>USS Unique Set Size 进程独自占用的物理内存（不包含共享库占用的内存）</li>
 </ul>
-<h2>Matrix类</h2>
-<p>当在现有位图对象上进行绘制或从一个位图对象创建另外一个位图对象时，可以使用Matrix类。这个类使得我们能够在一副图像上应用空间转换。这中类型的转换可以是旋转、剪切、缩放或更改图像的坐标空间。</p>
-<p>Matrix类以9个数字的数组表示。Matrix类中每个数字都将应用于图像上每个点的3个坐标（x,y,z）之一。</p>
-<p>例如，下面是一个包含9个浮点数的矩阵：</p>
-<div class="highlight"><pre><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span>
+<p>一般来说内存占用大小有如下规律：VSS &gt;= RSS &gt;= PSS &gt;= USS</p>
+<p>要优化内存，首先要做的就是分析内存占用情况。android提供了多个工具和命令进行内存分析</p>
+<h3>第一层 procrank命令</h3>
+<p><code>adb shell procrank</code></p>
+<p>可以使用以下命令连续查看某一进程内存使用情况：</p>
+<p><code>while true; do procrank | grep com.taobao.ju.android; sleep 5; done</code></p>
+<p>它从/proc/pid/maps中读取信息来进行统计。源码位于：/system/extras/procrank;
+该命令可以列出当前系统所有进程的内存占用情况，如：</p>
+<div class="highlight"><pre><span class="n">PID</span>       <span class="n">Vss</span>      <span class="n">Rss</span>      <span class="n">Pss</span>      <span class="n">Uss</span>  <span class="n">cmdline</span>
+<span class="mi">24255</span>  <span class="mi">1058576</span><span class="n">K</span>  <span class="mi">126108</span><span class="n">K</span>   <span class="mi">84945</span><span class="n">K</span>   <span class="mi">79296</span><span class="n">K</span>  <span class="n">com</span><span class="p">.</span><span class="n">zhihu</span><span class="p">.</span><span class="n">daily</span><span class="p">.</span><span class="n">android</span>
+<span class="mi">23373</span>  <span class="mi">1088216</span><span class="n">K</span>  <span class="mi">102852</span><span class="n">K</span>   <span class="mi">63406</span><span class="n">K</span>   <span class="mi">59344</span><span class="n">K</span>  <span class="n">com</span><span class="p">.</span><span class="n">alibaba</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">babylon</span>
+<span class="mi">23777</span>   <span class="mi">966024</span><span class="n">K</span>   <span class="mi">92384</span><span class="n">K</span>   <span class="mi">61982</span><span class="n">K</span>   <span class="mi">58244</span><span class="n">K</span>  <span class="n">com</span><span class="p">.</span><span class="n">tencent</span><span class="p">.</span><span class="n">mm</span>
+<span class="mi">14729</span>   <span class="mi">995188</span><span class="n">K</span>   <span class="mi">99964</span><span class="n">K</span>   <span class="mi">61432</span><span class="n">K</span>   <span class="mi">55392</span><span class="n">K</span>  <span class="n">com</span><span class="p">.</span><span class="n">netease</span><span class="p">.</span><span class="n">newsreader</span><span class="p">.</span><span class="n">activity</span>
+ <span class="mi">3246</span>  <span class="mi">1054912</span><span class="n">K</span>   <span class="mi">96992</span><span class="n">K</span>   <span class="mi">59458</span><span class="n">K</span>   <span class="mi">54600</span><span class="n">K</span>  <span class="n">com</span><span class="p">.</span><span class="n">taobao</span><span class="p">.</span><span class="n">ju</span><span class="p">.</span><span class="n">android</span>
+  <span class="mi">605</span>  <span class="mi">1043552</span><span class="n">K</span>   <span class="mi">85772</span><span class="n">K</span>   <span class="mi">57351</span><span class="n">K</span>   <span class="mi">53724</span><span class="n">K</span>  <span class="n">system_server</span>
+  <span class="mi">693</span>   <span class="mi">961644</span><span class="n">K</span>   <span class="mi">72712</span><span class="n">K</span>   <span class="mi">46478</span><span class="n">K</span>   <span class="mi">43600</span><span class="n">K</span>  <span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">systemui</span>
+<span class="mi">14415</span>   <span class="mi">975220</span><span class="n">K</span>   <span class="mi">72012</span><span class="n">K</span>   <span class="mi">39411</span><span class="n">K</span>   <span class="mi">36548</span><span class="n">K</span>  <span class="n">air</span><span class="p">.</span><span class="n">pioupiou</span>
+ <span class="mi">9052</span>   <span class="mi">983784</span><span class="n">K</span>   <span class="mi">72528</span><span class="n">K</span>   <span class="mi">35451</span><span class="n">K</span>   <span class="mi">31268</span><span class="n">K</span>  <span class="n">com</span><span class="p">.</span><span class="n">sina</span><span class="p">.</span><span class="n">weibo</span>
+<span class="mi">27142</span>   <span class="mi">946320</span><span class="n">K</span>   <span class="mi">56992</span><span class="n">K</span>   <span class="mi">31705</span><span class="n">K</span>   <span class="mi">30204</span><span class="n">K</span>  <span class="n">com</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">dialer</span>
+<span class="p">...</span>
+<span class="p">...</span>
+  <span class="mi">169</span>     <span class="mi">1068</span><span class="n">K</span>     <span class="mi">484</span><span class="n">K</span>     <span class="mi">153</span><span class="n">K</span>     <span class="mi">148</span><span class="n">K</span>  <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">qcks</span>
+  <span class="mi">165</span>     <span class="mi">1424</span><span class="n">K</span>     <span class="mi">144</span><span class="n">K</span>     <span class="mi">140</span><span class="n">K</span>     <span class="mi">140</span><span class="n">K</span>  <span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">healthd</span>
+  <span class="mi">625</span>     <span class="mi">1048</span><span class="n">K</span>     <span class="mi">440</span><span class="n">K</span>     <span class="mi">129</span><span class="n">K</span>     <span class="mi">124</span><span class="n">K</span>  <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">efsks</span>
+  <span class="mi">212</span>      <span class="mi">924</span><span class="n">K</span>     <span class="mi">328</span><span class="n">K</span>     <span class="mi">118</span><span class="n">K</span>     <span class="mi">116</span><span class="n">K</span>  <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">sh</span>
+  <span class="mi">166</span>     <span class="mi">1000</span><span class="n">K</span>     <span class="mi">340</span><span class="n">K</span>     <span class="mi">114</span><span class="n">K</span>     <span class="mi">112</span><span class="n">K</span>  <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">servicemanager</span>
+  <span class="mi">211</span>     <span class="mi">2116</span><span class="n">K</span>     <span class="mi">468</span><span class="n">K</span>     <span class="mi">107</span><span class="n">K</span>      <span class="mi">52</span><span class="n">K</span>  <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">qseecomd</span>
+ <span class="mi">6943</span>      <span class="mi">868</span><span class="n">K</span>     <span class="mi">332</span><span class="n">K</span>     <span class="mi">107</span><span class="n">K</span>     <span class="mi">104</span><span class="n">K</span>  <span class="n">wdaemon</span>
+<span class="mi">31257</span>      <span class="mi">888</span><span class="n">K</span>     <span class="mi">316</span><span class="n">K</span>      <span class="mi">94</span><span class="n">K</span>      <span class="mi">92</span><span class="n">K</span>  <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">com</span><span class="p">.</span><span class="n">estrongs</span><span class="p">.</span><span class="n">android</span><span class="p">.</span><span class="n">pop</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">libestool2</span><span class="p">.</span><span class="n">so</span>
+<span class="mi">18647</span>      <span class="mi">856</span><span class="n">K</span>     <span class="mi">300</span><span class="n">K</span>      <span class="mi">90</span><span class="n">K</span>      <span class="mi">88</span><span class="n">K</span>  <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">com</span><span class="p">.</span><span class="n">UCMobile</span><span class="o">/</span><span class="n">UCMobile</span><span class="o">/</span><span class="n">amodel</span><span class="o">/</span><span class="n">a</span>
+                           <span class="o">------</span>   <span class="o">------</span>  <span class="o">------</span>
+                          <span class="mi">981273</span><span class="n">K</span>  <span class="mi">886808</span><span class="n">K</span>  <span class="n">TOTAL</span>
+
+<span class="nl">RAM:</span> <span class="mi">1878788</span><span class="n">K</span> <span class="n">total</span><span class="p">,</span> <span class="mi">77468</span><span class="n">K</span> <span class="n">free</span><span class="p">,</span> <span class="mi">138504</span><span class="n">K</span> <span class="n">buffers</span><span class="p">,</span> <span class="mi">596304</span><span class="n">K</span> <span class="n">cached</span><span class="p">,</span> <span class="mi">8420</span><span class="n">K</span> <span class="n">shmem</span><span class="p">,</span> <span class="mi">63432</span><span class="n">K</span> <span class="n">slab</span>
 </pre></div>
 
 
-<p>第一行<code>(1 0 0)</code> 指定图像的x坐标: <code>x = 1x + 0y + 0z</code>.</p>
-<p>第二行<code>(0 1 0)</code> 指定图像的y坐标: <code>y = 0x + 1y + 0z</code>.</p>
-<p>第三环<code>(0 0 1)</code> 指定图像的z坐标: <code>z = 0x + 0y + 1z</code>.</p>
-<p>即转换后的图像坐标为:</p>
-<div class="highlight"><pre><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="n">x</span> <span class="o">+</span> <span class="mi">0</span><span class="n">y</span> <span class="o">+</span> <span class="mi">0</span><span class="n">z</span><span class="p">,</span> <span class="mi">0</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="n">y</span> <span class="o">+</span> <span class="mi">0</span><span class="n">z</span><span class="p">,</span> <span class="mi">0</span><span class="n">x</span> <span class="o">+</span> <span class="mi">0</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="n">z</span><span class="p">)</span>
-</pre></div>
-
-
-<p>这样变换处理后矩阵不会做任何转换，所有内容都会按照它在源图像中的位置一样。</p>
-<p>用代码表示：</p>
-<div class="highlight"><pre><span class="n">Matrix</span> <span class="n">matrix</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Matrix</span><span class="o">();</span>
-<span class="n">matrix</span><span class="o">.</span><span class="na">setValues</span><span class="o">(</span><span class="k">new</span> <span class="kt">float</span><span class="o">[]{</span>
-    <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
-    <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
-    <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span>
-<span class="o">});</span>
-<span class="n">canvas</span><span class="o">.</span><span class="na">drawBitmap</span><span class="o">(</span><span class="n">bmp</span><span class="o">,</span> <span class="n">matrix</span><span class="o">,</span> <span class="n">paint</span><span class="o">);</span>
-</pre></div>
-
-
-<h2>Matrix类方法</h2>
-<p>Matrix类帮助我们完成了大部分想要完成的工作，在实际开发中我们大多数时间会使用Matrix的方法。</p>
-<ol>
-<li>
-<p>旋转 Matrix.setRotate(float)</p>
-<p>它接收一个浮点数表示旋转的角度，默认围绕点(0,0),正数将顺时针旋转图像，而负数将逆时针旋转，默认旋转点是图像的左上角。</p>
-<p><code>Matrix matrix = new Matrix();
-matrix.setRotate(15);
-canvas.drawBitmap(bmp, matrix, paint);</code></p>
-<p>另外，也可以使用旋转角度及围绕的旋转点作为参数调用setRotate().如：</p>
-<p><code>matrix.setRotate(15,bmp.getWidth()/2,bmp.getHeight()/2);</code></p>
-</li>
-<li>
-<p>缩放 Matrix.setScale(float,float)</p>
-<p>接收两个浮点数参数，分别表示在x,y轴上所产生的缩放量；</p>
-<p><code>matrix.setScale(1.5f,1);</code></p>
-</li>
-<li>
-<p>平移 Matrix.setTranslate(float,float)</p>
-<p>两个float参数表示分别在x,y轴上移动的数量。</p>
-<p>在 x 轴上使用正数进行平移将向右移动图像,而使用负数将向左移动图像。在 y 轴上使用正数 进行平移将向下移动图像,而使用负数将向上移动图像。</p>
-<p><code>setTranslate(1.5f,-10);</code></p>
-</li>
-<li>
-<p>preXXX 和 postXXX</p>
-<p>以上几个方法也都有之前和之后的版本，这使得我们能够每次按顺序完成一个以上的转换。</p>
-</li>
-<li>
-<p>镜像</p>
-<p>一个特别有用的方法对是 setScale 和 postTranslate,它们允许跨单个轴(或者两个轴)翻 转图像。如果以一个负数缩放,那么会将该图像绘制到坐标系统的负值空间。由于(0,0)点 位于左上角,使用 x 轴上的负数会导致向左绘制图像。因此我们需要使用 postTranslate 方 法,将图像向右移动</p>
-<p><code>matrix.setScale(-1, 1);
-matrix.postTranslate(bmp.getWidth(),0);</code></p>
-</li>
-<li>
-<p>翻转</p>
-<p>可以在 y 轴上做同样的事情,翻转图像以使其倒置。通过将图像围绕两个轴上的中心
-点旋转 180°,可以实现相同的效果.</p>
-<p><code>matrix.setScale(1, -1);
-matrix.postTranslate(0, bmp.getHeight());</code></p>
-</li>
-<li>
-<p>绘制替代图像</p>
-<p>在之前使用的方法存在一缺点是图像会被截断，因为没有计算转换后的结果大小。</p>
-<p>解决方法：当初次创建位图对象时，应用Matrix对象而不是绘制到一个空的位图对象中。通过这种方式将无须获得Canvas和Paint对象。缺点是不能继续更改位图对象，因为如果想要对其进行任何转换，那么需要重新创建它。</p>
-<p>可以使用<code>Bitmap.createBitmap(Bitmap source, int x, int y, int width, int height, Matrix matrix, boolean filter)</code> 方法.</p>
-<p>参数说明：</p>
+<p>查看具体某一进程使用<code>cat proc/pid/status</code> 如：<code>cat /proc/3246/status</code></p>
 <ul>
-<li>Bitmap source : 源位图对象</li>
-<li>int x, int y, int width, int height : 分别是源图像的初始x,y,宽度,高度</li>
-<li>Matrix matrix </li>
-<li>boolean filter : 表示是否在图像上应用某种过滤器</li>
+<li>VmPeak: 表示进程所占用最大虚拟内存大小</li>
+<li>VmSize: 表示进程当前虚拟内存大小</li>
+<li>VmLck: 表示被锁定的内存大小</li>
+<li>VmHWM: 表示进程所占用物理内存的峰值</li>
+<li>VmRSS: 表示进程当前占用物理内存的大小(与procrank中的RSS)</li>
+<li>VmData: 表示进程数据段的大小</li>
+<li>VmStk: 表示进程堆栈段的大小</li>
+<li>VmExe: 表示进程代码的大小</li>
+<li>VmLib: 表示进程所使用共享库的大小</li>
+<li>VmPTE: 表示进程页表项的大小</li>
 </ul>
-</li>
-</ol>
-<h3>图像处理</h3>
-<p>另外一种图像编辑或处理的形式是必须处理像素自身颜色值的变化。这将使得我们能够改变对比度，亮度，整体色调等。</p>
-<h4>ColorMatrix</h4>
-<p>类似于在Canvas对象上绘制时使用Matrix对象的方法，也可以使用一个ColorMatrix对象来改变用于在Canvas对象上绘制的Paint对象。</p>
-<p>ColorMatrix是一个数字数组，可以对图像的像素进行操作。然而不同于操作x,y,z坐标，他操作颜色值--每个像素的R(红)、R(绿)、B(蓝)和Alpha值。</p>
-<p>如下使用：</p>
-<div class="highlight"><pre><span class="n">ColorMatrix</span> <span class="n">cm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorMatrix</span><span class="o">();</span>
-<span class="c1">//改变饱和度，传入一个大于 1 的数字将增加饱和度,而传入一个 0~1 之间的数字会减少饱和度。0 值将产生一幅灰度图像</span>
-<span class="n">cm</span><span class="o">.</span><span class="na">setSaturation</span><span class="o">(.</span><span class="mi">5</span><span class="n">f</span><span class="o">);</span>
-<span class="n">paint</span><span class="o">.</span><span class="na">setColorFilter</span><span class="o">(</span><span class="k">new</span> <span class="n">ColorMatrixColorFilter</span><span class="o">(</span><span class="n">cm</span><span class="o">));</span>
-</pre></div>
-
-
-<p>默认的 ColorMatrix 对象就是所谓的标识,就像默认的 Matrix 对象一样,当应用它时 不会改变图像。查看以下这个数组所包含的内容将帮助我们理解它如何工作。</p>
-<div class="highlight"><pre><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>
-</pre></div>
-
-
-<p>第一行包含了在单个像素的红色部分上发生的操作
-第二行影响绿色部分，第三行操作蓝色部分，最后一行操作像素的Alpha值。</p>
-<p>而在每一行中，一个数字是与像素的红色值相关联的乘数,第二个数字是与绿色值相 关联的乘数,第三个数字与蓝色相关,第四个数字与 Alpha 值相关,而最后一个数字不会 与任何值相乘。将这些值都加起来以改变它们正在操作的像素。</p>
-<p>假设现在有一个中等灰度像素，其红色值：128，绿色值：128，蓝色值：128，Alpha值：0（不透明）
-通过颜色矩阵操作这个像素，那么数学公式如下：</p>
-<div class="highlight"><pre><span class="n">R</span><span class="err">&#39;</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">0</span>
-<span class="n">G</span><span class="err">&#39;</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">0</span>
-<span class="n">B</span><span class="err">&#39;</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">0</span>
-<span class="n">A</span><span class="err">&#39;</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">0</span> <span class="o">*</span> <span class="mi">128</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="mi">0</span>
-</pre></div>
-
-
-<p>所以的值都将保持不变，设置为128。对于用于像素的任何颜色变量,情况都将如此, 因为每一行在操作代表它的颜色的位置都有一个 1,而在其他位置均为 0。</p>
-<p>如果想让一幅图看起来比之前红两倍，那么可以操作所有的像素的红色值的数字增加为2. 如：</p>
-<div class="highlight"><pre><span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span>
-<span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>
-</pre></div>
-
-
-<p>用代码实现如下：</p>
-<div class="highlight"><pre><span class="n">ColorMatrix</span> <span class="n">cm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorMatrix</span><span class="o">();</span>
-<span class="n">cm</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="k">new</span> <span class="kt">float</span><span class="o">[]</span> <span class="o">{</span>
-        <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span> <span class="o">});</span>
-<span class="n">paint</span><span class="o">.</span><span class="na">setColorFilter</span><span class="o">(</span><span class="k">new</span> <span class="n">ColorMatrixColorFilter</span><span class="o">(</span><span class="n">cm</span><span class="o">));</span>
-</pre></div>
-
-
-<h4>操作ColorMatrix改变对比度和亮度</h4>
-<p>可以通过增加或减少颜色值来调整图像的亮度和对比度。
-以下代码将对每个颜色通道的强度加倍,其将影响到图像的亮度和对比度</p>
-<div class="highlight"><pre><span class="n">ColorMatrix</span> <span class="n">cm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorMatrix</span><span class="o">();</span>
-<span class="kt">float</span> <span class="n">contrast</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
-<span class="n">cm</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="k">new</span> <span class="kt">float</span><span class="o">[]</span> <span class="o">{</span>
-        <span class="n">contrast</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="n">contrast</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">contrast</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span> <span class="o">});</span>
-<span class="n">paint</span><span class="o">.</span><span class="na">setColorFilter</span><span class="o">(</span><span class="k">new</span> <span class="n">ColorMatrixColorFilter</span><span class="o">(</span><span class="n">cm</span><span class="o">));</span>
-</pre></div>
-
-
-<p>在这个示例中,两个效果是相链接的。如果只想增加对比度而不增加亮度,那么实际
-上必须降低亮度来补偿在颜色强度方面的增加。</p>
-<p>通常,当调整亮度时,对每种颜色只使用矩阵的最后一列会更加简单。这仅仅是添加
-到颜色值的量,而无须乘以已有的颜色值。</p>
-<p>因此,为了降低亮度,可以使用矩阵代码如下。</p>
-<div class="highlight"><pre><span class="n">ColorMatrix</span> <span class="n">cm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorMatrix</span><span class="o">();</span>
-<span class="kt">float</span> <span class="n">brightness</span> <span class="o">=</span> <span class="o">-</span><span class="mi">25</span><span class="o">;</span>
-<span class="n">cm</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="k">new</span> <span class="kt">float</span><span class="o">[]</span> <span class="o">{</span>
-        <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">brightness</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">brightness</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">brightness</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span> <span class="o">});</span>
-<span class="n">paint</span><span class="o">.</span><span class="na">setColorFilter</span><span class="o">(</span><span class="k">new</span> <span class="n">ColorMatrixColorFilter</span><span class="o">(</span><span class="n">cm</span><span class="o">));</span>
-</pre></div>
-
-
-<p>将这两种转换合在一起将产生如下代码。</p>
-<div class="highlight"><pre><span class="n">ColorMatrix</span> <span class="n">cm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorMatrix</span><span class="o">();</span>
-<span class="kt">float</span> <span class="n">contrast</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
-<span class="kt">float</span> <span class="n">brightness</span> <span class="o">=</span> <span class="o">-</span><span class="mi">25</span><span class="o">;</span>
-<span class="n">cm</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="k">new</span> <span class="kt">float</span><span class="o">[]</span> <span class="o">{</span>
-        <span class="n">contrast</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">brightness</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="n">contrast</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">brightness</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">contrast</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">brightness</span><span class="o">,</span>
-        <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">contrast</span><span class="o">,</span> <span class="mi">0</span> <span class="o">});</span>
-<span class="n">paint</span><span class="o">.</span><span class="na">setColorFilter</span><span class="o">(</span><span class="k">new</span> <span class="n">ColorMatrixColorFilter</span><span class="o">(</span><span class="n">cm</span><span class="o">));</span>
-</pre></div>
-
-
-<h4>改变饱和度</h4>
-<p>幸运的是,无须知道每个想要完成的操作所对应的公式。例如,ColorMatrix 类有一个 内置的方法可用于改变饱和度。</p>
-<div class="highlight"><pre><span class="n">ColorMatrix</span> <span class="n">cm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ColorMatrix</span><span class="o">();</span> 
-<span class="n">cm</span><span class="o">.</span><span class="na">setSaturation</span><span class="o">(.</span><span class="mi">5</span><span class="n">f</span><span class="o">);</span>
-<span class="n">paint</span><span class="o">.</span><span class="na">setColorFilter</span><span class="o">(</span><span class="k">new</span> <span class="n">ColorMatrixColorFilter</span><span class="o">(</span><span class="n">cm</span><span class="o">));</span>
-</pre></div>
-
-
-<p>传入一个大于 1 的数字将增加饱和度,而传入一个 0~1 之间的数字会减少饱和度。0 值将产生一幅灰度图像。</p>
-<h3>总结：</h3>
+<p><img alt="images" src="../static/images/cat_proc_pid_status.png" /></p>
+<p>通过procrank，只能很宏观的横向比较不同的应用。如果要更细致的了解具体内存是如何使用，则需要进入.</p>
+<h3>第二层 dumpsys meminfo</h3>
+<p><code>adb shell dumpsys meminfo package.name</code></p>
+<p>执行结果：</p>
+<p><img alt="dumpsys meminfo" src="../static/images/dumpsys_meminfo.png" /></p>
+<h3>第三层 adb shell showmap pid</h3>
+<p>该命令也是读取smaps文件，但结果细化的具体的vm area.</p>
+<p>该命令输出的每行表示一个vm area，列出了该vm area的start addr, end addr, Vss, Rss, Pss, shared clean, shared dirty, private clean, private dirty，object。</p>
+<p>第二层的dumpsys meminfo其实就是读取这些数据，然后分类（native, dalvik, .so map, etc.)统计生成。</p>
 <ul>
-<li>paint.setMaskFilter() 操作paint边缘效果,MaskFilter是对Paint的alpha通道的转换</li>
-<li>paint.setColorFilter() ColorFilter是对每个GRB通道应用转换</li>
-<li>Paint.setPathEffect() 可以改变一个形状的边角的外观并且控制轮廓的外表</li>
-<li>Paint.setXfermode() 用于图像合成，可以通过修改Paint的Xfermode来影响在Canvas已有的图像上面绘制新的图像的方式</li>
-<li>Paint.setAntiAlias(boolean aa)设置是否使用抗锯齿功能，会消耗较大资源，绘制图形速度会变慢。</li>
-<li>paint.setDither(boolean dither) 设定是否使用图像抖动处理，会使绘制出来的图片颜色更加平滑和饱满，图像更加清晰</li>
-</ul></div>
+<li>start addr和end addr表示进程空间的起止虚拟地址。</li>
+<li>Vss，Rss，Pss跟前面说的一样。</li>
+<li>Object可以看做mmap的文件名。</li>
+<li>Shared clean，按字面意思，表示共享的干净的数据。共享表示多个进程的虚拟地址可以都指向这块物理空间，表示多个进程共享的so库</li>
+<li>Private clean，包括该进程私有的干净的内存。包括前面说的该进程独自使用的so和进程的二进制代码段。</li>
+<li>Private dirty，表示该进程私有的不跟disk数据一致的内存段。</li>
+</ul>
+<h1>与Dalvik GC相关的属性</h1>
+<p>Logcat输出的log中，当垃圾回收器工作时，可以在Logcat中看到他的信息，类似于：</p>
+<div class="highlight"><pre><span class="n">D</span><span class="o">/</span><span class="n">dalvikm</span><span class="p">(</span> <span class="mi">14302</span><span class="p">)</span><span class="o">:</span> <span class="n">GC_CONCURRENT</span> <span class="n">freed</span> <span class="mi">2349</span><span class="n">K</span><span class="p">,</span> <span class="mi">65</span><span class="o">%</span> <span class="n">free</span> <span class="mi">3246</span><span class="n">K</span><span class="o">/</span><span class="mi">9551</span><span class="n">K</span><span class="p">,</span> <span class="n">external</span> <span class="mi">4703</span><span class="n">K</span><span class="o">/</span><span class="mi">5261</span><span class="n">K</span><span class="p">,</span> <span class="n">paused</span> <span class="mi">2</span><span class="n">ms</span><span class="o">+</span><span class="mi">2</span><span class="n">ms</span>
+</pre></div>
+
+
+<p>其中D/dalvikvm表示由dalvikvm输出的调试信息，括号后的数字代表dalvikvm所在进程的pid.
+在dalvik中，GC的类型有三种：</p>
+<ol>
+<li>GC_EXPLICIT<br />
+    应用主动调用System.gc()产生的GC事件</li>
+<li>GC_FOR_ALLOC<br />
+    内存分配时，发现可用内存不够时触发的GC事件</li>
+<li>GC_CONCURRENT<br />
+    当堆变得很大，防止出现堆溢出异常时产生</li>
+<li>GC_FOR_MALLOC<br />
+    如果GC_CONCURENT类型的操作没有及时运行，并且应用程序还需要分配更多内存时产生。</li>
+<li>GC_EXTERNAL_ALLOC<br />
+    外部内存分配失败时触发</li>
+</ol>
+<p><code>freed 2349K</code> 表示本次垃圾收集释放了2349K的内存。</p>
+<p><code>65% free 3246K/9551K</code> 其中9551K表示当前内存总量，3246K表示可用内存，65%表示可用内存占总内存的比例</p>
+<p><code>external 4703K/5261K</code> 表示可用外部内存/外部内存总量 </p>
+<p><code>paused 2ms+2ms</code> 第一个时间值表示markrootset的时间，第二个时间值表示第二次mark的时间。如果触发原因不是GC_CONCURRENT，这一行为单个时间值，表示垃圾收集的耗时时间</p></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../android/graphics-paint-method.html"><h2>Android Graphics 之 Paint类方法详解</h2></a>
+        <div class= "well small"> 2014-02-11 23:39:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Android Graphics 之 Paint类方法的使用，如setMaskFilter()，setColorFilter()， setPathEffect()，setXfermode() 及 Matrix ，ColorMatrix原理解析。</p> <a class="btn btn-info xsmall" href="../android/graphics-paint-method.html">read more</a></div>
+    </div>	
+				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
