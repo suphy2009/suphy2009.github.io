@@ -57,23 +57,17 @@
     <div class="row">
 
         <div class="span9">
-        
-
-        
-
-
     <div class='article'>
         <div class="content-title">
-            <a href="../android/android_jni_log.html"><h1>如何在Android jni中使用Log</h1></a>
+            <h1>如何在Android jni中使用Log</h1>
 2014-02-18 17:37:00
 
 by <a class="url fn" href="../author/suphy.html">suphy</a>
  
 
 
- 
         </div>
-        
+	
         <div><h2>打开Android C/C++文件中的Log</h2>
 <h3>方法一：</h3>
 <ol>
@@ -127,124 +121,23 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
 <span class="cp">#define LOG_NDDEBUG 0</span>
 <span class="cp">#include &lt;utils/Log.h&gt;</span>
 </pre></div></div>
-        <hr />
+	
+        <hr>
+
+        <h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'suphy2009'; 
+    var disqus_title = '如何在Android jni中使用Log';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-		
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android-memory.html"><h2>Android内存分析和调优</h2></a>
-        <div class= "well small"> 2014-02-13 20:03:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h1>Android内存分析和调优</h1>
-<h3>内存相关名词解释：VSS/RSS/PSS/USS</h3>
-<ul>
-<li>VSS Virtual Set Size 虚拟耗用内存（包含共享库占用的内存）</li>
-<li>RSS Resident Set Size 实际使用物理内存（包含共享库占用的内存）</li>
-<li>PSS Proportional Set Size 实际使用的物理内存（比例分配共享库占用的内存）</li>
-<li>USS Unique Set Size 进程独自占用的物理内存（不包含共享库占用的内存）</li>
-</ul>
-<p>一般来说内存占用大小有如下规律：VSS &gt;= RSS &gt;= PSS &gt;= USS</p>
-<p>要优化内存，首先要做的就是分析内存占用情况。android提供了多个工具和命令进行内存分析</p>
-<h3>第一层 procrank命令</h3>
-<p><code>adb shell procrank</code></p>
-<p>可以使用以下命令连续查看某一进程内存使用情况：</p>
-<p><code>while true; do procrank | grep com ...</code></p> <a class="btn btn-info xsmall" href="../android/android-memory.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/graphics-paint-method.html"><h2>Android Graphics 之 Paint类方法详解</h2></a>
-        <div class= "well small"> 2014-02-11 23:39:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><p>Android Graphics 之 Paint类方法的使用，如setMaskFilter()，setColorFilter()， setPathEffect()，setXfermode() 及 Matrix ，ColorMatrix原理解析。</p> <a class="btn btn-info xsmall" href="../android/graphics-paint-method.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../scm/scm-git-submodule.html"><h2>Git submodule的使用</h2></a>
-        <div class= "well small"> 2014-02-07 18:39:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><p>Git submodule功能使得一个仓库可以用子目录的形式去包含一个外部项目的签出版本. 子模块维护它们自己的身份标记(identity);</p> <a class="btn btn-info xsmall" href="../scm/scm-git-submodule.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../tech/build_blog.html"><h2>(转) 用 Pelican 和 GitHub Pages 搭建个人博客</h2></a>
-        <div class= "well small"> 2014-02-06 00:00:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><p>用 Pelican 和 GitHub Pages 搭建免费的个人博客.</p> <a class="btn btn-info xsmall" href="../tech/build_blog.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../tech/test2.html"><h2>Markdown Dillinger</h2></a>
-        <div class= "well small"> 2014-02-05 14:35:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><p>Dillingger is a cloud-enable HTML5 Markdown editro.</p> <a class="btn btn-info xsmall" href="../tech/test2.html">read more</a></div>
-    </div>	
-				
-<div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../author/suphy.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>
- 
-  
         </div>
         
         <div class="span3">
