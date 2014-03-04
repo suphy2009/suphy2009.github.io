@@ -9,14 +9,14 @@
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="./theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="./theme/bootstrap.min.css" rel="stylesheet">
-    <link href="./theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="./theme/local.css" rel="stylesheet">
-    <link href="./theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
 </head>
 
@@ -32,19 +32,19 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href=".">suphy' Blog</a>
+        <a class="brand" href="..">suphy' Blog</a>
 
         <div class="nav-collapse">
         <ul class="nav">
-            <li><a href=".">首页</a></li>
+            <li><a href="..">首页</a></li>
 
-            <li><a href="./categories.html">分类</a></li>
+            <li><a href="../categories.html">分类</a></li>
 
-            <li><a href="./archives.html">归档</a></li>
+            <li><a href="../archives.html">归档</a></li>
 
         
-            <li><a href="./about.html">关于</a></li>
-            <li><a href="./search.html">搜索</a></li>
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="../search.html">搜索</a></li>
         </ul>
         </div>
         
@@ -64,10 +64,10 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="./life/my_mac_repair.html"><h1>不作死，就不会死</h1></a>
+            <a href="../life/my_mac_repair.html"><h1>不作死，就不会死</h1></a>
 2014-03-04 23:07:00
 
-by <a class="url fn" href="./author/suphy.html">suphy</a>
+by <a class="url fn" href="../author/suphy.html">suphy</a>
  
 
 
@@ -95,137 +95,13 @@ by <a class="url fn" href="./author/suphy.html">suphy</a>
         <hr />
     </div>
 		
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="./android/android_jni_log.html"><h2>如何在Android jni中使用Log</h2></a>
-        <div class= "well small"> 2014-02-18 17:37:00
-
-by <a class="url fn" href="./author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>打开Android C/C++文件中的Log</h2>
-<h3>方法一：</h3>
-<ol>
-<li>在Android.mk文件中加入：<code>LOCAL_LDLIBS := -llog</code></li>
-<li>在要使用log的cpp文件中加入：</li>
-</ol>
-<div class="highlight"><pre><span class="cp">#include &lt;utils/Log.h&gt;</span>
-<span class="cp">#define LOG_TAG &quot;TAGNAME&quot;</span>
-<span class="cp">#define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE,LOG_TAG,__VA_ARGS__)</span>
-<span class="cp">#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)</span>
-<span class="cp">#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)</span>
-<span class="cp">#define LOGW(...) __android_log_print(ANDROID_LOG_WARN, LOG_TAG, __VA_ARGS__)</span>
-<span class="cp">#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)</span>
-</pre></div>
-
-
-<ol>
-<li>在需要打印log的地方使用: <code>LOGD("************")</code></li>
-</ol>
-<blockquote>
-<p>注 ...</p></blockquote> <a class="btn btn-info xsmall" href="./android/android_jni_log.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="./android/android-memory.html"><h2>Android内存分析和调优</h2></a>
-        <div class= "well small"> 2014-02-13 20:03:00
-
-by <a class="url fn" href="./author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h1>Android内存分析和调优</h1>
-<h3>内存相关名词解释：VSS/RSS/PSS/USS</h3>
-<ul>
-<li>VSS Virtual Set Size 虚拟耗用内存（包含共享库占用的内存）</li>
-<li>RSS Resident Set Size 实际使用物理内存（包含共享库占用的内存）</li>
-<li>PSS Proportional Set Size 实际使用的物理内存（比例分配共享库占用的内存）</li>
-<li>USS Unique Set Size 进程独自占用的物理内存（不包含共享库占用的内存）</li>
-</ul>
-<p>一般来说内存占用大小有如下规律：VSS &gt;= RSS &gt;= PSS &gt;= USS</p>
-<p>要优化内存，首先要做的就是分析内存占用情况。android提供了多个工具和命令进行内存分析</p>
-<h3>第一层 procrank命令</h3>
-<p><code>adb shell procrank</code></p>
-<p>可以使用以下命令连续查看某一进程内存使用情况：</p>
-<p><code>while true; do procrank | grep com ...</code></p> <a class="btn btn-info xsmall" href="./android/android-memory.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="./android/graphics-paint-method.html"><h2>Android Graphics 之 Paint类方法详解</h2></a>
-        <div class= "well small"> 2014-02-11 23:39:00
-
-by <a class="url fn" href="./author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><p>Android Graphics 之 Paint类方法的使用，如setMaskFilter()，setColorFilter()， setPathEffect()，setXfermode() 及 Matrix ，ColorMatrix原理解析。</p> <a class="btn btn-info xsmall" href="./android/graphics-paint-method.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="./scm/scm-git-submodule.html"><h2>Git submodule的使用</h2></a>
-        <div class= "well small"> 2014-02-07 18:39:00
-
-by <a class="url fn" href="./author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><p>Git submodule功能使得一个仓库可以用子目录的形式去包含一个外部项目的签出版本. 子模块维护它们自己的身份标记(identity);</p> <a class="btn btn-info xsmall" href="./scm/scm-git-submodule.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="./tech/build_blog.html"><h2>(转) 用 Pelican 和 GitHub Pages 搭建个人博客</h2></a>
-        <div class= "well small"> 2014-02-06 00:00:00
-
-by <a class="url fn" href="./author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><p>用 Pelican 和 GitHub Pages 搭建免费的个人博客.</p> <a class="btn btn-info xsmall" href="./tech/build_blog.html">read more</a></div>
-    </div>	
-				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="./index.html">1</a></li>
-    <li class=""><a href="./index2.html">2</a></li>
+    <li class="active"><a href="../tag/mac.html">1</a></li>
 
-    <li class="next"><a href="./index2.html">Next &rarr;</a></li>
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
 </ul>
 </div>
@@ -241,8 +117,8 @@ by <a class="url fn" href="./author/suphy.html">suphy</a>
                 Site
                 </li>
             
-                <li><a href="./archives.html">Archives</a>
-                <li><a href="./tags.html">Tags</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
 
 
             </ul>
@@ -255,10 +131,10 @@ by <a class="url fn" href="./author/suphy.html">suphy</a>
                 Categories
                 </li>
                 
-                <li><a href="./category/android.html">android</a></li>
-                <li><a href="./category/life.html">life</a></li>
-                <li><a href="./category/scm.html">Scm</a></li>
-                <li><a href="./category/tech.html">Tech</a></li>
+                <li><a href="../category/android.html">android</a></li>
+                <li><a href="../category/life.html">life</a></li>
+                <li><a href="../category/scm.html">Scm</a></li>
+                <li><a href="../category/tech.html">Tech</a></li>
                    
             </ul>
             </div>
@@ -296,7 +172,7 @@ by <a class="url fn" href="./author/suphy.html">suphy</a>
     </div>     </div> 
 <footer>
 <br />
-<p><a href=".">suphy' Blog</a> &copy; suphy 2012</p>
+<p><a href="..">suphy' Blog</a> &copy; suphy 2012</p>
 </footer>
 
 </div> <!-- /container -->
