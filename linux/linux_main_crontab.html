@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="utf-8">
+    <title>suphy' Blog</title>
+    <meta name="description" content="">
+    <meta name="author" content="suphy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="../theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="..">suphy' Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            <li><a href="..">首页</a></li>
+
+            <li><a href="../categories.html">分类</a></li>
+
+            <li><a href="../archives.html">归档</a></li>
+
+        
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="../search.html">搜索</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>Linux crontab定期执行命令</h1>
+2014-03-09 18:37:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+        </div>
+	
+        <div><h3>什么是crond，crontab</h3>
+<p>Linux下面定期任务分为二部分，一部分是后台程序crond；另一部分是crontab往crond输入指令的接口。</p>
+<p>crond 是linux用来定期执行程序的命令。当安装完成操作系统之后，默认便会启动此任务调度命令。crond命令每分钟会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作。</p>
+<p>linux任务调度的工作主要分为以下两类：</p>
+<ol>
+<li>系统执行的工作：<br />
+   系统周期性所要执行的工作，如备份系统数据、清理缓存 </li>
+<li>个人执行的工作：<br />
+   某个用户定期要做的工作，例如每隔10分钟检查邮件服务器是否有新信，这些工作可由每个用户自行设置</li>
+</ol>
+<p>Crontab是UNIX系统下的定时任务触发器，其使用者的权限记载在下列两个文件中：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/cron.deny</td>
+<td>该文件中所列的用户不允许使用Crontab命令</td>
+</tr>
+<tr>
+<td>/etc/cron.allow</td>
+<td>该文件中所列的用户允许使用Crontab命令</td>
+</tr>
+<tr>
+<td>/var/spool/cron/</td>
+<td>是所有用户的crontab文件</td>
+</tr>
+<tr>
+<td>/var/spool/cron/crontabs</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>crond是linux的内置服务，但它不自动起来，可以用以下的方法启动、关闭这个服务：</p>
+<div class="highlight"><pre><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">service</span> <span class="n">crond</span> <span class="n">start</span>   <span class="c1">//启动服务 </span>
+<span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">service</span> <span class="n">crond</span> <span class="n">stop</span>    <span class="c1">//关闭服务 </span>
+<span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">service</span> <span class="n">crond</span> <span class="n">restart</span> <span class="c1">//重启服务 </span>
+<span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">service</span> <span class="n">crond</span> <span class="n">reload</span>  <span class="c1">//重新载入配置</span>
+</pre></div>
+
+
+<hr />
+<p>Crontab命令的格式为：</p>
+<p><code>crontab –l|-r|-e|-i [username]</code></p>
+<p>其参数含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-u</td>
+<td>指定用户</td>
+<td>crontab -u suphy -l</td>
+</tr>
+<tr>
+<td>-I</td>
+<td>显示用户的Crontab文件的内容</td>
+<td>crontab -I</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>删除用户的Crontab文件前给提示</td>
+<td>crontab -ri</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>从Crontab目录中删除用户的Crontab文件</td>
+<td>crontab -r</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>查看任务列表</td>
+<td>crontab -l</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>编辑用户的Crontab文件</td>
+<td>crontab -e</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>删除任务列表</td>
+<td>crontab -d</td>
+</tr>
+</tbody>
+</table>
+<p>用户所建立的Crontab文件存于/var/spool/cron中，其文件名与用户名一致。 
+它的格式共分为六段，前五段为时间设定段，第六段为所要执行的命令段</p>
+<p>格式如下：<code>* * * * * command</code></p>
+<p><code>&lt;minute&gt; &lt;hour&gt; &lt;day&gt; &lt;month&gt; &lt;dow&gt; &lt;command&gt;</code></p>
+<p>其时间段的含义如表二：</p>
+<table>
+<thead>
+<tr>
+<th>段</th>
+<th>含义</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一段</td>
+<td>代表分钟,每分钟用*或*/1表示</td>
+<td>0—59</td>
+</tr>
+<tr>
+<td>第二段</td>
+<td>代表小时</td>
+<td>0—23</td>
+</tr>
+<tr>
+<td>第三段</td>
+<td>代表日期</td>
+<td>1—31</td>
+</tr>
+<tr>
+<td>第四段</td>
+<td>代表月份</td>
+<td>1—12</td>
+</tr>
+<tr>
+<td>第五段</td>
+<td>代表星期几，0代表星期日</td>
+<td>0—6</td>
+</tr>
+</tbody>
+</table>
+<h3>示例: 每分钟都会在test.txt里输入当前时间</h3>
+<p>首先启动crond : <code>crond</code></p>
+<ol>
+<li>
+<p>在命令行输入： <code>crontab -e</code></p>
+<blockquote>
+<p>说明:系统默认的编辑器是VIM,如果不是请加上以下shell: 
+<code>$EDITOR=vi $export EDITOR</code></p>
+</blockquote>
+</li>
+<li>
+<p>在编辑模式输入: <code>*/1 * * * * date &gt;&gt; $HOME/test.txt</code> ，然后保存，退出</p>
+</li>
+<li>查看<code>crontab -l</code></li>
+</ol>
+<p>下面是几个具体的例子：</p>
+<ul>
+<li>0 <em>/2 * </em> * /sbin/service httpd restart<br />
+  意思是每两个小时重启一次apache</li>
+<li>50 7 * * * /sbin/service sshd start<br />
+  意思是每天7：50开启ssh服务</li>
+<li>50 22 * * * /sbin/service sshd stop<br />
+  意思是每天22：50关闭ssh服务</li>
+<li>0 0 1,15 * * fsck /home<br />
+  每月1号和15号检查/home 磁盘</li>
+<li>1 * <em> * </em> /home/bruce/backup <br />
+  每小时的第一分执行 /home/bruce/backup这个文件</li>
+<li>00 03 * <em> 1-5 find /home "*.xxx" -mtime +4 -exec rm {} /;<br />
+  每周一至周五3点钟，在目录/home中，查找文件名为</em>.xxx的文件，并删除4天前的文件。 </li>
+<li>30 6 <em>/10 * </em> ls<br />
+  意思是每月的1、11、21、31日是的6：30执行一次ls命令</li>
+</ul></div>
+	
+        <hr>
+
+        <h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'suphy2009'; 
+    var disqus_title = 'Linux crontab定期执行命令';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="../category/android.html">android</a></li>
+                <li><a href="../category/life.html">life</a></li>
+                <li><a href="../category/linux.html">linux</a></li>
+                <li><a href="../category/scm.html">Scm</a></li>
+                <li><a href="../category/tech.html">Tech</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="https://www.google.com/ncr">Google</a></li>
+                <li><a href="http://python.org/">Python</a></li>
+                <li><a href="http://docs.getpelican.com/">Pelican</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://github.com/suphy2009">Github</a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100003251594803">Facebook</a></li>
+                <li><a href="http://www.linkedin.com/profile/view?id=273447004">Linkedin</a></li>
+                <li><a href="http://weibo.com/suphy2010">微博</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="..">suphy' Blog</a> &copy; suphy 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-47831467-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

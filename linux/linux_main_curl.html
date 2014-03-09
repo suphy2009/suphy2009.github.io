@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="utf-8">
+    <title>suphy' Blog</title>
+    <meta name="description" content="">
+    <meta name="author" content="suphy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="../theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="..">suphy' Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            <li><a href="..">首页</a></li>
+
+            <li><a href="../categories.html">分类</a></li>
+
+            <li><a href="../archives.html">归档</a></li>
+
+        
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="../search.html">搜索</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>Linux curl命令</h1>
+2014-03-09 17:37:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+        </div>
+	
+        <div><p>Linux curl命令是一个功能强大的网络工具，它能够通过http、ftp等方式下载文件，也能够上传文件。其实curl远不止，类似的工具还有wget。</p>
+<p>Linux curl命令使用了libcurl库来实现，libcurl库常用在C程序中用来处理HTTP请求，curlpp是libcurl的一个C++封装，这几个东西可以用在抓取网页、网络监控等方面的开发，而curl命令可以帮助来解决开发过程中遇到的问题。</p>
+<h3>curl命令常用参数：</h3>
+<div class="highlight"><pre><span class="na">-A</span><span class="err">或</span><span class="o">--</span><span class="nb">user</span><span class="na">-agent</span>                <span class="p">:</span><span class="err">随意指定自己这次访问所宣称的自己的浏览器信息</span>
+<span class="na">-b</span><span class="o">/--</span><span class="nb">cookie</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">=</span><span class="kt">string</span><span class="p">/</span><span class="nb">file</span><span class="o">&gt;</span>  <span class="p">:</span><span class="nb">cookie</span><span class="err">字符串或文件读取位置，使用</span><span class="nb">option</span><span class="err">来把上次的</span><span class="nb">cookie</span><span class="err">信息追加到</span><span class="nx">http</span> <span class="nx">request</span><span class="err">里面去。</span>
+<span class="na">-c</span><span class="o">/--</span><span class="nb">cookie</span><span class="na">-jar</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span>          <span class="p">:</span><span class="err">操作结束后把</span><span class="nb">cookie</span><span class="err">写入到这个文件中</span>
+<span class="na">-C</span><span class="o">/--</span><span class="nb">continue</span><span class="na">-at</span> <span class="o">&lt;</span><span class="nx">offset</span><span class="o">&gt;</span>       <span class="p">:</span><span class="err">断点续转</span>
+<span class="na">-d</span><span class="o">/--</span><span class="kd">data</span> <span class="o">&lt;</span><span class="kd">data</span><span class="o">&gt;</span>                <span class="p">:</span><span class="nx">HTTP</span> <span class="nx">POST</span><span class="err">方式传送数据</span>
+<span class="na">-D</span><span class="o">/--</span><span class="nb">dump</span><span class="na">-header</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span>         <span class="p">:</span><span class="err">把</span><span class="k">header</span><span class="err">信息写入到该文件中</span>
+<span class="na">-F</span><span class="o">/--</span><span class="nb">form</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">=</span><span class="nb">content</span><span class="o">&gt;</span>        <span class="p">:</span><span class="err">模拟</span><span class="nx">http</span><span class="err">表单提交数据</span>
+<span class="na">-v</span><span class="o">/--</span><span class="nx">verbose</span>                    <span class="p">:</span><span class="err">小写的</span><span class="nx">v</span><span class="err">参数，用于打印更多信息，包括发送的请求信息，这在调试脚本是特别有用。</span>
+<span class="na">-m</span><span class="o">/--</span><span class="k">max</span><span class="na">-time</span> <span class="o">&lt;</span><span class="nx">seconds</span><span class="o">&gt;</span>         <span class="p">:</span><span class="err">指定处理的最大时长</span>
+<span class="na">-H</span><span class="o">/--</span><span class="k">header</span> <span class="o">&lt;</span><span class="k">header</span><span class="o">&gt;</span>            <span class="p">:</span><span class="err">指定请求头参数</span>
+<span class="na">-s</span><span class="o">/--</span><span class="nx">slient</span>                     <span class="p">:</span><span class="err">减少输出的信息，比如进度</span>
+<span class="o">--</span><span class="nb">connect</span><span class="na">-timeout</span> <span class="o">&lt;</span><span class="nx">seconds</span><span class="o">&gt;</span>     <span class="p">:</span><span class="err">指定尝试连接的最大时长</span>
+<span class="na">-x</span><span class="o">/--</span><span class="nx">proxy</span> <span class="o">&lt;</span><span class="nx">proxyhost</span><span class="err">[</span><span class="p">:</span><span class="nb">port</span><span class="cp">]</span>&gt;   :指定代理服务器地址和端口，端口默认为1080
+-T/--upload-file <span class="nt">&lt;file&gt;</span>         :指定上传文件路径
+-o/--output <span class="nt">&lt;file&gt;</span>              :指定输出文件名称
+--retry <span class="nt">&lt;num&gt;</span>                   :指定重试次数
+-e/--referer <span class="nt">&lt;URL&gt;</span>              :指定引用地址
+-I/--head                       :仅返回头部信息，使用HEAD请求
+-u/--user <span class="nt">&lt;user</span><span class="cp">[</span><span class="p">:</span><span class="nx">password</span><span class="cp">]</span><span class="nt">&gt;</span>     :设置服务器的用户和密码
+-O   :按照服务器上的文件名，自动存在本地
+-r/--range <span class="nt">&lt;range&gt;</span>              :检索来自HTTP/1.1或FTP服务器字节范围
+-T/--upload-file <span class="nt">&lt;file&gt;</span>         :上传文件
+</pre></div>
+
+
+<h3>使用示例：</h3>
+<ol>
+<li>抓取网页内容到一个文件夹</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">o</span> <span class="n">home</span><span class="p">.</span><span class="n">html</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.baidu.com</span>
+</pre></div>
+
+
+<blockquote>
+<p>将百度首页内容抓下到home.html中</p>
+</blockquote>
+<ol>
+<li>用-O（大写的），后面的url要具体到某个文件,支持正则表达式</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">O</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.baidu.com/img/bdlogo.gif</span>
+</pre></div>
+
+
+<ol>
+<li>模拟表单信息，模拟登录，保存cookie信息</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">c</span> <span class="p">.</span><span class="o">/</span><span class="n">cookie_c</span><span class="p">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">F</span> <span class="n">log</span><span class="o">=</span><span class="n">aaaa</span> <span class="o">-</span><span class="n">F</span> <span class="n">pwd</span><span class="o">=******</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.XXXX.com/login.php</span>
+</pre></div>
+
+
+<ol>
+<li>模拟表单信息，模拟登录，保存头信息</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">D</span> <span class="p">.</span><span class="o">/</span><span class="n">cookie_D</span><span class="p">.</span><span class="n">txt</span> <span class="o">-</span><span class="n">F</span> <span class="n">log</span><span class="o">=</span><span class="n">aaaa</span> <span class="o">-</span><span class="n">F</span> <span class="n">pwd</span><span class="o">=******</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.XXXX.com/login.php</span>
+</pre></div>
+
+
+<blockquote>
+<p>-c(小写)产生的cookie和-D里面的cookie是不一样的</p>
+</blockquote>
+<ol>
+<li>使用cookie文件</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">b</span> <span class="p">.</span><span class="o">/</span><span class="n">cookie_c</span><span class="p">.</span><span class="n">txt</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.XXXX.com/wp-admin</span>
+</pre></div>
+
+
+<ol>
+<li>断点续传，-C(大写)</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">C</span> <span class="o">-</span><span class="n">O</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.baidu.com/img/bdlogo.gif</span>
+</pre></div>
+
+
+<ol>
+<li>传送数据,最好用登录页面测试，因为你传值过去后，curl回抓数据，你可以看到你传值有没有成功</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">d</span> <span class="n">log</span><span class="o">=</span><span class="n">aaaa</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.XXXX.com/login.php</span>
+</pre></div>
+
+
+<ol>
+<li>显示抓取错误，下面这个例子，很清楚的表明了。</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">f</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.XXXX.com/asdf</span>
+</pre></div>
+
+
+<ol>
+<li>伪造来源地址，有的网站会判断，请求来源地址，防止盗链</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">e</span> <span class="n">http</span><span class="o">:</span><span class="c1">//localhost http://www.XXXX.com/wp-login.php</span>
+</pre></div>
+
+
+<ol>
+<li>当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的,这个时候,我们可以用代理</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">x</span> <span class="mf">24.10.28.84</span><span class="o">:</span><span class="mi">32779</span> <span class="o">-</span><span class="n">o</span> <span class="n">home</span><span class="p">.</span><span class="n">html</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.XXXX.com</span>
+</pre></div>
+
+
+<ol>
+<li>比较大的东西，我们可以分段下载</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">r</span> <span class="mi">0</span><span class="o">-</span><span class="mi">100</span> <span class="o">-</span><span class="n">o</span> <span class="n">img</span><span class="p">.</span><span class="n">part1</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.XXXX.com/wp-content/compare_varnish.jpg</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">r</span> <span class="mi">100</span><span class="o">-</span><span class="mi">200</span> <span class="o">-</span><span class="n">o</span> <span class="n">img</span><span class="p">.</span><span class="n">part2</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.XXXX.com/wp-content/compare_varnish.jpg</span>
+<span class="n">curl</span> <span class="o">-</span><span class="n">r</span> <span class="mi">200</span><span class="o">-</span> <span class="o">-</span><span class="n">o</span> <span class="n">img</span><span class="p">.</span><span class="n">part3</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.XXXX.com/wp-content/compare_varnish.jpg</span>
+</pre></div>
+
+
+<blockquote>
+<p>用的时候把他们cat一下就OK, <code>cat img.part* &gt; img.jpg</code></p>
+</blockquote>
+<ol>
+<li>模拟浏览器头</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">A</span> <span class="s">&quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)&quot;</span> <span class="o">-</span><span class="n">x</span> <span class="mf">123.45.67.89</span><span class="o">:</span><span class="mi">1080</span> <span class="o">-</span><span class="n">o</span> <span class="n">page</span><span class="p">.</span><span class="n">html</span> <span class="o">-</span><span class="n">D</span> <span class="n">cookie0001</span><span class="p">.</span><span class="n">txt</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.www.baidu.com</span>
+</pre></div>
+
+
+<ol>
+<li>POST请求</li>
+</ol>
+<div class="highlight"><pre><span class="n">curl</span> <span class="o">-</span><span class="n">d</span> <span class="s">&quot;user=nick&amp;password=12345&quot;</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.yahoo.com/login.cgi</span>
+</pre></div>
+
+
+<p>GET请求</p>
+<div class="highlight"><pre><span class="n">curl</span> <span class="n">http</span><span class="o">:</span><span class="c1">//www.yahoo.com/login.cgi?user=nick&amp;password=12345</span>
+</pre></div></div>
+	
+        <hr>
+
+        <h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'suphy2009'; 
+    var disqus_title = 'Linux curl命令';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="../category/android.html">android</a></li>
+                <li><a href="../category/life.html">life</a></li>
+                <li><a href="../category/linux.html">linux</a></li>
+                <li><a href="../category/scm.html">Scm</a></li>
+                <li><a href="../category/tech.html">Tech</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="https://www.google.com/ncr">Google</a></li>
+                <li><a href="http://python.org/">Python</a></li>
+                <li><a href="http://docs.getpelican.com/">Pelican</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://github.com/suphy2009">Github</a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100003251594803">Facebook</a></li>
+                <li><a href="http://www.linkedin.com/profile/view?id=273447004">Linkedin</a></li>
+                <li><a href="http://weibo.com/suphy2010">微博</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="..">suphy' Blog</a> &copy; suphy 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-47831467-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

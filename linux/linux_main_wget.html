@@ -57,83 +57,64 @@
     <div class="row">
 
         <div class="span9">
-        
-
-        
-
-
     <div class='article'>
         <div class="content-title">
-            <a href="../scm/scm-git-submodule.html"><h1>Git submodule的使用</h1></a>
-2014-02-07 18:39:00
+            <h1>Linux wget命令详解</h1>
+2014-03-09 16:37:00
 
 by <a class="url fn" href="../author/suphy.html">suphy</a>
  
 
 
- 
         </div>
-        
-        <div><h1>关于Git Submodule的使用</h1>
-<h3>说明:</h3>
-<p>Git的子模块(submodule)功能使得一个仓库可以用子目录的形式去包含一个外部项目的签出版本. 子模块维护它们自己的身份标记(identity); 子模块功能仅仅储存子模块仓库的位置和提交ID, 因此其他克隆父项目("superproject")的开发者可以轻松克隆所有子模块的同一版本. 对父项目的部分签出成为可能: 你可以告诉git去克隆一部分或者所有的子模块, 也可以一个都不克隆.</p>
-<h4>本文介绍git submodule的常用使用方法</h4>
-<hr />
-<ol>
-<li>
-<p>添加submodule</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">git</span><span class="o">:</span><span class="c1">//host/xxx.git ./output</span>
+	
+        <div><p>wget是一个命令行的下载工具。对于我们这些 Linux 用户来说，几乎每天都在使用它。下面为大家介绍几个有用的 wget 小技巧，可以让你更加高效而灵活的使用 wget。</p>
+<div class="highlight"><pre>wget -r -np -nd http://example.com/packages/
 </pre></div>
 
 
-</li>
-<li>
-<p>删除submodule</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">rm</span> <span class="o">--</span><span class="n">cached</span> <span class="n">output</span>
-<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="n">output</span>
-</pre></div>
-
-
-</li>
-</ol>
-<p>接着修改.gitmodules文件，去掉相对应的submodule部分</p>
-<p>再修改.git/config 中submodule部分</p>
-<p>修改完成后就删除成功了，于是commit</p>
-<div class="highlight"><pre>    <span class="n">git</span> <span class="n">add</span> <span class="p">.</span><span class="n">gitmodules</span>
-    <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;comment&quot;</span>
-</pre></div>
-
-
-<p>还不放心可以同步一下：</p>
-<div class="highlight"><pre>    <span class="n">git</span> <span class="n">submodule</span> <span class="n">sync</span>
-</pre></div>
-
-
-<ol>
-<li>
-<p>更新submodule</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">submodule</span> <span class="n">foreach</span> <span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span>
-</pre></div>
-
-
-</li>
-</ol>
-<h4>END~</h4></div>
-        <hr />
-    </div>
-		
-<div class="pagination">
+<p>这条命令可以下载http://example.com网站上packages目录中得所有文件。其中：</p>
 <ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../category/scm.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
+<li>-np: 表示不遍历父目录</li>
+<li>-nd: 表示不在本机重新创建目录结构</li>
 </ul>
-</div>
- 
-  
+<div class="highlight"><pre>wget -r -np -nd --accept<span class="o">=</span>iso http://example.com/centos-5/i386/
+</pre></div>
+
+
+<p>与上一条命令相似，但多加一个<code>--accept=iso</code>选项，这指示wget仅下载 i386 目录中所有扩展名为 iso 的文件。你也可以指定多个扩展名，只需用逗号分隔即可。</p>
+<div class="highlight"><pre>wget -i filename.txt
+</pre></div>
+
+
+<p>此命令常用于批量下载的情形，把所有需要下载文件的地址放到 filename.txt 中，然后 wget 就会自动为你下载所有文件了。</p>
+<div class="highlight"><pre>wget -c http://example.com/really-big-file.iso
+</pre></div>
+
+
+<p>这里所指定的 -c 选项的作用为断点续传。</p>
+<div class="highlight"><pre>wget -m -k <span class="o">(</span>-H<span class="o">)</span> http://www.example.com/
+</pre></div>
+
+
+<p>该命令可用来镜像一个网站，wget 将对链接进行转换。如果网站中的图像是放在另外的站点，那么可以使用 -H 选项。</p></div>
+	
+        <hr>
+
+        <h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'suphy2009'; 
+    var disqus_title = 'Linux wget命令详解';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
         </div>
         
         <div class="span3">

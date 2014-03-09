@@ -59,8 +59,8 @@
         <div class="span9">
     <div class='article'>
         <div class="content-title">
-            <h1>Markdown Dillinger</h1>
-2014-02-05 14:35:00
+            <h1>查看Linux系统信息命令</h1>
+2014-03-09 15:37:00
 
 by <a class="url fn" href="../author/suphy.html">suphy</a>
  
@@ -68,59 +68,159 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
 
         </div>
 	
-        <div><h1>Dillinger</h1>
-<p>Dillinger is a cloud-enabled HTML5 Markdown editor.</p>
+        <div><p>Linux中查看系统信息的常用命令:</p>
 <ul>
-<li>Type some Markdown text in the left window</li>
-<li>See the HTML in the right</li>
-<li>Magic</li>
+<li>查看CPU信息</li>
 </ul>
-<p>Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As <a href="http://daringfireball.net/">John Gruber</a> writes on the <a href="http://daringfireball.net/projects/markdown/">Markdown site</a>:</p>
-<blockquote>
-<p>The overriding design goal for Markdown's
-formatting syntax is to make it as readable 
-as possible. The idea is that a
-Markdown-formatted document should be
-publishable as-is, as plain text, without
-looking like it's been marked up with tags
-or formatting instructions.</p>
-</blockquote>
-<p>This text you see here is <em>actually</em> written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.  </p>
-<h2>Version</h2>
-<p>2.0</p>
-<h2>Tech</h2>
-<p>Dillinger uses a number of open source projects to work properly:</p>
-<ul>
-<li><a href="http://ace.ajax.org">Ace Editor</a> - awesome web-based text editor</li>
-<li><a href="https://github.com/chjj/marked">Marked</a> - a super fast port of Markdown to JavaScript</li>
-<li><a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> - great UI boilerplate for modern web apps</li>
-<li><a href="http://nodejs.org">node.js</a> - evented I/O for the backend</li>
-<li><a href="http://expressjs.com">Express</a> - fast node.js network app framework <a href="http://twitter.com/tjholowaychuk">@tjholowaychuk</a></li>
-<li><a href="https://github.com/madrobby/keymaster">keymaster.js</a> - awesome keyboard handler lib by <a href="http://twitter.com/thomasfuchs">@thomasfuchs</a></li>
-<li><a href="http://jquery.com">jQuery</a> - duh </li>
-</ul>
-<h2>Installation</h2>
-<div class="highlight"><pre>git clone <span class="o">[</span>git-repo-url<span class="o">]</span> dillinger
-<span class="nb">cd </span>dillinger
-npm i -d
-mkdir -p public/files/<span class="o">{</span>md,html,pdf<span class="o">}</span>
+<div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">cpuinfo</span>
 </pre></div>
 
 
-<h5>Configure Plugins. Instructions in following README.md files</h5>
 <ul>
-<li>plugins/dropbox/README.md</li>
-<li>plugins/github/README.md</li>
-<li>plugins/googledrive/README.md</li>
+<li>查看内存信息  </li>
 </ul>
-<div class="highlight"><pre>node app
+<div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">meminfo</span>
 </pre></div>
 
 
-<h2>License</h2>
-<p>MIT</p>
-<p><img alt="image" src="../static/images/55.gif" /></p>
-<p><strong>Free Software, Hell Yeah!</strong></p></div>
+<ul>
+<li>查看内存大小</li>
+</ul>
+<div class="highlight"><pre><span class="n">grep</span> <span class="n">MemTotal</span> <span class="o">/</span><span class="n">proc</span><span class="o">/</span><span class="n">meminfo</span>
+</pre></div>
+
+
+<ul>
+<li>查看所有PCI设备</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">lspci</span>
+</pre></div>
+
+
+<ul>
+<li>查看所有的usb设备</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">lsusb</span>
+</pre></div>
+
+
+<ul>
+<li>显示系统中所有加载的模块</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">lsmod</span>
+</pre></div>
+
+
+<ul>
+<li>显示当前的内存使用情况</li>
+</ul>
+<div class="highlight"><pre><span class="n">free</span> <span class="o">-</span><span class="n">m</span>
+</pre></div>
+
+
+<ul>
+<li>查看系统各分区的使用情况（已用空间、可用空间等）</li>
+</ul>
+<div class="highlight"><pre><span class="n">df</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+
+
+<ul>
+<li>查看磁盘的分区及文件系统格式(需root权限)</li>
+</ul>
+<div class="highlight"><pre><span class="n">fdisk</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+
+
+<ul>
+<li>查看系统中CPU利用率、空闲率及各进程CPU、内存、IO等资源占用情况</li>
+</ul>
+<div class="highlight"><pre><span class="n">top</span>
+</pre></div>
+
+
+<ul>
+<li>另一个查看统中CPU利用率、空闲率的方法</li>
+</ul>
+<div class="highlight"><pre><span class="n">vmstat</span> <span class="mi">5</span> <span class="err">#</span><span class="mi">5</span><span class="err">秒刷新一次</span>
+</pre></div>
+
+
+<ul>
+<li>查看系统运行时间及负载情况</li>
+</ul>
+<div class="highlight"><pre><span class="n">uptime</span>
+</pre></div>
+
+
+<ul>
+<li>查看IDE硬盘参数</li>
+</ul>
+<div class="highlight"><pre><span class="n">hdparm</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">hda</span> <span class="err">#需要</span><span class="n">root</span><span class="err">权限</span>
+</pre></div>
+
+
+<ul>
+<li>查看网络接口与IP地址等信息</li>
+</ul>
+<div class="highlight"><pre><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">ifconfig</span>
+</pre></div>
+
+
+<ul>
+<li>查看网卡设置信息（网卡速率、连接状态等）</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">ethtool</span> <span class="n">eth0</span> <span class="err">#可以查看网线是否连接</span>
+</pre></div>
+
+
+<ul>
+<li>查看网络连接信息</li>
+</ul>
+<div class="highlight"><pre><span class="n">netstat</span> <span class="o">-</span><span class="n">an</span>
+</pre></div>
+
+
+<ul>
+<li>查看路由信息</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">route</span> <span class="o">-</span><span class="n">n</span>
+</pre></div>
+
+
+<ul>
+<li>查看防火墙设置</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span><span class="n">iptables</span> <span class="o">-</span><span class="n">L</span>
+</pre></div>
+
+
+<ul>
+<li>查看当前登录用户及登录时间</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">w</span>
+</pre></div>
+
+
+<ul>
+<li>查看登录用户历史</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">last</span>
+</pre></div>
+
+
+<ul>
+<li>查看主机名</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">hostname</span>
+</pre></div>
+
+
+<ul>
+<li>查看内核版本信息</li>
+</ul>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">uname</span> <span class="o">-</span><span class="n">a</span>
+</pre></div></div>
 	
         <hr>
 
@@ -128,7 +228,7 @@ mkdir -p public/files/<span class="o">{</span>md,html,pdf<span class="o">}</span
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'suphy2009'; 
-    var disqus_title = 'Markdown Dillinger';
+    var disqus_title = '查看Linux系统信息命令';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
