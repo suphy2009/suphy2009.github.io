@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://suphy2009.github.io/index.html</loc>
-<lastmod>2014-03-09T18:22:21-00:00</lastmod>
+<lastmod>2014-03-17T17:54:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/archives.html</loc>
-<lastmod>2014-03-09T18:22:21-00:00</lastmod>
+<lastmod>2014-03-17T17:54:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/tags.html</loc>
-<lastmod>2014-03-09T18:22:21-00:00</lastmod>
+<lastmod>2014-03-17T17:54:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/categories.html</loc>
-<lastmod>2014-03-09T18:22:21-00:00</lastmod>
+<lastmod>2014-03-17T17:54:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -43,6 +43,27 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2013-07-12T22:33:58-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/android/android_bitmap.html</loc>
+<lastmod>2014-03-17T17:37:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/android/android_makefile.html</loc>
+<lastmod>2014-03-16T18:37:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/android/android_bitmap_cache.html</loc>
+<lastmod>2014-03-11T11:37:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -88,6 +109,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://suphy2009.github.io/android/android_launcher.html</loc>
+<lastmod>2014-02-17T17:37:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>http://suphy2009.github.io/android/android-memory.html</loc>
 <lastmod>2014-02-13T20:03:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -124,7 +152,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://suphy2009.github.io/category/android.html</loc>
-<lastmod>2014-02-18T17:37:00-00:00</lastmod>
+<lastmod>2014-03-17T17:37:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -158,6 +186,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://suphy2009.github.io/tag/linux.html</loc>
+<lastmod>2014-03-09T18:37:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://suphy2009.github.io/tag/pelican.html</loc>
 <lastmod>2014-02-06T00:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
@@ -166,7 +201,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://suphy2009.github.io/tag/ndk.html</loc>
-<lastmod>2014-02-18T17:37:00-00:00</lastmod>
+<lastmod>2014-03-16T18:37:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -186,8 +221,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://suphy2009.github.io/tag/graphics.html</loc>
-<lastmod>2014-02-11T23:39:00-00:00</lastmod>
+<loc>http://suphy2009.github.io/tag/cache.html</loc>
+<lastmod>2014-03-11T11:37:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/tag/bitmap.html</loc>
+<lastmod>2014-03-17T17:37:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -214,15 +256,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://suphy2009.github.io/tag/linux.html</loc>
-<lastmod>2014-03-09T18:37:00-00:00</lastmod>
+<loc>http://suphy2009.github.io/tag/graphics.html</loc>
+<lastmod>2014-02-11T23:39:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/tag/launcher3.html</loc>
+<lastmod>2014-02-17T17:37:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/author/suphy.html</loc>
-<lastmod>2014-03-09T18:37:00-00:00</lastmod>
+<lastmod>2014-03-17T17:37:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
