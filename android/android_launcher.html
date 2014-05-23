@@ -147,7 +147,23 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
 <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:shadowDx&quot;</span><span class="nt">&gt;</span>0.0<span class="nt">&lt;/item&gt;</span>
 <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:shadowDy&quot;</span><span class="nt">&gt;</span>1.0<span class="nt">&lt;/item&gt;</span>
 <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:shadowRadius&quot;</span><span class="nt">&gt;</span>4.0<span class="nt">&lt;/item&gt;</span>
-</pre></div></div>
+</pre></div>
+
+
+<h3>Matrix</h3>
+<p>Matrix.mapPoints()应用这个matrix对这个数组中代表的2D点进行变换，变换的结果的点的信息依旧写入到这个数组中</p>
+<div class="highlight"><pre><span class="n">mTmpPoint</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="na">getX</span><span class="o">();</span>
+<span class="n">mTmpPoint</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">ev</span><span class="o">.</span><span class="na">getY</span><span class="o">();</span>
+<span class="n">v</span><span class="o">.</span><span class="na">getMatrix</span><span class="o">().</span><span class="na">mapPoints</span><span class="o">(</span><span class="n">mTmpPoint</span><span class="o">);</span>
+</pre></div>
+
+
+<blockquote>
+<p>应用这个matrix对这个数组中代表的2D点进行变换，变换的结果的点的信息依旧写入到这个数组中
+使用场景： 1.计算原来一个点（0，0） 放大后的坐标。</p>
+<p>举例说明，有一个图片，我要在图片的某个位置上画一个正方形。当这个图片缩放后，为了使正方形依然在“某个位置”，就要用此方法来计算新的坐标。</p>
+</blockquote>
+<p>该段代码的意思：根据event获得触摸的坐标(x,y)，再根据放大或缩小后view的Matrix获取相对应view的变换坐标</p></div>
 	
         <hr>
 
