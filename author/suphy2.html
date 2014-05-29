@@ -64,6 +64,87 @@
  
 
     <div class='article'>
+        <a href="../linux/linux_main_crontab.html"><h2>Linux crontab定期执行命令</h2></a>
+        <div class= "well small"> 2014-03-09 18:37:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h3>什么是crond，crontab</h3>
+<p>Linux下面定期任务分为二部分，一部分是后台程序crond；另一部分是crontab往crond输入指令的接口。</p>
+<p>crond 是linux用来定期执行程序的命令。当安装完成操作系统之后，默认便会启动此任务调度命令。crond命令每分钟会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作。</p>
+<p>linux任务调度的工作主要分为以下两类：</p>
+<ol>
+<li>系统执行的工作：<br />
+   系统周期性所要执行的工作，如备份系统数据、清理缓存 </li>
+<li>个人执行的工作：<br />
+   某个用户定期要做的工作，例如每隔10分钟检查邮件服务器是否有新信，这些工作可由每个用户自行设置</li>
+</ol>
+<p>Crontab是UNIX系统下的定时任务触发器，其使用者的权限记载在下列两个文件中：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/etc/cron.deny</td>
+<td>该文件中所列的用户不允许使用Crontab命令</td>
+</tr>
+<tr>
+<td>/etc/cron.allow</td>
+<td>该文件中所列的用户允许使用Crontab命令</td>
+</tr>
+<tr>
+<td>/var/spool/cron/</td>
+<td>是所有用户的crontab文件</td>
+</tr>
+<tr>
+<td>/var/spool/cron/crontabs</td>
+<td>/var/spool/cron/crontabs</td>
+</tr>
+</tbody>
+</table>
+<p>crond是linux的内置服务，但它不自动起来，可以用以下的方法启动、关闭这个服务：</p>
+<div class="highlight"><pre><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">service ...</span></pre></div> <a class="btn btn-info xsmall" href="../linux/linux_main_crontab.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../linux/linux_main_curl.html"><h2>Linux curl命令</h2></a>
+        <div class= "well small"> 2014-03-09 17:37:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Linux curl命令是一个功能强大的网络工具，它能够通过http、ftp等方式下载文件，也能够上传文件。其实curl远不止，类似的工具还有wget。</p>
+<p>Linux curl命令使用了libcurl库来实现，libcurl库常用在C程序中用来处理HTTP请求，curlpp是libcurl的一个C++封装，这几个东西可以用在抓取网页、网络监控等方面的开发，而curl命令可以帮助来解决开发过程中遇到的问题。</p>
+<h3>curl命令常用参数：</h3>
+<div class="highlight"><pre><span class="na">-A</span><span class="err">或</span><span class="o">--</span><span class="nb">user</span><span class="na">-agent</span>                <span class="p">:</span><span class="err">随意指定自己这次访问所宣称的自己的浏览器信息</span>
+<span class="na">-b</span><span class="o">/--</span><span class="nb">cookie</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">=</span><span class="kt">string</span><span class="p">/</span><span class="nb">file</span><span class="o">&gt;</span>  <span class="p">:</span><span class="nb">cookie</span><span class="err">字符串或文件读取位置，使用</span><span class="nb">option</span><span class="err">来把上次的</span><span class="nb">cookie</span><span class="err">信息追加到</span><span class="nx">http</span> <span class="nx">request</span><span class="err">里面去。</span>
+<span class="na">-c</span><span class="o">/--</span><span class="nb">cookie</span><span class="na">-jar</span> <span class="o">&lt;</span><span class="nb">file</span><span class="o">&gt;</span>          <span class="p">:</span><span class="err">操作结束后把</span><span class="nb">cookie</span><span class="err">写入到这个文件中</span>
+<span class="na">-C</span><span class="o">/--</span><span class="nb">continue</span><span class="na">-at</span> <span class="o">&lt;</span><span class="nx">offset</span><span class="o">&gt;</span>       <span class="p">:</span><span class="err">断点续转</span>
+<span class="na">-d</span><span class="o">/--</span><span class="kd">data ...</span></pre></div> <a class="btn btn-info xsmall" href="../linux/linux_main_curl.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="../linux/linux_main_wget.html"><h2>Linux wget命令详解</h2></a>
         <div class= "well small"> 2014-03-09 16:37:00
 
@@ -260,76 +341,6 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
 </ol>
 <blockquote>
 <p>注 ...</p></blockquote> <a class="btn btn-info xsmall" href="../android/android_jni_log.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android_launcher.html"><h2>Launcher3知识总结</h2></a>
-        <div class= "well small"> 2014-02-17 17:37:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>一、xml文件解析</h2>
-<p>Android解析XML文件标签的属性,获取属性的值，如：</p>
-<div class="highlight"><pre><span class="nt">&lt;favorites&gt;</span>
-...
-
-<span class="nt">&lt;favorite</span>
-        <span class="na">launcher:packageName=</span><span class="s">&quot;com.android.dialer&quot;</span>
-        <span class="na">launcher:className=</span><span class="s">&quot;com.android.dialer.DialtactsActivity&quot;</span>
-        <span class="na">launcher:container=</span><span class="s">&quot;-101&quot;</span>
-        <span class="na">launcher:screen=</span><span class="s">&quot;0&quot;</span>
-        <span class="na">launcher:x=</span><span class="s">&quot;0&quot;</span>
-        <span class="na">launcher:y=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
-...
-<span class="err">&lt;</span>/favorites
-</pre></div>
-
-
-<p>在attrs.xml文件中定义属性：</p>
-<div class="highlight"><pre><span class="c">&lt;!-- XML attributes used by default_workspace.xml --&gt;</span>
-    <span class="nt">&lt;declare-styleable</span> <span class="na">name=</span><span class="s">&quot;Favorite&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&quot;className&quot;</span> <span class="na">format=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
-        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&quot;packageName ...</span></pre></div> <a class="btn btn-info xsmall" href="../android/android_launcher.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android-memory.html"><h2>Android内存分析和调优</h2></a>
-        <div class= "well small"> 2014-02-13 20:03:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h1>Android内存分析和调优</h1>
-<h3>内存相关名词解释：VSS/RSS/PSS/USS</h3>
-<ul>
-<li>VSS Virtual Set Size 虚拟耗用内存（包含共享库占用的内存）</li>
-<li>RSS Resident Set Size 实际使用物理内存（包含共享库占用的内存）</li>
-<li>PSS Proportional Set Size 实际使用的物理内存（比例分配共享库占用的内存）</li>
-<li>USS Unique Set Size 进程独自占用的物理内存（不包含共享库占用的内存）</li>
-</ul>
-<p>一般来说内存占用大小有如下规律：VSS &gt;= RSS &gt;= PSS &gt;= USS</p>
-<p>要优化内存，首先要做的就是分析内存占用情况。android提供了多个工具和命令进行内存分析</p>
-<h3>第一层 procrank命令</h3>
-<p><code>adb shell procrank</code></p>
-<p>可以使用以下命令连续查看某一进程内存使用情况：</p>
-<p><code>while true; do procrank | grep com ...</code></p> <a class="btn btn-info xsmall" href="../android/android-memory.html">read more</a></div>
     </div>	
 				
 <div class="pagination">

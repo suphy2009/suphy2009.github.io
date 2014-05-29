@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://suphy2009.github.io/index.html</loc>
-<lastmod>2014-05-23T15:16:13-00:00</lastmod>
+<lastmod>2014-05-29T20:36:04-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/archives.html</loc>
-<lastmod>2014-05-23T15:16:13-00:00</lastmod>
+<lastmod>2014-05-29T20:36:04-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/tags.html</loc>
-<lastmod>2014-05-23T15:16:13-00:00</lastmod>
+<lastmod>2014-05-29T20:36:04-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/categories.html</loc>
-<lastmod>2014-05-23T15:16:13-00:00</lastmod>
+<lastmod>2014-05-29T20:36:04-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -43,6 +43,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2013-07-12T22:33:58-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/android/window_preview.html</loc>
+<lastmod>2014-05-29T20:34:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/android/android_focus.html</loc>
+<lastmod>2014-05-29T20:03:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -159,7 +173,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://suphy2009.github.io/category/android.html</loc>
-<lastmod>2014-05-23T09:37:00-00:00</lastmod>
+<lastmod>2014-05-29T20:34:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -235,6 +249,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://suphy2009.github.io/tag/window.html</loc>
+<lastmod>2014-05-29T20:34:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://suphy2009.github.io/tag/bitmap.html</loc>
 <lastmod>2014-03-17T17:37:00-00:00</lastmod>
 <changefreq>daily</changefreq>
@@ -277,6 +298,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://suphy2009.github.io/tag/listview.html</loc>
+<lastmod>2014-05-29T20:03:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://suphy2009.github.io/tag/view.html</loc>
 <lastmod>2014-05-23T09:37:00-00:00</lastmod>
 <changefreq>daily</changefreq>
@@ -285,7 +313,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://suphy2009.github.io/author/suphy.html</loc>
-<lastmod>2014-05-23T09:37:00-00:00</lastmod>
+<lastmod>2014-05-29T20:34:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

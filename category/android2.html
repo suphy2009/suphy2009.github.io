@@ -64,6 +64,83 @@
  
 
     <div class='article'>
+        <a href="../android/android_jni_log.html"><h2>如何在Android jni中使用Log</h2></a>
+        <div class= "well small"> 2014-02-18 17:37:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2>打开Android C/C++文件中的Log</h2>
+<h3>方法一：</h3>
+<ol>
+<li>在Android.mk文件中加入：<code>LOCAL_LDLIBS := -llog</code></li>
+<li>在要使用log的cpp文件中加入：</li>
+</ol>
+<div class="highlight"><pre><span class="cp">#include &lt;utils/Log.h&gt;</span>
+<span class="cp">#define LOG_TAG &quot;TAGNAME&quot;</span>
+<span class="cp">#define LOGV(...) __android_log_print(ANDROID_LOG_VERBOSE,LOG_TAG,__VA_ARGS__)</span>
+<span class="cp">#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)</span>
+<span class="cp">#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)</span>
+<span class="cp">#define LOGW(...) __android_log_print(ANDROID_LOG_WARN, LOG_TAG, __VA_ARGS__)</span>
+<span class="cp">#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)</span>
+</pre></div>
+
+
+<ol>
+<li>在需要打印log的地方使用: <code>LOGD("************")</code></li>
+</ol>
+<blockquote>
+<p>注 ...</p></blockquote> <a class="btn btn-info xsmall" href="../android/android_jni_log.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../android/android_launcher.html"><h2>Launcher3知识总结</h2></a>
+        <div class= "well small"> 2014-02-17 17:37:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2>一、xml文件解析</h2>
+<p>Android解析XML文件标签的属性,获取属性的值，如：</p>
+<div class="highlight"><pre><span class="nt">&lt;favorites&gt;</span>
+...
+
+<span class="nt">&lt;favorite</span>
+        <span class="na">launcher:packageName=</span><span class="s">&quot;com.android.dialer&quot;</span>
+        <span class="na">launcher:className=</span><span class="s">&quot;com.android.dialer.DialtactsActivity&quot;</span>
+        <span class="na">launcher:container=</span><span class="s">&quot;-101&quot;</span>
+        <span class="na">launcher:screen=</span><span class="s">&quot;0&quot;</span>
+        <span class="na">launcher:x=</span><span class="s">&quot;0&quot;</span>
+        <span class="na">launcher:y=</span><span class="s">&quot;0&quot;</span> <span class="nt">/&gt;</span>
+...
+<span class="err">&lt;</span>/favorites
+</pre></div>
+
+
+<p>在attrs.xml文件中定义属性：</p>
+<div class="highlight"><pre><span class="c">&lt;!-- XML attributes used by default_workspace.xml --&gt;</span>
+    <span class="nt">&lt;declare-styleable</span> <span class="na">name=</span><span class="s">&quot;Favorite&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&quot;className&quot;</span> <span class="na">format=</span><span class="s">&quot;string&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;attr</span> <span class="na">name=</span><span class="s">&quot;packageName ...</span></pre></div> <a class="btn btn-info xsmall" href="../android/android_launcher.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="../android/android-memory.html"><h2>Android内存分析和调优</h2></a>
         <div class= "well small"> 2014-02-13 20:03:00
 
