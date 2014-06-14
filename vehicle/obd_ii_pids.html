@@ -57,23 +57,17 @@
     <div class="row">
 
         <div class="span9">
-        
-
-        
-
-
     <div class='article'>
         <div class="content-title">
-            <a href="../vehicle/obd_ii_pids.html"><h1>OBD-II PIDs</h1></a>
+            <h1>OBD-II PIDs</h1>
 2014-06-14 16:37:00
 
 by <a class="url fn" href="../author/suphy.html">suphy</a>
  
 
 
- 
         </div>
-        
+	
         <div><h2>OBD-II PIDs</h2>
 <p><a href="http://en.wikipedia.org/wiki/OBD-II_PIDs">OBD-II PIDs</a>是用于从车辆请求数据的代码,用作诊断工具。</p>
 <p>名词解释：</p>
@@ -263,179 +257,23 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
 <p>清除故障码/关闭故障指示灯（MIL）/检查发动机灯
 清除所有存储的故障码和关闭故障指示灯。</p>
 </blockquote></div>
-        <hr />
+	
+        <hr>
+
+        <h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'suphy2009'; 
+    var disqus_title = 'OBD-II PIDs';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-		
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/androidManifest.html"><h2>AndroidManifest中属性说明</h2></a>
-        <div class= "well small"> 2014-06-04 14:03:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>AndroidManifest 中original-package标签</h2>
-<hr />
-<p>@(示例笔记本)[AndroidManifest|original-package|package]</p>
-<p>AndroidManifest.xml中:</p>
-<ul>
-<li><manifest>标签中package属性用于设置应用程序的进程名，即在运行时使用ddms查看到的进程名。</li>
-<li><original-package>标签用以设置应用源码包名，即Java文件所在的源码程序包层次，android工程中真实的源代码层次结构。</li>
-</ul>
-<blockquote>
-<p><manifest>中<code>package</code>属性若与<original-package>的<code>android:name</code>值相同，配置组建时<code>android:name</code>属性值 可以使用".ClassName"形式。
-使用<original-package>标签后，在<activity><service><receiver><provider>中的<code>android:name</code>属性需要写完整的包名，".ClassName"形式无效。</p>
-</blockquote>
-<p>注意:<manifest>标签中package属性只是告诉系统应用的进程名；因此进程名（Manifest中package属性的值）与<original-package>的值可以不一样。</p>
-<h3>需要注意:</h3>
-<div class="highlight"><pre><span class="nt">&lt;manifest</span>
-    <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com ...</span></pre></div> <a class="btn btn-info xsmall" href="../android/androidManifest.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/window_preview.html"><h2>如何让Android应用启动的体验更顺畅</h2></a>
-        <div class= "well small"> 2014-05-29 20:34:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>如何让Android应用启动的体验更顺畅</h2>
-<p>Android 中应用启动的时候，首先会加载一个预览窗口（由Activity 的主题决定的）用于对用户操作的即时响应。一旦真正的内容加载完毕，预览窗口将淡出，内容窗口相应淡入。</p>
-<p>Android应用window预览效果是打开的，可以通过<code>android:windowDisablePreview = true</code>来禁止window预览效果。</p>
-<p>为了避免出现白色或黑色界面，可以通过修改activity的theme使启动过程更流畅。</p>
-<h2>The perfect preview window</h2>
-<p>如果你的Activity没有ActionBar，那就在Activity 的主题里面禁用掉ActionBar，这样在预览窗口中就不会出现ActionBar了。</p>
-<p>另外，因为默认的预览窗口是纯黑色的，如果你的Activity 背景是其他颜色，那么为了启动连贯顺畅，可以通过覆写window的背景颜色实现。如下:</p>
-<ol>
-<li>
-<p>自定义主题，修改windowBackground</p>
-<div class="highlight"><pre><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&quot;Theme.Calculator&quot;</span> <span class="na">parent=</span><span class="s">“@android:style/Theme.Holo.NoActionBar&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:windowBackground”</span><span class="nt">&gt;</span>@android ...</pre></div></li></ol> <a class="btn btn-info xsmall" href="../android/window_preview.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android_focus.html"><h2>ListView焦点问题</h2></a>
-        <div class= "well small"> 2014-05-29 20:03:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>android:descendantFocusability 焦点 父控件与子控件焦点</h2>
-<p>ListView item包含ImageButton、Button、CheckBox等控件时无法获取焦点，造成点击item无响应。</p>
-<p>可以使用android:descendantFocusability="blocksDescendants" 来解决</p>
-<p>该属性是当一个为view获取焦点时，定义viewGroup和其子控件两者之间的关系。</p>
-<p>属性的值有三种：</p>
-<ul>
-<li>beforeDescendants：viewgroup会优先其子类控件而获取到焦点</li>
-<li>afterDescendants：viewgroup只有当其子类控件不需要获取焦点时才获取焦点</li>
-<li>blocksDescendants：viewgroup会覆盖子类控件而直接获得焦点</li>
-</ul>
-<p>通常我们用到的是第三种，即在Item布局的根布局加上android:descendantFocusability=”blocksDescendants”的属性就好了</p> <a class="btn btn-info xsmall" href="../android/android_focus.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android_view_property.html"><h2>View及TextView属性说明</h2></a>
-        <div class= "well small"> 2014-05-23 09:37:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>View属性说明</h2>
-<p>android:alpha<br />
-关联方法: setAlpha(float)<br />
-属性说明: 视图透明度，值在0-1之间。0为完全透明，1为完全不透明。  </p>
-<p>android:background<br />
-关联方法: setBackgroundResource(int) <br />
-属性说明: 视图背景  </p>
-<p>android:clickable<br />
-关联方法: setClickable(boolean)<br />
-属性说明: 视图是否可点击</p>
-<p>android:contentDescription<br />
-关联方法: setContentDescription(CharSequence)<br />
-属性说明: 设置View的备注说明，作为一种辅助功能提供,为一些没有文字描述的View提供说明  </p>
-<p>android:drawingCacheQuality 
-关联方法: setDrawingCacheQuality(int)<br />
-属性说明: "设置绘图时半透明质量。有可以取以下3个值 auto——默认，由框架决定 high——高质量，使用较高的颜色深度，消耗更多的内存 low ...</p> <a class="btn btn-info xsmall" href="../android/android_view_property.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android_bitmap.html"><h2>Android关于高效显示图片的问题</h2></a>
-        <div class= "well small"> 2014-03-17 17:37:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>Android关于高效显示图片的问题</h2>
-<h3>Bitmap的immutable和mutable</h3>
-<p>Bitmap可以理解为Android里的画布，Canvas是画笔，Paint是画笔属性的设置，View是画图的地方；</p>
-<p>图像（Image)有immutable(不可变的)和mutable(可变的)之分，创建自图形的Bitmap是immutable，而给定宽高以及其他一些参数创建的Bitmap是mutable.</p>
-<div class="highlight"><pre><span class="c1">//Immutable bitmap</span>
-<span class="n">Bitmap</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">BitmapFactory</span><span class="o">.</span><span class="na">decodeFile</span><span class="o">(</span><span class="s">&quot;/sdcard/xxx.jpg&quot;</span><span class="o">);</span>
-<span class="n">Bitmap</span> <span class="n">immutable</span> <span class="o">=</span> <span class="n">Bitmap</span><span class="o">.</span><span class="na">createBitmap</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
-
-<span class="c1">//mutable bitmap</span>
-<span class="n">Bitmap</span> <span class="n">mutalbe</span> <span class="o">=</span> <span class="n">Bitmap</span><span class="o">.</span><span class="na">createBitmap</span><span class="o">(</span><span class="mi">240</span><span class="o">,</span> <span class="mi">320</span><span class="o">,</span> <span class="n">Bitmap</span><span class="o">.</span><span class="na">Config</span><span class="o">.</span><span class="na">RGB_565</span><span class="o">);</span>
-</pre></div>
-
-
-<p>在使用<code>Canvas canvas = new Canvas(bitmap);</code> 时，传入的参数只能是mutable的bitmap.</p>
-<h3>BitmapFactory.Options ...</h3> <a class="btn btn-info xsmall" href="../android/android_bitmap.html">read more</a></div>
-    </div>	
-				
-<div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="../author/suphy.html">1</a></li>
-    <li class=""><a href="../author/suphy2.html">2</a></li>
-    <li class=""><a href="../author/suphy3.html">3</a></li>
-    <li class=""><a href="../author/suphy4.html">4</a></li>
-
-    <li class="next"><a href="../author/suphy2.html">Next &rarr;</a></li>
-
-</ul>
-</div>
- 
-  
         </div>
         
         <div class="span3">

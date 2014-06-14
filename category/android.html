@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="../android/window_preview.html"><h1>如何让Android应用启动的体验更顺畅</h1></a>
-2014-05-29 20:34:00
+            <a href="../android/androidManifest.html"><h1>AndroidManifest中属性说明</h1></a>
+2014-06-04 14:03:00
 
 by <a class="url fn" href="../author/suphy.html">suphy</a>
  
@@ -74,7 +74,53 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
  
         </div>
         
-        <div><h2>如何让Android应用启动的体验更顺畅</h2>
+        <div><h2>AndroidManifest 中original-package标签</h2>
+<hr />
+<p>@(示例笔记本)[AndroidManifest|original-package|package]</p>
+<p>AndroidManifest.xml中:</p>
+<ul>
+<li><manifest>标签中package属性用于设置应用程序的进程名，即在运行时使用ddms查看到的进程名。</li>
+<li><original-package>标签用以设置应用源码包名，即Java文件所在的源码程序包层次，android工程中真实的源代码层次结构。</li>
+</ul>
+<blockquote>
+<p><manifest>中<code>package</code>属性若与<original-package>的<code>android:name</code>值相同，配置组建时<code>android:name</code>属性值 可以使用".ClassName"形式。
+使用<original-package>标签后，在<activity><service><receiver><provider>中的<code>android:name</code>属性需要写完整的包名，".ClassName"形式无效。</p>
+</blockquote>
+<p>注意:<manifest>标签中package属性只是告诉系统应用的进程名；因此进程名（Manifest中package属性的值）与<original-package>的值可以不一样。</p>
+<h3>需要注意:</h3>
+<div class="highlight"><pre><span class="nt">&lt;manifest</span>
+    <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+    <span class="na">package=</span><span class="s">&quot;com.android.launcher&quot;</span>
+    <span class="na">android:sharedUserId=</span><span class="s">&quot;@string/sharedUserId&quot;</span>
+    <span class="nt">&gt;</span>
+</pre></div>
+
+
+<blockquote>
+<p>这里package="com.android.launcher"，产生的R.java就会在com.android.launcher中.</p>
+</blockquote>
+<p><code>&lt;original-package android:name="com.android.launcher2" /&gt;</code>
+这个地方表示源码包是com.android.launcher2。
+所以在代码中引用的R.java必须是import com.android.launcher.R;</p></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../android/window_preview.html"><h2>如何让Android应用启动的体验更顺畅</h2></a>
+        <div class= "well small"> 2014-05-29 20:34:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2>如何让Android应用启动的体验更顺畅</h2>
 <p>Android 中应用启动的时候，首先会加载一个预览窗口（由Activity 的主题决定的）用于对用户操作的即时响应。一旦真正的内容加载完毕，预览窗口将淡出，内容窗口相应淡入。</p>
 <p>Android应用window预览效果是打开的，可以通过<code>android:windowDisablePreview = true</code>来禁止window预览效果。</p>
 <p>为了避免出现白色或黑色界面，可以通过修改activity的theme使启动过程更流畅。</p>
@@ -85,38 +131,9 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
 <li>
 <p>自定义主题，修改windowBackground</p>
 <div class="highlight"><pre><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&quot;Theme.Calculator&quot;</span> <span class="na">parent=</span><span class="s">“@android:style/Theme.Holo.NoActionBar&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:windowBackground”</span><span class="nt">&gt;</span>@android:color/black<span class="nt">&lt;/item&gt;</span>
-<span class="nt">&lt;/style&gt;</span>
-</pre></div>
-
-
-</li>
-<li>
-<p>Activity最外层的View不要设置android:background属性</p>
-</li>
-</ol>
-<div class="highlight"><pre><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-    <span class="na">android:orientation=</span><span class="s">&quot;vertical&quot;</span>
-    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
-    <span class="na">android:layout_height=</span><span class="s">&quot;match_parent&quot;</span>
-    <span class="na">android:background=</span><span class="s">&quot;#ff000000&quot;</span><span class="nt">&gt;</span>
-
-    <span class="c">&lt;!-- --&gt;</span>
-
-<span class="nt">&lt;/LinearLayout&gt;</span>
-</pre></div>
-
-
-<p>如果需要有ActionBar，则可以通过调整ActionBar的显示选项（displayOptions）比如显示和隐藏标题或者logo，来实现更顺滑的应用启动效果。 参考该<a href="http://developer.android.com/reference/android/R.attr.html#displayOptions">文档</a>和<a href="http://developer.android.com/guide/topics/ui/actionbar.html#Style">API指南</a></p>
-<blockquote>
-<p>注意，不要使用这个功能去实现Splash屏幕，这个的目的是为用户提供更流畅的应用体验，提供更和谐的转场效果。</p>
-</blockquote>
-<p>更多信息，查看Cyril Mottier的<a href="http://cyrilmottier.com/2013/01/23/android-app-launching-made-gorgeous/">这篇文章</a></p>
-<p><img alt="smoothlaunch" src="../static/images/smoothlaunch.gif" /></p>
-<p><a href="https://plus.google.com/+AndroidDevelopers/posts/VVpjo7KDx4H">原文链接</a></p></div>
-        <hr />
-    </div>
-		
+    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:windowBackground”</span><span class="nt">&gt;</span>@android ...</pre></div></li></ol> <a class="btn btn-info xsmall" href="../android/window_preview.html">read more</a></div>
+    </div>	
+				
 
  
         
@@ -249,43 +266,6 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
 <li>LOCAL_STATIC_JAVA_LIBRARIES：当前模块依赖的 Java ...</li></ul> <a class="btn btn-info xsmall" href="../android/android_makefile.html">read more</a></div>
     </div>	
 				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android_bitmap_cache.html"><h2>Android图片缓存</h2></a>
-        <div class= "well small"> 2014-03-11 11:37:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h3>开源lib Universal Image Loader</h3>
-<ol>
-<li>ImageLoader根据ImageView的width，height确定图片的宽高。</li>
-<li>
-<p>经常出现OutOfMemory:</p>
-<ul>
-<li>减少线程池数目.threadPoolSize（1 - 5 is recommended）</li>
-<li>使用.bitmapConfig(Bitmap.Config.RGB_565)减少图片占用内存数目</li>
-<li>memoryCache（new WeakMemoryCache()） 及时释放内存</li>
-<li>imageScaleType(ImageScaleType.IN_SAMPLE_INT)或者imageScaleType(ImageScaleType.EXACTLY)</li>
-<li>避免使用RoundedBitmapDisplayer；他会创建新的ARGB_8888格式的Bitmap对象；</li>
-<li>使用.memoryCache(new WeakMemoryCache())，不要使用.cacheInMemory();</li>
-</ul>
-</li>
-<li>
-<p>内存缓存，sd卡缓存，显示图片，可以使用已经初始化过的实现；</p>
-</li>
-<li>为了避免使用list，grid，scroll，你可以使用：</li>
-</ol>
-<div class="highlight"><pre><span class="n">boolean</span> <span class="n">pauseOnScroll</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="c1">// or true ...</span></pre></div> <a class="btn btn-info xsmall" href="../android/android_bitmap_cache.html">read more</a></div>
-    </div>	
-				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
@@ -328,6 +308,7 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
                 <li><a href="../category/linux.html">linux</a></li>
                 <li><a href="../category/scm.html">Scm</a></li>
                 <li><a href="../category/tech.html">Tech</a></li>
+                <li><a href="../category/vehicle.html">vehicle</a></li>
                    
             </ul>
             </div>

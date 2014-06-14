@@ -64,6 +64,43 @@
  
 
     <div class='article'>
+        <a href="../android/android_bitmap_cache.html"><h2>Android图片缓存</h2></a>
+        <div class= "well small"> 2014-03-11 11:37:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h3>开源lib Universal Image Loader</h3>
+<ol>
+<li>ImageLoader根据ImageView的width，height确定图片的宽高。</li>
+<li>
+<p>经常出现OutOfMemory:</p>
+<ul>
+<li>减少线程池数目.threadPoolSize（1 - 5 is recommended）</li>
+<li>使用.bitmapConfig(Bitmap.Config.RGB_565)减少图片占用内存数目</li>
+<li>memoryCache（new WeakMemoryCache()） 及时释放内存</li>
+<li>imageScaleType(ImageScaleType.IN_SAMPLE_INT)或者imageScaleType(ImageScaleType.EXACTLY)</li>
+<li>避免使用RoundedBitmapDisplayer；他会创建新的ARGB_8888格式的Bitmap对象；</li>
+<li>使用.memoryCache(new WeakMemoryCache())，不要使用.cacheInMemory();</li>
+</ul>
+</li>
+<li>
+<p>内存缓存，sd卡缓存，显示图片，可以使用已经初始化过的实现；</p>
+</li>
+<li>为了避免使用list，grid，scroll，你可以使用：</li>
+</ol>
+<div class="highlight"><pre><span class="n">boolean</span> <span class="n">pauseOnScroll</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span> <span class="c1">// or true ...</span></pre></div> <a class="btn btn-info xsmall" href="../android/android_bitmap_cache.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
         <a href="../android/android_jni_log.html"><h2>如何在Android jni中使用Log</h2></a>
         <div class= "well small"> 2014-02-18 17:37:00
 
@@ -225,6 +262,7 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
                 <li><a href="../category/linux.html">linux</a></li>
                 <li><a href="../category/scm.html">Scm</a></li>
                 <li><a href="../category/tech.html">Tech</a></li>
+                <li><a href="../category/vehicle.html">vehicle</a></li>
                    
             </ul>
             </div>
