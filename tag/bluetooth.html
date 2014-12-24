@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="utf-8">
+    <title>suphy' Blog</title>
+    <meta name="description" content="">
+    <meta name="author" content="suphy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="../theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="..">suphy' Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            <li><a href="..">首页</a></li>
+
+            <li><a href="../categories.html">分类</a></li>
+
+            <li><a href="../archives.html">归档</a></li>
+
+        
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="../search.html">搜索</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="../android/BluetoothAdapter.html"><h1>BluetoothAdapter使用</h1></a>
+2014-11-22 10:52:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><h2>Android Quick Look: BluetoothAdapter</h2>
+<p>Android SDK附带强大的蓝牙适配器,蓝牙api能够管理本地扫描附近的蓝牙设备,蓝牙设备之间传输数据,等等。本指导将向您展示最基本的必要步骤开始在Android SDK编程蓝牙应用程序。</p>
+<h4>Step 1: Import the Bluetooth Package</h4>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">android.bluetooth.*</span><span class="o">;</span>
+</pre></div>
+
+
+<h4>Step 2: Set Bluetooth Permissions</h4>
+<p>添加permission:</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.BLUETOOTH&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+
+
+<p>对于更高级的蓝牙任务，如设置本地设备为我们将在本教程的名字，你就需要配置蓝牙管理员权限。添加以下行这样做：</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.BLUETOOTH_ADMIN&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+
+
+<h4>Step 3: Access the Bluetooth Adapter</h4>
+<p>BluetoothAdapter是访问Android设备上蓝牙的单例。这个类必须被实例化，以便在程序执行任何蓝牙相关的任务。</p>
+<div class="highlight"><pre><span class="n">BluetoothAdapter</span> <span class="n">bluetooth</span> <span class="o">=</span> <span class="n">BluetoothAdapter</span><span class="o">.</span><span class="na">getDefaultAdapter</span><span class="o">();</span>
+</pre></div>
+
+
+<p>如果设备不支持蓝牙，以上将返回<code>null</code>.在实际应用中我们应该检查条件更新应用。</p>
+<div class="highlight"><pre><span class="n">BluetoothAdapter</span> <span class="n">bluetooth</span> <span class="o">=</span> <span class="n">BluetoothAdapter</span><span class="o">.</span><span class="na">getDefaultAdapter</span><span class="o">();</span>
+<span class="k">if</span><span class="o">(</span><span class="n">bluetooth</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+<span class="o">{</span>
+    <span class="c1">// Continue with bluetooth setup.</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<h4>Step 4: Check if Bluetooth is Enabled</h4>
+<div class="highlight"><pre><span class="k">if</span> <span class="o">(</span><span class="n">bluetooth</span><span class="o">.</span><span class="na">isEnabled</span><span class="o">())</span> <span class="o">{</span>
+    <span class="c1">// Enabled. Work with Bluetooth.</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="c1">// Disabled. Do something else.</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<p>Step 5: Display Device Name and Address</p>
+<p>如果蓝牙可用，我们将展示设备的名称和地址；不可用时，向用户展示信息</p>
+<div class="highlight"><pre><span class="n">String</span> <span class="n">status</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">bluetooth</span><span class="o">.</span><span class="na">isEnabled</span><span class="o">())</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">mydeviceaddress</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="na">getAddress</span><span class="o">();</span>
+    <span class="n">String</span> <span class="n">mydevicename</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">mydevicename</span> <span class="o">+</span> <span class="err">”</span> <span class="o">:</span> <span class="err">”</span> <span class="o">+</span> <span class="n">mydeviceaddress</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="err">“</span><span class="n">Bluetooth</span> <span class="n">is</span> <span class="n">not</span> <span class="n">Enabled</span><span class="o">.</span><span class="err">”</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">status</span><span class="o">,</span> <span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+</pre></div>
+
+
+<p>这段代码使用getName()方法来得到蓝牙设备名称。如果您之前设置的BLUETOOTH_ADMIN权限，你也可以更改设备名称，像这样：</p>
+<div class="highlight"><pre><span class="n">bluetooth</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;AndroidCoder&quot;</span><span class="o">);</span>
+</pre></div>
+
+
+<p>Step 6: Display Bluetooth State</p>
+<p>BluetoothAdapter.getState()用于获得详细的蓝牙状态。状态有以下4个值：</p>
+<ul>
+<li>STATE_TURNING_ON</li>
+<li>STATE_ON</li>
+<li>STATE_TURNING_OFF</li>
+<li>STATE_OFF</li>
+</ul>
+<h4>Conclusion</h4>
+<p>这篇导读简单介绍了Bluetooth的使用，上面包含的代码将检查是否启用蓝牙功能，并显示诊断信息。</p></div>
+        <hr />
+    </div>
+		
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="../tag/bluetooth.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="../category/android.html">android</a></li>
+                <li><a href="../category/java.html">java</a></li>
+                <li><a href="../category/life.html">life</a></li>
+                <li><a href="../category/linux.html">linux</a></li>
+                <li><a href="../category/scm.html">Scm</a></li>
+                <li><a href="../category/tech.html">Tech</a></li>
+                <li><a href="../category/tool.html">tool</a></li>
+                <li><a href="../category/vehicle.html">vehicle</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="https://www.google.com/ncr">Google</a></li>
+                <li><a href="http://python.org/">Python</a></li>
+                <li><a href="http://docs.getpelican.com/">Pelican</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://github.com/suphy2009">Github</a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100003251594803">Facebook</a></li>
+                <li><a href="http://www.linkedin.com/profile/view?id=273447004">Linkedin</a></li>
+                <li><a href="http://weibo.com/suphy2010">微博</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="..">suphy' Blog</a> &copy; suphy 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-47831467-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

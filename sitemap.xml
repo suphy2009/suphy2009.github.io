@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://suphy2009.github.io/index.html</loc>
-<lastmod>2014-06-14T16:46:28-00:00</lastmod>
+<lastmod>2014-12-24T20:30:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/archives.html</loc>
-<lastmod>2014-06-14T16:46:28-00:00</lastmod>
+<lastmod>2014-12-24T20:30:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/tags.html</loc>
-<lastmod>2014-06-14T16:46:28-00:00</lastmod>
+<lastmod>2014-12-24T20:30:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://suphy2009.github.io/categories.html</loc>
-<lastmod>2014-06-14T16:46:28-00:00</lastmod>
+<lastmod>2014-12-24T20:30:13-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -43,6 +43,41 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2013-07-12T22:33:58-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/tool/tool_androidstuido.html</loc>
+<lastmod>2014-12-24T20:22:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/java/java_synchronized.html</loc>
+<lastmod>2014-12-24T20:20:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/android/android_priv-app.html</loc>
+<lastmod>2014-12-24T20:19:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/android/BluetoothAdapter.html</loc>
+<lastmod>2014-11-22T10:52:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/java/ThreadPoolExecutor.html</loc>
+<lastmod>2014-11-22T10:48:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -187,7 +222,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://suphy2009.github.io/category/android.html</loc>
-<lastmod>2014-06-04T14:03:00-00:00</lastmod>
+<lastmod>2014-12-24T20:19:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/category/java.html</loc>
+<lastmod>2014-12-24T20:20:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -221,6 +263,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://suphy2009.github.io/category/tool.html</loc>
+<lastmod>2014-12-24T20:22:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://suphy2009.github.io/category/vehicle.html</loc>
 <lastmod>2014-06-14T16:37:00-00:00</lastmod>
 <changefreq>daily</changefreq>
@@ -249,15 +298,36 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://suphy2009.github.io/tag/git.html</loc>
-<lastmod>2014-02-07T18:39:00-00:00</lastmod>
+<loc>http://suphy2009.github.io/tag/listview.html</loc>
+<lastmod>2014-05-29T20:03:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://suphy2009.github.io/tag/paint.html</loc>
-<lastmod>2014-02-11T23:39:00-00:00</lastmod>
+<loc>http://suphy2009.github.io/tag/synchronized.html</loc>
+<lastmod>2014-12-24T20:20:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/tag/thread.html</loc>
+<lastmod>2014-11-22T10:48:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/tag/permission.html</loc>
+<lastmod>2014-12-24T20:19:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/tag/markdown.html</loc>
+<lastmod>2014-02-05T16:20:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -284,6 +354,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://suphy2009.github.io/tag/android.html</loc>
+<lastmod>2014-12-24T20:22:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://suphy2009.github.io/tag/bitmap.html</loc>
 <lastmod>2014-03-17T17:37:00-00:00</lastmod>
 <changefreq>daily</changefreq>
@@ -305,8 +382,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://suphy2009.github.io/tag/markdown.html</loc>
-<lastmod>2014-02-05T16:20:00-00:00</lastmod>
+<loc>http://suphy2009.github.io/tag/git.html</loc>
+<lastmod>2014-02-07T18:39:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -326,8 +403,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://suphy2009.github.io/tag/listview.html</loc>
-<lastmod>2014-05-29T20:03:00-00:00</lastmod>
+<loc>http://suphy2009.github.io/tag/bluetooth.html</loc>
+<lastmod>2014-11-22T10:52:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://suphy2009.github.io/tag/paint.html</loc>
+<lastmod>2014-02-11T23:39:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -341,7 +425,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://suphy2009.github.io/author/suphy.html</loc>
-<lastmod>2014-06-14T16:37:00-00:00</lastmod>
+<lastmod>2014-12-24T20:22:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

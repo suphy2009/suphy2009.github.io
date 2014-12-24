@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+    <meta charset="utf-8">
+    <title>suphy' Blog</title>
+    <meta name="description" content="">
+    <meta name="author" content="suphy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="../theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="..">suphy' Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            <li><a href="..">首页</a></li>
+
+            <li><a href="../categories.html">分类</a></li>
+
+            <li><a href="../archives.html">归档</a></li>
+
+        
+            <li><a href="../about.html">关于</a></li>
+            <li><a href="../search.html">搜索</a></li>
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="../java/java_synchronized.html"><h1>Java线程同步</h1></a>
+2014-12-24 20:20:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><h1>Java线程同步</h1>
+<p>@(java)[synchronized|wait|notify|notifyAll] 
+Author: 白万伟
+Date: 2014-09-09</p>
+<h3>对象锁</h3>
+<blockquote>
+<p>对象指的是拥有synchronized修饰的函数，或者是代码块的一个类的实例.</p>
+</blockquote>
+<p>当某个线程访问该类的方法或synchronized修饰的代码快时就要获得该对象的锁，其他线程就无法获得该对象的锁。
+也就是说这个对象已经被前一个线程所占用，另外的线程无法得到该对象，所以该对象对应的方法也就无法访问，必须等到前一个线程释放对象锁才可能有机会得到对象锁。</p>
+<ol>
+<li>
+<p>java中的每个对象都有一个锁，当访问某个对象的synchronized方法时，表示将该对象上锁，此时其他任何线程都无法在去访问该syncronized 方法了，直到之前的那个线程执行方法完毕后，其他线程才有可能去访问该synchronized方法。 </p>
+</li>
+<li>
+<p>如果一个对象有多个synchronized方法，某一时刻某个线程已经进入到某个synchronzed方法，那么在该方法没有执行完毕前，其他线程无法访问该对象的任何synchronzied 方法的，但可以访问非synchronzied方法。 </p>
+</li>
+<li>
+<p>如果synchronized方法是static的，那么当线程访问该方法时，它锁的并不是synchronized方法所在的对象，而是synchuronized方法所在对象的对应的Class对象，因为java中无论一个类有多少个对象，这些对象会对应唯一一个Class 对象，因此当线程分别访问同一个类的两个对象的static，synchronized方法时，他们的执行也是按顺序来的，也就是说一个线程先执行，一个线程后执行。 </p>
+</li>
+</ol>
+<blockquote>
+<p>在同步方法中线程间的通信主要依靠<code>wait()</code> <code>notify()</code> <code>notifyAll()</code>来实现, 而且这三个方法必须在synconized代码块中使用.</p>
+</blockquote>
+<p><code>wait()</code>方法使当前线程<code>暂停执行</code>并<code>释放对象锁</code>标志，让其他线程可以进入<code>synchronized</code>数据块，并把当前线程放入<code>对象等待池</code>中。
+当调用<code>notify()</code>方法后,从<code>对象等待池</code>中移出任意一个线程并放到<code>锁标志等待池</code>中，只有<code>锁标志等待池</code>中的线程能够获取锁标志；
+如果<code>锁标志等待池</code>中没有线程，则<code>notify()</code>不起作用。 
+<code>notifyAll()</code>则从对象等待池中移走所有等待那个对象的线程并放到锁标志等待池中。</p>
+<p>1.wait()的进一步理解：如果一个线程调用了某个对象的wait方法，那么该线程进入到该对象的等待池中(并且已经将锁释放)， 
+如果未来的某一时刻，另外一个线程调用了相同对象的notify方法或者notifyAll方法，那么该等待池中的线程就会被唤起，然后进入到对象的锁池里面去获得该对象的锁，如果获得锁成功后那么该线程就会沿着wait方法之后的路径继续执行。注意是沿着wait方法之后.</p>
+<p>2.notify()方法为唤醒同一个对象的锁。比如说a.notify()方法之能唤醒对应a.wait()方法调用的线程，而不能唤醒b.wait()对应的线程。 
+调用notify()方法并不代表释放当前对象的锁。它只是去通知其他线程进入到锁池里面去，而这个线程也不一定立即获的对象锁。</p></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../java/ThreadPoolExecutor.html"><h2>ThreadPoolExecutor运转机制详解</h2></a>
+        <div class= "well small"> 2014-11-22 10:48:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h1>ThreadPoolExecutor运转机制详解</h1>
+<p>@(Java)[Thread|ThreadPool]</p>
+<p>先看一下新建一个ThreadPoolExecutor的构建参数:</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span>
+                          <span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span>
+                          <span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span>
+                          <span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
+                          <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">,</span>
+                          <span class="n">ThreadFactory</span> <span class="n">threadFactory</span><span class="o">,</span>
+                          <span class="n">RejectedExecutionHandler</span> <span class="n">handler</span><span class="o">)</span>
+</pre></div>
+
+
+<h3>具体流程如下：</h3>
+<ol>
+<li>
+<p>当池子大小小于corePoolSize就新建线程，并处理请求</p>
+</li>
+<li>
+<p>当池子大小等于corePoolSize，把请求放入workQueue中，池子里的空闲线程就去从workQueue中取任务并处理</p>
+</li>
+<li>
+<p>当workQueue放不下新入的任务时，新建线程入池，并处理请求，如果池子大小撑到了maximumPoolSize就用RejectedExecutionHandler来做拒绝处理</p>
+</li>
+<li>
+<p>另外，当池子的线程数大于corePoolSize的时候，多余的线程会等待keepAliveTime长的时间，如果无请求可处理就自行销毁</p>
+</li>
+</ol>
+<h3>内部结构如下所示：</h3>
+<p><img alt="Alt text" src="../static/images/threadpoolexecutor_1.gif" /></p>
+<blockquote>
+<p>从中可以发现ThreadPoolExecutor就是依靠BlockingQueue的阻塞机制来维持线程池，当池子里的线程无事可干的时候就通过workQueue.take()阻塞住。</p>
+</blockquote>
+<p><code>Executors</code>类使用<code>ExecutorService</code>提供了一个 <code>ThreadPoolExecutor</code>的简单实现，但 <code>ThreadPoolExecutor</code> 提供的功能远不止这些 ...</p> <a class="btn btn-info xsmall" href="../java/ThreadPoolExecutor.html">read more</a></div>
+    </div>	
+				
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="../category/java.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="../category/android.html">android</a></li>
+                <li><a href="../category/java.html">java</a></li>
+                <li><a href="../category/life.html">life</a></li>
+                <li><a href="../category/linux.html">linux</a></li>
+                <li><a href="../category/scm.html">Scm</a></li>
+                <li><a href="../category/tech.html">Tech</a></li>
+                <li><a href="../category/tool.html">tool</a></li>
+                <li><a href="../category/vehicle.html">vehicle</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="https://www.google.com/ncr">Google</a></li>
+                <li><a href="http://python.org/">Python</a></li>
+                <li><a href="http://docs.getpelican.com/">Pelican</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://github.com/suphy2009">Github</a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=100003251594803">Facebook</a></li>
+                <li><a href="http://www.linkedin.com/profile/view?id=273447004">Linkedin</a></li>
+                <li><a href="http://weibo.com/suphy2010">微博</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="..">suphy' Blog</a> &copy; suphy 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+<script>var _gaq=[['_setAccount','UA-47831467-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+ 
+</body>
+</html>

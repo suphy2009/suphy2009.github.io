@@ -64,8 +64,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="../vehicle/obd_ii_pids.html"><h1>OBD-II PIDs</h1></a>
-2014-06-14 16:37:00
+            <a href="../tool/tool_androidstuido.html"><h1>Android Stuido 快捷键</h1></a>
+2014-12-24 20:22:00
 
 by <a class="url fn" href="../author/suphy.html">suphy</a>
  
@@ -74,7 +74,208 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
  
         </div>
         
-        <div><h2>OBD-II PIDs</h2>
+        <div><p>Android Stuido 快捷键</p>
+<h2>查找</h2>
+<ol>
+<li>Cmd  + K            快速定位到下一个使用该变量的地方</li>
+<li>Shift + Cmd + K  快速定位到上一个使用该变量的地方</li>
+<li>Ctrl + H               查找功能，全局查找</li>
+<li>Shift + Cmd + G  查找变量或方法被用到的地方</li>
+<li>Option + Cmd + Q, S 查找</li>
+</ol>
+<h2>功能</h2>
+<ol>
+<li>F3 ,  Cmd +         鼠标点击  打开声明</li>
+<li>Option + /           代码提示</li>
+<li>Option + Shift  + / 智能类型变量完成</li>
+<li>Ctrl + Option + /    类名提示</li>
+<li>Cmd + /               行注释</li>
+<li>Ctrl + CMD + /    快注释</li>
+<li>Shift + CMD + F  格式化代码</li>
+<li>CMD + I               自动行缩进</li>
+<li>Shift + CMD + O  优化导入包</li>
+<li>CMD + E               查看最近打开过的文件</li>
+<li>CMD + Shift + E  查看最近编辑过的文件</li>
+<li>double Shift：全局查找，这个查看和Ctrl + H稍稍有些不同，这个是全局文件查找</li>
+<li>CMD + O     快捷查找当前类中的函数，变量</li>
+</ol>
+<h2>Plugin</h2>
+<ol>
+<li>Cmd-Shift-D   使用Dash查询方法文档</li>
+</ol></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../java/java_synchronized.html"><h2>Java线程同步</h2></a>
+        <div class= "well small"> 2014-12-24 20:20:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h1>Java线程同步</h1>
+<p>@(java)[synchronized|wait|notify|notifyAll] 
+Author: 白万伟
+Date: 2014-09-09</p>
+<h3>对象锁</h3>
+<blockquote>
+<p>对象指的是拥有synchronized修饰的函数，或者是代码块的一个类的实例.</p>
+</blockquote>
+<p>当某个线程访问该类的方法或synchronized修饰的代码快时就要获得该对象的锁，其他线程就无法获得该对象的锁。
+也就是说这个对象已经被前一个线程所占用，另外的线程无法得到该对象，所以该对象对应的方法也就无法访问，必须等到前一个线程释放对象锁才可能有机会得到对象锁。</p>
+<ol>
+<li>
+<p>java中的每个对象都有一个锁，当访问某个对象的synchronized方法时，表示将该对象上锁，此时其他任何线程都无法在去访问该syncronized 方法了，直到之前的那个线程执行方法完毕后，其他线程才有可能去访问该synchronized方法。 </p>
+</li>
+<li>
+<p>如果一个对象有多个synchronized方法，某一时刻某个线程已经进入到某个synchronzed方法，那么在该方法没有执行完毕前，其他线程无法访问该对象的任何synchronzied 方法的，但可以访问非synchronzied方法。 </p>
+</li>
+<li>
+<p>如果synchronized方法是static的，那么当线程访问该方法时，它锁的并不是synchronized方法所在的对象，而是synchuronized方法所在对象的对应的Class对象，因为java中无论一个类有多少个对象，这些对象会对应唯一一个Class 对象，因此当线程分别访问同一个类的两个对象的static，synchronized方法时，他们的执行也是按顺序来的，也就是说一个线程先执行，一个线程后执行。 </p>
+</li>
+</ol>
+<blockquote>
+<p>在同步方法中线程间的通信主要依靠<code>wait()</code> <code>notify()</code> <code>notifyAll()</code>来实现, 而且这三个方法必须在synconized代码块中使用 ...</p></blockquote> <a class="btn btn-info xsmall" href="../java/java_synchronized.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../android/android_priv-app.html"><h2>Anroid4.4新增/system/priv-app/目录的权限问题</h2></a>
+        <div class= "well small"> 2014-12-24 20:19:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h1>Anroid4.4新增/system/priv-app/目录的权限问题</h1>
+<p>@(Android)[permission]</p>
+<p>今天在项目中定义permission时使用了<code>android:protectionLevel="signatureOrSystem"</code>, 
+<code>signatureOrSystem</code>官方解释</p>
+<div class="highlight"><pre><span class="n">A</span> <span class="n">permission</span> <span class="n">that</span> <span class="n">the</span> <span class="n">system</span> <span class="n">grants</span> <span class="n">only</span> <span class="n">to</span> <span class="n">applications</span> <span class="n">that</span> <span class="n">are</span> <span class="n">in</span> <span class="n">the</span> <span class="n">Android</span> <span class="n">system</span> <span class="n">image</span> <span class="n">or</span> <span class="n">that</span> <span class="n">are</span> <span class="kt">signed</span> <span class="n">with</span> <span class="n">the</span> <span class="n">same</span> <span class="n">certificate</span> <span class="n">as</span> <span class="n">the</span> <span class="n">application</span> <span class="n">that</span> <span class="n">declared</span> <span class="n">the</span> <span class="n">permission</span><span class="err">。</span>
+</pre></div>
+
+
+<p>该项目设置如下并且在<code>/system/app/</code>文件中：</p>
+<div class="highlight"><pre><span class="c1">//AndroidManifest.xml ...</span></pre></div> <a class="btn btn-info xsmall" href="../android/android_priv-app.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../android/BluetoothAdapter.html"><h2>BluetoothAdapter使用</h2></a>
+        <div class= "well small"> 2014-11-22 10:52:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2>Android Quick Look: BluetoothAdapter</h2>
+<p>Android SDK附带强大的蓝牙适配器,蓝牙api能够管理本地扫描附近的蓝牙设备,蓝牙设备之间传输数据,等等。本指导将向您展示最基本的必要步骤开始在Android SDK编程蓝牙应用程序。</p>
+<h4>Step 1: Import the Bluetooth Package</h4>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">android.bluetooth.*</span><span class="o">;</span>
+</pre></div>
+
+
+<h4>Step 2: Set Bluetooth Permissions</h4>
+<p>添加permission:</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.BLUETOOTH&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+
+
+<p>对于更高级的蓝牙任务，如设置本地设备为我们将在本教程的名字，你就需要配置蓝牙管理员权限。添加以下行这样做：</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="n">uses</span><span class="o">-</span><span class="n">permission</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;android.permission.BLUETOOTH_ADMIN&quot;</span> <span class="o">/&gt;</span>
+</pre></div>
+
+
+<h4>Step 3: Access the Bluetooth Adapter ...</h4> <a class="btn btn-info xsmall" href="../android/BluetoothAdapter.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../java/ThreadPoolExecutor.html"><h2>ThreadPoolExecutor运转机制详解</h2></a>
+        <div class= "well small"> 2014-11-22 10:48:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h1>ThreadPoolExecutor运转机制详解</h1>
+<p>@(Java)[Thread|ThreadPool]</p>
+<p>先看一下新建一个ThreadPoolExecutor的构建参数:</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span>
+                          <span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span>
+                          <span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span>
+                          <span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
+                          <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">,</span>
+                          <span class="n">ThreadFactory</span> <span class="n">threadFactory</span><span class="o">,</span>
+                          <span class="n">RejectedExecutionHandler</span> <span class="n">handler</span><span class="o">)</span>
+</pre></div>
+
+
+<h3>具体流程如下：</h3>
+<ol>
+<li>
+<p>当池子大小小于corePoolSize就新建线程，并处理请求</p>
+</li>
+<li>
+<p>当池子大小等于corePoolSize，把请求放入workQueue中，池子里的空闲线程就去从workQueue中取任务并处理</p>
+</li>
+<li>
+<p>当workQueue放不下新入的任务时，新建线程入池，并处理请求，如果池子大小撑到了maximumPoolSize就用RejectedExecutionHandler来做拒绝处理</p>
+</li>
+<li>
+<p>另外，当池子的线程数大于corePoolSize的时候，多余的线程会等待keepAliveTime长的时间，如果无请求可处理就自行销毁</p>
+</li>
+</ol>
+<h3>内部结构如下所示：</h3>
+<p><img alt="Alt text" src="../static/images/threadpoolexecutor_1.gif" /></p>
+<blockquote>
+<p>从中可以发现ThreadPoolExecutor就是依靠BlockingQueue的阻塞机制来维持线程池，当池子里的线程无事可干的时候就通过workQueue.take()阻塞住。</p>
+</blockquote>
+<p><code>Executors</code>类使用<code>ExecutorService</code>提供了一个 <code>ThreadPoolExecutor</code>的简单实现，但 <code>ThreadPoolExecutor</code> 提供的功能远不止这些 ...</p> <a class="btn btn-info xsmall" href="../java/ThreadPoolExecutor.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="../vehicle/obd_ii_pids.html"><h2>OBD-II PIDs</h2></a>
+        <div class= "well small"> 2014-06-14 16:37:00
+
+by <a class="url fn" href="../author/suphy.html">suphy</a>
+ 
+
+
+ </div>
+        <div class="summary"><h2>OBD-II PIDs</h2>
 <p><a href="http://en.wikipedia.org/wiki/OBD-II_PIDs">OBD-II PIDs</a>是用于从车辆请求数据的代码,用作诊断工具。</p>
 <p>名词解释：</p>
 <ul>
@@ -119,306 +320,7 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
 </tr>
 <tr>
 <td>06</td>
-<td>测试结果,其他组件/系统监控</td>
-</tr>
-<tr>
-<td>07</td>
-<td>显示等待诊断故障代码</td>
-</tr>
-<tr>
-<td>08</td>
-<td>控制电路板组件/系统的操作</td>
-</tr>
-<tr>
-<td>09</td>
-<td>请求车辆信息</td>
-</tr>
-<tr>
-<td>0A</td>
-<td>清除故障诊断码</td>
-</tr>
-</tbody>
-</table>
-<h2>Standard PIDs：</h2>
-<p><strong>注意:</strong> </p>
-<ul>
-<li>Modes 1和 Modes 2基本上是相同的,  除了Modes 1提供当前信息, 而Modes 2提供了上一次诊断故障代码被设置的时间点上相同数据信息的快照。</li>
-<li>PID <code>01</code>是个例外只能在Mode 1中, PID <code>02</code>只能在Mode 2中。</li>
-<li>如果Mode 2 PID <code>02</code>返回零, 那么没有快照并且所有其他Mode 2的数据是没有意义的。</li>
-</ul>
-<p><strong>Bit-Encoded-Notation:</strong></p>
-<p><img alt="Alt text" src="../static/images/obd/bit-encode.png" /></p>
-<h2>Mode 01</h2>
-<h4><strong>Mode 01 PID 01</strong></h4>
-<blockquote>
-<p>监测自DTCs清除后的状态。</p>
-</blockquote>
-<p><code>0101</code>这个PID的一次请求返回4个字节数据。</p>
-<p><code>第一字节A</code>包含两端信息:</p>
-<p><code>A7</code>:  MIL（检查发动机灯）是否点亮。
-<code>A6-A0</code> :表示当前标记在ECU(电子控制单元)中诊断故障码的数量。</p>
-<p><code>第二(B)</code>，<code>第三(C)</code>和<code>第四(D)</code>字节给出某些车载测试的可用性和完整性。
-需要注意：测试可用性被置位（1）bit标示；完整性被复位（0）bit标示。</p>
-<table>
-<thead>
-<tr>
-<th>Bit</th>
-<th align="right">Name</th>
-<th>Definition</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>A7</td>
-<td align="right">MIL</td>
-<td>关或开，表示CEL/ MIL是否开启</td>
-</tr>
-<tr>
-<td>A6-A0</td>
-<td align="right">DTC_CNT</td>
-<td>可用于显示确认排放相关故障码的数量</td>
-</tr>
-<tr>
-<td>B7</td>
-<td align="right">保留字</td>
-<td>保留的(应该为0)</td>
-</tr>
-<tr>
-<td>B3</td>
-<td align="right"><em>No Name</em></td>
-<td>0 = 支持火花点火显示器 1 = 支持压缩点火显示器</td>
-</tr>
-</tbody>
-</table>
-<p>下面是<code>字节B</code>的通用定义：</p>
-<p><img alt="Alt text" src="../static/images/obd/05.png" /></p>
-<p><code>第三(C)</code>和<code>第四(D)</code>字节有不同的解释，这取决于发动机是火花点火还是压缩点火。
-在<code>第二个（B）</code>字节中，<code>位B3</code>表示如何解释<code>C和D字节</code>，0是火花, 1是被压缩。</p>
-<p><strong>当火花点火显示器时bytes C 和 bytes D：</strong></p>
-<p><img alt="Alt text" src="../static/images/obd/06.png" /></p>
-<p><strong>当压燃式显示器时bytes C 和 bytes D：</strong></p>
-<p><img alt="Alt text" src="../static/images/obd/07.png" /></p>
-<h4>Mode 01 PID: 03</h4>
-<p>燃油系统状态，一次请求返回2个字节数据。
-第一个字节描述了燃料系统＃1。</p>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>开环由于发动机温度不足</td>
-</tr>
-<tr>
-<td>2</td>
-<td>闭环，采用氧传感器的反馈来确定混合燃料</td>
-</tr>
-<tr>
-<td>4</td>
-<td>开环由于发动机负荷或燃料因减速而切断</td>
-</tr>
-<tr>
-<td>8</td>
-<td>开环由于系统故障</td>
-</tr>
-<tr>
-<td>16</td>
-<td>闭合回路，使用至少一个氧传感器，但有一个故障在反馈系统</td>
-</tr>
-</tbody>
-</table>
-<p>第二个字节描述燃料系统＃2（如果存在的话），并且是第一个字节相同的编码。</p>
-<h2>Mode 02</h2>
-<blockquote>
-<p>Mode 02接受Mode 01相同的PID，并且具有相同的意义，但返回的信息是冻结帧创建时的信息</p>
-</blockquote>
-<p>你必须在消息的数据部分发送帧号。</p>
-<h4>Mode 02 PID: 02</h4>
-<p>引起冻结帧被存储的故障诊断码</p>
-<h2>Mode 03 (无PID要求)</h2>
-<blockquote>
-<p>请求故障码</p>
-</blockquote>
-<p>该模式的一次请求返回已设定的<strong>故障码列表</strong>。该列表是使用<a href="http://en.wikipedia.org/wiki/ISO_15765-2">ISO15765-2协议</a>进行封装。
-如果有小于等于两个DTCs(4 bytes)，那么他们是在ISO-TP单帧（SF）中返回。
-列表中三个及以上的DTCs报告在多个帧中，以帧的精确计数依赖于该通信的类型和寻址的详细信息。</p>
-<p>每一个故障码需要<code>2个字节</code>(AB)来描述。故障代码的文本描述可以如下进行解码。
-在故障代码的<code>第一个字符</code>是由第一个字节的前两位决定：</p>
-<p><img alt="Alt text" src="../static/images/obd/01.png" /></p>
-<p>以下四个位数是BCD编码。在DTC中的第二个字符是数字由下表定义：</p>
-<p><img alt="Alt text" src="../static/images/obd/02.png" /></p>
-<p>在DTC中的第三个字符是数字被定义为：</p>
-<p><img alt="Alt text" src="../static/images/obd/03.png" /></p>
-<p>在DTC中的<code>第四</code>和<code>第五</code>字符和第三字符的定义方式一样，但使用bits <code>B7-B4</code>和<code>B3-B0</code>。
-由此产生的五个字符的代码应该看起来像<code>U0158</code>，可以对照OBD-II DTCs表查看。</p>
-<p>十六进制字符（0-9，AF），而比较少见的，是允许在代码本身的最后3个位置。</p>
-<p><strong>Enumerated PIDs</strong></p>
-<p>某些PID是被专门解释，并且不一定恰好逐位编码的，或以任何比例。对于这些PID值被列举出来</p>
-<h2>Mode 04</h2>
-<blockquote>
-<p>清除故障码/关闭故障指示灯（MIL）/检查发动机灯
-清除所有存储的故障码和关闭故障指示灯。</p>
-</blockquote></div>
-        <hr />
-    </div>
-		
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/androidManifest.html"><h2>AndroidManifest中属性说明</h2></a>
-        <div class= "well small"> 2014-06-04 14:03:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>AndroidManifest 中original-package标签</h2>
-<hr />
-<p>@(示例笔记本)[AndroidManifest|original-package|package]</p>
-<p>AndroidManifest.xml中:</p>
-<ul>
-<li><manifest>标签中package属性用于设置应用程序的进程名，即在运行时使用ddms查看到的进程名。</li>
-<li><original-package>标签用以设置应用源码包名，即Java文件所在的源码程序包层次，android工程中真实的源代码层次结构。</li>
-</ul>
-<blockquote>
-<p><manifest>中<code>package</code>属性若与<original-package>的<code>android:name</code>值相同，配置组建时<code>android:name</code>属性值 可以使用".ClassName"形式。
-使用<original-package>标签后，在<activity><service><receiver><provider>中的<code>android:name</code>属性需要写完整的包名，".ClassName"形式无效。</p>
-</blockquote>
-<p>注意:<manifest>标签中package属性只是告诉系统应用的进程名；因此进程名（Manifest中package属性的值）与<original-package>的值可以不一样。</p>
-<h3>需要注意:</h3>
-<div class="highlight"><pre><span class="nt">&lt;manifest</span>
-    <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com ...</span></pre></div> <a class="btn btn-info xsmall" href="../android/androidManifest.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/window_preview.html"><h2>如何让Android应用启动的体验更顺畅</h2></a>
-        <div class= "well small"> 2014-05-29 20:34:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>如何让Android应用启动的体验更顺畅</h2>
-<p>Android 中应用启动的时候，首先会加载一个预览窗口（由Activity 的主题决定的）用于对用户操作的即时响应。一旦真正的内容加载完毕，预览窗口将淡出，内容窗口相应淡入。</p>
-<p>Android应用window预览效果是打开的，可以通过<code>android:windowDisablePreview = true</code>来禁止window预览效果。</p>
-<p>为了避免出现白色或黑色界面，可以通过修改activity的theme使启动过程更流畅。</p>
-<h2>The perfect preview window</h2>
-<p>如果你的Activity没有ActionBar，那就在Activity 的主题里面禁用掉ActionBar，这样在预览窗口中就不会出现ActionBar了。</p>
-<p>另外，因为默认的预览窗口是纯黑色的，如果你的Activity 背景是其他颜色，那么为了启动连贯顺畅，可以通过覆写window的背景颜色实现。如下:</p>
-<ol>
-<li>
-<p>自定义主题，修改windowBackground</p>
-<div class="highlight"><pre><span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">&quot;Theme.Calculator&quot;</span> <span class="na">parent=</span><span class="s">“@android:style/Theme.Holo.NoActionBar&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&quot;android:windowBackground”</span><span class="nt">&gt;</span>@android ...</pre></div></li></ol> <a class="btn btn-info xsmall" href="../android/window_preview.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android_focus.html"><h2>ListView焦点问题</h2></a>
-        <div class= "well small"> 2014-05-29 20:03:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>android:descendantFocusability 焦点 父控件与子控件焦点</h2>
-<p>ListView item包含ImageButton、Button、CheckBox等控件时无法获取焦点，造成点击item无响应。</p>
-<p>可以使用android:descendantFocusability="blocksDescendants" 来解决</p>
-<p>该属性是当一个为view获取焦点时，定义viewGroup和其子控件两者之间的关系。</p>
-<p>属性的值有三种：</p>
-<ul>
-<li>beforeDescendants：viewgroup会优先其子类控件而获取到焦点</li>
-<li>afterDescendants：viewgroup只有当其子类控件不需要获取焦点时才获取焦点</li>
-<li>blocksDescendants：viewgroup会覆盖子类控件而直接获得焦点</li>
-</ul>
-<p>通常我们用到的是第三种，即在Item布局的根布局加上android:descendantFocusability=”blocksDescendants”的属性就好了</p> <a class="btn btn-info xsmall" href="../android/android_focus.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android_view_property.html"><h2>View及TextView属性说明</h2></a>
-        <div class= "well small"> 2014-05-23 09:37:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>View属性说明</h2>
-<p>android:alpha<br />
-关联方法: setAlpha(float)<br />
-属性说明: 视图透明度，值在0-1之间。0为完全透明，1为完全不透明。  </p>
-<p>android:background<br />
-关联方法: setBackgroundResource(int) <br />
-属性说明: 视图背景  </p>
-<p>android:clickable<br />
-关联方法: setClickable(boolean)<br />
-属性说明: 视图是否可点击</p>
-<p>android:contentDescription<br />
-关联方法: setContentDescription(CharSequence)<br />
-属性说明: 设置View的备注说明，作为一种辅助功能提供,为一些没有文字描述的View提供说明  </p>
-<p>android:drawingCacheQuality 
-关联方法: setDrawingCacheQuality(int)<br />
-属性说明: "设置绘图时半透明质量。有可以取以下3个值 auto——默认，由框架决定 high——高质量，使用较高的颜色深度，消耗更多的内存 low ...</p> <a class="btn btn-info xsmall" href="../android/android_view_property.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="../android/android_bitmap.html"><h2>Android关于高效显示图片的问题</h2></a>
-        <div class= "well small"> 2014-03-17 17:37:00
-
-by <a class="url fn" href="../author/suphy.html">suphy</a>
- 
-
-
- </div>
-        <div class="summary"><h2>Android关于高效显示图片的问题</h2>
-<h3>Bitmap的immutable和mutable</h3>
-<p>Bitmap可以理解为Android里的画布，Canvas是画笔，Paint是画笔属性的设置，View是画图的地方；</p>
-<p>图像（Image)有immutable(不可变的)和mutable(可变的)之分，创建自图形的Bitmap是immutable，而给定宽高以及其他一些参数创建的Bitmap是mutable.</p>
-<div class="highlight"><pre><span class="c1">//Immutable bitmap</span>
-<span class="n">Bitmap</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">BitmapFactory</span><span class="o">.</span><span class="na">decodeFile</span><span class="o">(</span><span class="s">&quot;/sdcard/xxx.jpg&quot;</span><span class="o">);</span>
-<span class="n">Bitmap</span> <span class="n">immutable</span> <span class="o">=</span> <span class="n">Bitmap</span><span class="o">.</span><span class="na">createBitmap</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
-
-<span class="c1">//mutable bitmap</span>
-<span class="n">Bitmap</span> <span class="n">mutalbe</span> <span class="o">=</span> <span class="n">Bitmap</span><span class="o">.</span><span class="na">createBitmap</span><span class="o">(</span><span class="mi">240</span><span class="o">,</span> <span class="mi">320</span><span class="o">,</span> <span class="n">Bitmap</span><span class="o">.</span><span class="na">Config</span><span class="o">.</span><span class="na">RGB_565</span><span class="o">);</span>
-</pre></div>
-
-
-<p>在使用<code>Canvas canvas = new Canvas(bitmap);</code> 时，传入的参数只能是mutable的bitmap.</p>
-<h3>BitmapFactory.Options ...</h3> <a class="btn btn-info xsmall" href="../android/android_bitmap.html">read more</a></div>
+<td>测试结果 ...</td></tr></tbody></table> <a class="btn btn-info xsmall" href="../vehicle/obd_ii_pids.html">read more</a></div>
     </div>	
 				
 <div class="pagination">
@@ -429,6 +331,7 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
     <li class=""><a href="../author/suphy2.html">2</a></li>
     <li class=""><a href="../author/suphy3.html">3</a></li>
     <li class=""><a href="../author/suphy4.html">4</a></li>
+    <li class=""><a href="../author/suphy5.html">5</a></li>
 
     <li class="next"><a href="../author/suphy2.html">Next &rarr;</a></li>
 
@@ -461,10 +364,12 @@ by <a class="url fn" href="../author/suphy.html">suphy</a>
                 </li>
                 
                 <li><a href="../category/android.html">android</a></li>
+                <li><a href="../category/java.html">java</a></li>
                 <li><a href="../category/life.html">life</a></li>
                 <li><a href="../category/linux.html">linux</a></li>
                 <li><a href="../category/scm.html">Scm</a></li>
                 <li><a href="../category/tech.html">Tech</a></li>
+                <li><a href="../category/tool.html">tool</a></li>
                 <li><a href="../category/vehicle.html">vehicle</a></li>
                    
             </ul>
